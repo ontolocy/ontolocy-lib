@@ -26,18 +26,6 @@ Target Label: ListeningSocket
 | source | IPAddressNode | True |
 
 
-### IP_ADDRESS_LOCATED_IN_COUNTRY
-
-Target Label: Country
-
-#### Relationship Properties
-
-| Property Name | Type | Required |
-| ------------- | ---- | -------- |
-| target | Country | True |
-| source | IPAddressNode | True |
-
-
 ### IP_ADDRESS_BELONGS_TO_ASN
 
 Target Label: ASN
@@ -47,6 +35,18 @@ Target Label: ASN
 | Property Name | Type | Required |
 | ------------- | ---- | -------- |
 | target | ASN | True |
+| source | IPAddressNode | True |
+
+
+### IP_ADDRESS_LOCATED_IN_COUNTRY
+
+Target Label: Country
+
+#### Relationship Properties
+
+| Property Name | Type | Required |
+| ------------- | ---- | -------- |
+| target | Country | True |
 | source | IPAddressNode | True |
 
 

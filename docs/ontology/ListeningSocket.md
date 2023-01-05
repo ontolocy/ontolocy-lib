@@ -27,31 +27,6 @@ Target Label: URL
 | status_code | int | False |
 
 
-### OPEN_PORT_PRESENTS_BANNER
-
-Target Label: Banner
-
-#### Relationship Properties
-
-| Property Name | Type | Required |
-| ------------- | ---- | -------- |
-| target | Banner | True |
-| source | ListeningSocket | True |
-
-
-### SERVICE_IDENTIFIED_AS_PLATFORM
-
-Target Label: CPE
-
-#### Relationship Properties
-
-| Property Name | Type | Required |
-| ------------- | ---- | -------- |
-| target | CPE | True |
-| source | ListeningSocket | True |
-| status_code | int | False |
-
-
 ### OPEN_PORT_HAS_JARM_HASH
 
 Target Label: JarmHash
@@ -61,6 +36,30 @@ Target Label: JarmHash
 | Property Name | Type | Required |
 | ------------- | ---- | -------- |
 | target | JarmHash | True |
+| source | ListeningSocket | True |
+
+
+### LISTENING_SOCKET_USES_PORT
+
+Target Label: Port
+
+#### Relationship Properties
+
+| Property Name | Type | Required |
+| ------------- | ---- | -------- |
+| target | Port | True |
+| source | ListeningSocket | True |
+
+
+### OPEN_PORT_PRESENTS_BANNER
+
+Target Label: Banner
+
+#### Relationship Properties
+
+| Property Name | Type | Required |
+| ------------- | ---- | -------- |
+| target | Banner | True |
 | source | ListeningSocket | True |
 
 
@@ -76,16 +75,17 @@ Target Label: X509Certificate
 | source | ListeningSocket | True |
 
 
-### LISTENING_SOCKET_USES_PORT
+### SERVICE_IDENTIFIED_AS_PLATFORM
 
-Target Label: Port
+Target Label: CPE
 
 #### Relationship Properties
 
 | Property Name | Type | Required |
 | ------------- | ---- | -------- |
-| target | Port | True |
+| target | CPE | True |
 | source | ListeningSocket | True |
+| status_code | int | False |
 
 
 
