@@ -14,63 +14,15 @@
 
 ## Outgoing Relationships
 
-### REPORT_MENTIONS_INTRUSION_SET
+### REPORT_MENTIONS_IP
 
-Target Label: IntrusionSet
-
-#### Relationship Properties
-
-| Property Name | Type | Required |
-| ------------- | ---- | -------- |
-| target | IntrusionSet | True |
-| source | Report | True |
-
-
-### REPORT_IDENTIFIES_SPONSOR_COUNTRY
-
-Target Label: Country
+Target Label: IPAddress
 
 #### Relationship Properties
 
 | Property Name | Type | Required |
 | ------------- | ---- | -------- |
-| target | Country | True |
-| source | Report | True |
-
-
-### REPORT_MENTIONS_COUNTRY
-
-Target Label: Country
-
-#### Relationship Properties
-
-| Property Name | Type | Required |
-| ------------- | ---- | -------- |
-| target | Country | True |
-| source | Report | True |
-
-
-### REPORT_IDENTIFIES_VICTIM_COUNTRY
-
-Target Label: Country
-
-#### Relationship Properties
-
-| Property Name | Type | Required |
-| ------------- | ---- | -------- |
-| target | Country | True |
-| source | Report | True |
-
-
-### REPORT_IDENTIFIES_CAMPAIGN
-
-Target Label: Campaign
-
-#### Relationship Properties
-
-| Property Name | Type | Required |
-| ------------- | ---- | -------- |
-| target | Campaign | True |
+| target | IPAddressNode | True |
 | source | Report | True |
 
 
@@ -86,6 +38,30 @@ Target Label: MitreAttackTechnique
 | source | Report | True |
 
 
+### REPORT_IDENTIFIES_CAMPAIGN
+
+Target Label: Campaign
+
+#### Relationship Properties
+
+| Property Name | Type | Required |
+| ------------- | ---- | -------- |
+| target | Campaign | True |
+| source | Report | True |
+
+
+### REPORT_MENTIONS_COUNTRY
+
+Target Label: Country
+
+#### Relationship Properties
+
+| Property Name | Type | Required |
+| ------------- | ---- | -------- |
+| target | Country | True |
+| source | Report | True |
+
+
 ### REPORT_MENTIONS_CVE
 
 Target Label: CVE
@@ -95,18 +71,6 @@ Target Label: CVE
 | Property Name | Type | Required |
 | ------------- | ---- | -------- |
 | target | CVE | True |
-| source | Report | True |
-
-
-### REPORT_IDENTIFIES_INTRUSION_SET
-
-Target Label: IntrusionSet
-
-#### Relationship Properties
-
-| Property Name | Type | Required |
-| ------------- | ---- | -------- |
-| target | IntrusionSet | True |
 | source | Report | True |
 
 
@@ -122,39 +86,15 @@ Target Label: CVE
 | source | Report | True |
 
 
-### REPORT_IDENTIFIES_SOFTWARE
+### REPORT_IDENTIFIES_VICTIM_SECTOR
 
-Target Label: MitreAttackSoftware
-
-#### Relationship Properties
-
-| Property Name | Type | Required |
-| ------------- | ---- | -------- |
-| target | MitreAttackSoftware | True |
-| source | Report | True |
-
-
-### REPORT_MENTIONS_IP
-
-Target Label: IPAddress
+Target Label: Sector
 
 #### Relationship Properties
 
 | Property Name | Type | Required |
 | ------------- | ---- | -------- |
-| target | IPAddressNode | True |
-| source | Report | True |
-
-
-### REPORT_IDENTIFIES_CYBER_HARM
-
-Target Label: CyberHarm
-
-#### Relationship Properties
-
-| Property Name | Type | Required |
-| ------------- | ---- | -------- |
-| target | CyberHarm | True |
+| target | Sector | True |
 | source | Report | True |
 
 
@@ -170,6 +110,30 @@ Target Label: MitreAttackTechnique
 | source | Report | True |
 
 
+### REPORT_IDENTIFIES_SPONSOR_COUNTRY
+
+Target Label: Country
+
+#### Relationship Properties
+
+| Property Name | Type | Required |
+| ------------- | ---- | -------- |
+| target | Country | True |
+| source | Report | True |
+
+
+### REPORT_IDENTIFIES_INTRUSION_SET
+
+Target Label: IntrusionSet
+
+#### Relationship Properties
+
+| Property Name | Type | Required |
+| ------------- | ---- | -------- |
+| target | IntrusionSet | True |
+| source | Report | True |
+
+
 ### REPORT_MENTIONS_SECTOR
 
 Target Label: Sector
@@ -182,15 +146,51 @@ Target Label: Sector
 | source | Report | True |
 
 
-### REPORT_IDENTIFIES_VICTIM_SECTOR
+### REPORT_IDENTIFIES_SOFTWARE
 
-Target Label: Sector
+Target Label: MitreAttackSoftware
 
 #### Relationship Properties
 
 | Property Name | Type | Required |
 | ------------- | ---- | -------- |
-| target | Sector | True |
+| target | MitreAttackSoftware | True |
+| source | Report | True |
+
+
+### REPORT_MENTIONS_INTRUSION_SET
+
+Target Label: IntrusionSet
+
+#### Relationship Properties
+
+| Property Name | Type | Required |
+| ------------- | ---- | -------- |
+| target | IntrusionSet | True |
+| source | Report | True |
+
+
+### REPORT_IDENTIFIES_VICTIM_COUNTRY
+
+Target Label: Country
+
+#### Relationship Properties
+
+| Property Name | Type | Required |
+| ------------- | ---- | -------- |
+| target | Country | True |
+| source | Report | True |
+
+
+### REPORT_IDENTIFIES_CYBER_HARM
+
+Target Label: CyberHarm
+
+#### Relationship Properties
+
+| Property Name | Type | Required |
+| ------------- | ---- | -------- |
+| target | CyberHarm | True |
 | source | Report | True |
 
 
