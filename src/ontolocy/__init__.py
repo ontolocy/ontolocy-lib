@@ -27,6 +27,7 @@ from ontolocy.models.cpe import CPE
 from ontolocy.models.cve import CVE, CVERelatesToCPE, CVERelatesToCWE
 from ontolocy.models.cwe import CWE
 from ontolocy.models.cyberharm import CyberHarm
+from ontolocy.models.exploit import Exploit, ExploitExploitsVulnerability
 from ontolocy.models.intrusionset import (
     IntrusionSet,
     IntrusionSetAttributedToNation,
@@ -133,6 +134,8 @@ __all__ = [
     "CVERelatesToCWE",
     "CWE",
     "CyberHarm",
+    "Exploit",
+    "ExploitExploitsVulnerability",
     "IntrusionSet",
     "IntrusionSetAttributedToNation",
     "IntrusionSetLinkedToIntrusionSet",
