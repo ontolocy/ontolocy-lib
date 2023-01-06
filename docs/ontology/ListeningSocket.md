@@ -14,43 +14,6 @@
 
 ## Outgoing Relationships
 
-### SERVICE_HOSTS_URL
-
-Target Label: URL
-
-#### Relationship Properties
-
-| Property Name | Type | Required |
-| ------------- | ---- | -------- |
-| target | URLNode | True |
-| source | ListeningSocket | True |
-| status_code | int | False |
-
-
-### OPEN_PORT_HAS_JARM_HASH
-
-Target Label: JarmHash
-
-#### Relationship Properties
-
-| Property Name | Type | Required |
-| ------------- | ---- | -------- |
-| target | JarmHash | True |
-| source | ListeningSocket | True |
-
-
-### LISTENING_SOCKET_USES_PORT
-
-Target Label: Port
-
-#### Relationship Properties
-
-| Property Name | Type | Required |
-| ------------- | ---- | -------- |
-| target | Port | True |
-| source | ListeningSocket | True |
-
-
 ### OPEN_PORT_PRESENTS_BANNER
 
 Target Label: Banner
@@ -75,6 +38,31 @@ Target Label: X509Certificate
 | source | ListeningSocket | True |
 
 
+### LISTENING_SOCKET_USES_PORT
+
+Target Label: Port
+
+#### Relationship Properties
+
+| Property Name | Type | Required |
+| ------------- | ---- | -------- |
+| target | Port | True |
+| source | ListeningSocket | True |
+
+
+### SERVICE_HOSTS_URL
+
+Target Label: URL
+
+#### Relationship Properties
+
+| Property Name | Type | Required |
+| ------------- | ---- | -------- |
+| target | URLNode | True |
+| source | ListeningSocket | True |
+| status_code | int | False |
+
+
 ### SERVICE_IDENTIFIED_AS_PLATFORM
 
 Target Label: CPE
@@ -86,6 +74,18 @@ Target Label: CPE
 | target | CPE | True |
 | source | ListeningSocket | True |
 | status_code | int | False |
+
+
+### OPEN_PORT_HAS_JARM_HASH
+
+Target Label: JarmHash
+
+#### Relationship Properties
+
+| Property Name | Type | Required |
+| ------------- | ---- | -------- |
+| target | JarmHash | True |
+| source | ListeningSocket | True |
 
 
 

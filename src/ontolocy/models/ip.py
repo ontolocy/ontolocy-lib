@@ -10,6 +10,7 @@ from ..relationship import OntolocyRelationship
 from ..utils import generate_deterministic_uuid
 from .asn import ASN
 from .country import Country
+from .cpe import CPE
 from .listeningsocket import ListeningSocket
 
 
@@ -97,3 +98,11 @@ class IPAddressLocatedInCountry(OntolocyRelationship):
 
     source: IPAddressNode
     target: Country
+
+
+class IPAddressIdentifiedAsPlatform(OntolocyRelationship):
+
+    __relationshiptype__: ClassVar[str] = "IP_ADDRESS_IDENTIFIED_AS_PLATFORM"
+
+    source: IPAddressNode
+    target: CPE

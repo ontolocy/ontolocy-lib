@@ -13,19 +13,6 @@
 
 ## Outgoing Relationships
 
-### THREAT_ACTOR_IS_OF_TYPE
-
-Target Label: ActorType
-
-#### Relationship Properties
-
-| Property Name | Type | Required |
-| ------------- | ---- | -------- |
-| target | ActorType | True |
-| source | ThreatActor | True |
-| url_reference | HttpUrl | False |
-
-
 ### THREAT_ACTOR_ATTRIBUTED_TO_NATION
 
 Target Label: Country
@@ -35,6 +22,19 @@ Target Label: Country
 | Property Name | Type | Required |
 | ------------- | ---- | -------- |
 | target | Country | True |
+| source | ThreatActor | True |
+| url_reference | HttpUrl | False |
+
+
+### THREAT_ACTOR_IS_OF_TYPE
+
+Target Label: ActorType
+
+#### Relationship Properties
+
+| Property Name | Type | Required |
+| ------------- | ---- | -------- |
+| target | ActorType | True |
 | source | ThreatActor | True |
 | url_reference | HttpUrl | False |
 

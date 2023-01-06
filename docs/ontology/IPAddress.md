@@ -14,15 +14,15 @@
 
 ## Outgoing Relationships
 
-### IP_ADDRESS_HAS_OPEN_PORT
+### IP_ADDRESS_LOCATED_IN_COUNTRY
 
-Target Label: ListeningSocket
+Target Label: Country
 
 #### Relationship Properties
 
 | Property Name | Type | Required |
 | ------------- | ---- | -------- |
-| target | ListeningSocket | True |
+| target | Country | True |
 | source | IPAddressNode | True |
 
 
@@ -38,15 +38,27 @@ Target Label: ASN
 | source | IPAddressNode | True |
 
 
-### IP_ADDRESS_LOCATED_IN_COUNTRY
+### IP_ADDRESS_HAS_OPEN_PORT
 
-Target Label: Country
+Target Label: ListeningSocket
 
 #### Relationship Properties
 
 | Property Name | Type | Required |
 | ------------- | ---- | -------- |
-| target | Country | True |
+| target | ListeningSocket | True |
+| source | IPAddressNode | True |
+
+
+### IP_ADDRESS_IDENTIFIED_AS_PLATFORM
+
+Target Label: CPE
+
+#### Relationship Properties
+
+| Property Name | Type | Required |
+| ------------- | ---- | -------- |
+| target | CPE | True |
 | source | IPAddressNode | True |
 
 

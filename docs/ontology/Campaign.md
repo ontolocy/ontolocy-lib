@@ -14,19 +14,6 @@
 
 ## Outgoing Relationships
 
-### CAMPAIGN_CAUSED_CYBER_HARM
-
-Target Label: CyberHarm
-
-#### Relationship Properties
-
-| Property Name | Type | Required |
-| ------------- | ---- | -------- |
-| target | CyberHarm | True |
-| source | Campaign | True |
-| url_reference | HttpUrl | False |
-
-
 ### CAMPAIGN_USES_TECHNIQUE
 
 Target Label: MitreAttackTechnique
@@ -36,19 +23,6 @@ Target Label: MitreAttackTechnique
 | Property Name | Type | Required |
 | ------------- | ---- | -------- |
 | target | MitreAttackTechnique | True |
-| source | Campaign | True |
-| url_reference | HttpUrl | False |
-
-
-### CAMPAIGN_TARGETS_SECTOR
-
-Target Label: Sector
-
-#### Relationship Properties
-
-| Property Name | Type | Required |
-| ------------- | ---- | -------- |
-| target | Sector | True |
 | source | Campaign | True |
 | url_reference | HttpUrl | False |
 
@@ -75,6 +49,32 @@ Target Label: IntrusionSet
 | Property Name | Type | Required |
 | ------------- | ---- | -------- |
 | target | IntrusionSet | True |
+| source | Campaign | True |
+| url_reference | HttpUrl | False |
+
+
+### CAMPAIGN_CAUSED_CYBER_HARM
+
+Target Label: CyberHarm
+
+#### Relationship Properties
+
+| Property Name | Type | Required |
+| ------------- | ---- | -------- |
+| target | CyberHarm | True |
+| source | Campaign | True |
+| url_reference | HttpUrl | False |
+
+
+### CAMPAIGN_TARGETS_SECTOR
+
+Target Label: Sector
+
+#### Relationship Properties
+
+| Property Name | Type | Required |
+| ------------- | ---- | -------- |
+| target | Sector | True |
 | source | Campaign | True |
 | url_reference | HttpUrl | False |
 
