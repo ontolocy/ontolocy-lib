@@ -40,6 +40,7 @@ from ontolocy.models.intrusionset import (
 from ontolocy.models.ip import (
     IPAddressBelongsToASN,
     IPAddressHasOpenPort,
+    IPAddressIdentifiedAsPlatform,
     IPAddressLocatedInCountry,
     IPAddressNode,
 )
@@ -146,6 +147,7 @@ __all__ = [
     "IPAddressNode",
     "IPAddressBelongsToASN",
     "IPAddressHasOpenPort",
+    "IPAddressIdentifiedAsPlatform",
     "IPAddressLocatedInCountry",
     "JarmHash",
     "ListeningSocket",
