@@ -28,3 +28,19 @@ class OntolocyNode(BaseNode):
             OriginGenerated.merge_relationships(rels, target_type=cls)
 
         return nodes
+
+    def ingest(
+        self,
+        data_origin: Optional[DataOrigin] = None,
+    ) -> None:
+
+        # first merge in this node
+        self.merge()
+
+        # if a data_origin is specified, merge that and then creat the OriginGenerated relationship
+        if data_origin is not None:
+            data_origin.merge()
+
+            rel = OriginGenerated(source=data_origin, target=self)
+
+            rel.merge()
