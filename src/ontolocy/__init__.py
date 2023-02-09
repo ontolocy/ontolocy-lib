@@ -1,5 +1,3 @@
-from ontolocy.node import OntolocyNode
-from ontolocy.relationship import OntolocyRelationship
 from ontolocy.dataorigin import DataOrigin, OriginGenerated
 from ontolocy.models.actortype import ActorType
 from ontolocy.models.asn import ASN, ASNHasWhoIsRegisteredContact
@@ -106,6 +104,8 @@ from ontolocy.models.threatactor import (
 )
 from ontolocy.models.url import URLNode, UrlRedirectsToUrl
 from ontolocy.models.x509certificate import X509Certificate
+from ontolocy.node import OntolocyNode
+from ontolocy.relationship import OntolocyRelationship
 from ontolocy.utils import init_ontolocy
 
 __all__ = [
