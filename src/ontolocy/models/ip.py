@@ -12,6 +12,7 @@ from .asn import ASN
 from .country import Country
 from .cpe import CPE
 from .listeningsocket import ListeningSocket
+from .macaddress import MACAddress
 
 
 class IPVersionEnum(str, Enum):
@@ -30,6 +31,9 @@ class IPAddressNode(OntolocyNode):
     namespace: Optional[str] = None
 
     unique_id: Optional[UUID] = None
+
+    def get_identifier(self) -> str:
+        return str(self.ip_address)
 
     @validator("ip_address", pre=True)
     def refang_ip(cls, v: str):
@@ -106,3 +110,11 @@ class IPAddressIdentifiedAsPlatform(OntolocyRelationship):
 
     source: IPAddressNode
     target: CPE
+
+
+class IPAddressMapsToMACAddress(OntolocyRelationship):
+
+    __relationshiptype__: ClassVar[str] = "IP_ADDRESS_MAPS_TO_MAC_ADDRESS"
+
+    source: IPAddressNode
+    target: MACAddress

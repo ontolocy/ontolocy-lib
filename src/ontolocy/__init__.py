@@ -28,6 +28,7 @@ from ontolocy.models.cve import CVE, CVERelatesToCPE, CVERelatesToCWE
 from ontolocy.models.cwe import CWE
 from ontolocy.models.cyberharm import CyberHarm
 from ontolocy.models.exploit import Exploit, ExploitExploitsVulnerability
+from ontolocy.models.host import Host
 from ontolocy.models.intrusionset import (
     IntrusionSet,
     IntrusionSetAttributedToNation,
@@ -54,6 +55,7 @@ from ontolocy.models.listeningsocket import (
     ServiceHostsURL,
     ServiceIdentifiedAsPlatform,
 )
+from ontolocy.models.macaddress import MACAddress, MACAddressAssignedToHost
 from ontolocy.models.mitreattackcampaign import (
     MitreAttackCampaign,
     MitreCampaignAttributedTo,
@@ -142,6 +144,7 @@ __all__ = [
     "CyberHarm",
     "Exploit",
     "ExploitExploitsVulnerability",
+    "Host",
     "IntrusionSet",
     "IntrusionSetAttributedToNation",
     "IntrusionSetLinkedToIntrusionSet",
@@ -158,6 +161,7 @@ __all__ = [
     "ListeningSocket",
     "ListeningSocketUsesPort",
     "ServiceIdentifiedAsPlatform",
+    "MACAddress",
     "MitreAttackTactic",
     "MitreTacticIncludesTechnique",
     "MitreAttackTechnique",
