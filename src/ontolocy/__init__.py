@@ -44,6 +44,7 @@ from ontolocy.models.ip import (
     IPAddressIdentifiedAsPlatform,
     IPAddressLocatedInCountry,
     IPAddressNode,
+    IPAddressMapsToMACAddress,
 )
 from ontolocy.models.jarmhash import JarmHash
 from ontolocy.models.listeningsocket import (
@@ -157,6 +158,7 @@ __all__ = [
     "IPAddressHasOpenPort",
     "IPAddressIdentifiedAsPlatform",
     "IPAddressLocatedInCountry",
+    "IPAddressMapsToMACAddress",
     "JarmHash",
     "ListeningSocket",
     "ListeningSocketUsesPort",
