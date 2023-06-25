@@ -36,6 +36,9 @@ class ListeningSocket(OntolocyNode):
 
     unique_id: Optional[UUID] = None
 
+    def get_identifier(self) -> str:
+        return f"{self.ip_address}:{self.port_number}"
+
     @validator("unique_id", always=True)
     def generate_socket_uuid(cls, v: Optional[UUID], values: Dict[str, Any]) -> UUID:
 

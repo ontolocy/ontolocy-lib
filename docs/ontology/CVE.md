@@ -8,6 +8,7 @@
 | cve_id | ConstrainedStrValue | True |
 | published_date | datetime | False |
 | assigner | str | False |
+| description | str | False |
 
 
 ## Outgoing Relationships

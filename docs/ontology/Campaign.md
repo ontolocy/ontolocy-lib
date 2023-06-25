@@ -14,19 +14,6 @@
 
 ## Outgoing Relationships
 
-### CAMPAIGN_USES_TECHNIQUE
-
-Target Label: MitreAttackTechnique
-
-#### Relationship Properties
-
-| Property Name | Type | Required |
-| ------------- | ---- | -------- |
-| target | MitreAttackTechnique | True |
-| source | Campaign | True |
-| url_reference | HttpUrl | False |
-
-
 ### CAMPAIGN_TARGETS_COUNTRY
 
 Target Label: Country
@@ -40,15 +27,15 @@ Target Label: Country
 | url_reference | HttpUrl | False |
 
 
-### CAMPAIGN_BY_INTRUSION_SET
+### CAMPAIGN_TARGETS_SECTOR
 
-Target Label: IntrusionSet
+Target Label: Sector
 
 #### Relationship Properties
 
 | Property Name | Type | Required |
 | ------------- | ---- | -------- |
-| target | IntrusionSet | True |
+| target | Sector | True |
 | source | Campaign | True |
 | url_reference | HttpUrl | False |
 
@@ -66,15 +53,28 @@ Target Label: CyberHarm
 | url_reference | HttpUrl | False |
 
 
-### CAMPAIGN_TARGETS_SECTOR
+### CAMPAIGN_BY_INTRUSION_SET
 
-Target Label: Sector
+Target Label: IntrusionSet
 
 #### Relationship Properties
 
 | Property Name | Type | Required |
 | ------------- | ---- | -------- |
-| target | Sector | True |
+| target | IntrusionSet | True |
+| source | Campaign | True |
+| url_reference | HttpUrl | False |
+
+
+### CAMPAIGN_USES_TECHNIQUE
+
+Target Label: MitreAttackTechnique
+
+#### Relationship Properties
+
+| Property Name | Type | Required |
+| ------------- | ---- | -------- |
+| target | MitreAttackTechnique | True |
 | source | Campaign | True |
 | url_reference | HttpUrl | False |
 

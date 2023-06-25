@@ -1,13 +1,14 @@
 
-# ActorType
+# Host
 
 ## Node Properties
 
 | Property Name | Type | Required |
 | ------------- | ---- | -------- |
-| unique_id | ActorTypeEnum | True |
-| name | str | False |
-| description | str | False |
+| hostname | str | True |
+| os | HostOSEnum | False |
+| namespace | str | False |
+| unique_id | UUID | False |
 
 
 ## Outgoing Relationships

@@ -25,15 +25,15 @@
 
 ## Outgoing Relationships
 
-### MITRE_CAMPAIGN_ATTRIBUTED_TO_INTRUSION_SET
+### MITRE_CAMPAIGN_USES_TECHNIQUE
 
-Target Label: IntrusionSet
+Target Label: MitreAttackTechnique
 
 #### Relationship Properties
 
 | Property Name | Type | Required |
 | ------------- | ---- | -------- |
-| target | IntrusionSet | True |
+| target | MitreAttackTechnique | True |
 | source | MitreAttackCampaign | True |
 
 
@@ -49,15 +49,15 @@ Target Label: MitreAttackSoftware
 | source | MitreAttackCampaign | True |
 
 
-### MITRE_CAMPAIGN_USES_TECHNIQUE
+### MITRE_CAMPAIGN_ATTRIBUTED_TO_INTRUSION_SET
 
-Target Label: MitreAttackTechnique
+Target Label: IntrusionSet
 
 #### Relationship Properties
 
 | Property Name | Type | Required |
 | ------------- | ---- | -------- |
-| target | MitreAttackTechnique | True |
+| target | IntrusionSet | True |
 | source | MitreAttackCampaign | True |
 
 

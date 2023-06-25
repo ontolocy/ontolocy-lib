@@ -40,6 +40,30 @@ Target Label: ActorType
 
 ### ORIGIN_GENERATED
 
+Target Label: ASN
+
+#### Relationship Properties
+
+| Property Name | Type | Required |
+| ------------- | ---- | -------- |
+| target | BaseNode | True |
+| source | DataOrigin | True |
+
+
+### ORIGIN_GENERATED
+
+Target Label: Organisation
+
+#### Relationship Properties
+
+| Property Name | Type | Required |
+| ------------- | ---- | -------- |
+| target | BaseNode | True |
+| source | DataOrigin | True |
+
+
+### ORIGIN_GENERATED
+
 Target Label: CPE
 
 #### Relationship Properties
@@ -65,42 +89,6 @@ Target Label: CWE
 ### ORIGIN_GENERATED
 
 Target Label: CVE
-
-#### Relationship Properties
-
-| Property Name | Type | Required |
-| ------------- | ---- | -------- |
-| target | BaseNode | True |
-| source | DataOrigin | True |
-
-
-### ORIGIN_GENERATED
-
-Target Label: Organisation
-
-#### Relationship Properties
-
-| Property Name | Type | Required |
-| ------------- | ---- | -------- |
-| target | BaseNode | True |
-| source | DataOrigin | True |
-
-
-### ORIGIN_GENERATED
-
-Target Label: ASN
-
-#### Relationship Properties
-
-| Property Name | Type | Required |
-| ------------- | ---- | -------- |
-| target | BaseNode | True |
-| source | DataOrigin | True |
-
-
-### ORIGIN_GENERATED
-
-Target Label: Banner
 
 #### Relationship Properties
 
@@ -208,31 +196,19 @@ Target Label: Campaign
 
 ### ORIGIN_GENERATED
 
-Target Label: CAPECPattern
-
-#### Relationship Properties
-
-| Property Name | Type | Required |
-| ------------- | ---- | -------- |
-| target | BaseNode | True |
-| source | DataOrigin | True |
-
-
-### ORIGIN_GENERATED
-
-Target Label: CobaltStrikeWatermark
-
-#### Relationship Properties
-
-| Property Name | Type | Required |
-| ------------- | ---- | -------- |
-| target | BaseNode | True |
-| source | DataOrigin | True |
-
-
-### ORIGIN_GENERATED
-
 Target Label: Port
+
+#### Relationship Properties
+
+| Property Name | Type | Required |
+| ------------- | ---- | -------- |
+| target | BaseNode | True |
+| source | DataOrigin | True |
+
+
+### ORIGIN_GENERATED
+
+Target Label: Banner
 
 #### Relationship Properties
 
@@ -292,7 +268,7 @@ Target Label: ListeningSocket
 
 ### ORIGIN_GENERATED
 
-Target Label: CobaltStrikeBeacon
+Target Label: Host
 
 #### Relationship Properties
 
@@ -304,7 +280,7 @@ Target Label: CobaltStrikeBeacon
 
 ### ORIGIN_GENERATED
 
-Target Label: Exploit
+Target Label: MACAddress
 
 #### Relationship Properties
 
@@ -317,6 +293,102 @@ Target Label: Exploit
 ### ORIGIN_GENERATED
 
 Target Label: IPAddress
+
+#### Relationship Properties
+
+| Property Name | Type | Required |
+| ------------- | ---- | -------- |
+| target | BaseNode | True |
+| source | DataOrigin | True |
+
+
+### ORIGIN_GENERATED
+
+Target Label: DomainName
+
+#### Relationship Properties
+
+| Property Name | Type | Required |
+| ------------- | ---- | -------- |
+| target | BaseNode | True |
+| source | DataOrigin | True |
+
+
+### ORIGIN_GENERATED
+
+Target Label: DNSRecord
+
+#### Relationship Properties
+
+| Property Name | Type | Required |
+| ------------- | ---- | -------- |
+| target | BaseNode | True |
+| source | DataOrigin | True |
+
+
+### ORIGIN_GENERATED
+
+Target Label: Report
+
+#### Relationship Properties
+
+| Property Name | Type | Required |
+| ------------- | ---- | -------- |
+| target | BaseNode | True |
+| source | DataOrigin | True |
+
+
+### ORIGIN_GENERATED
+
+Target Label: CAPECPattern
+
+#### Relationship Properties
+
+| Property Name | Type | Required |
+| ------------- | ---- | -------- |
+| target | BaseNode | True |
+| source | DataOrigin | True |
+
+
+### ORIGIN_GENERATED
+
+Target Label: CobaltStrikeWatermark
+
+#### Relationship Properties
+
+| Property Name | Type | Required |
+| ------------- | ---- | -------- |
+| target | BaseNode | True |
+| source | DataOrigin | True |
+
+
+### ORIGIN_GENERATED
+
+Target Label: CobaltStrikeBeacon
+
+#### Relationship Properties
+
+| Property Name | Type | Required |
+| ------------- | ---- | -------- |
+| target | BaseNode | True |
+| source | DataOrigin | True |
+
+
+### ORIGIN_GENERATED
+
+Target Label: Control
+
+#### Relationship Properties
+
+| Property Name | Type | Required |
+| ------------- | ---- | -------- |
+| target | BaseNode | True |
+| source | DataOrigin | True |
+
+
+### ORIGIN_GENERATED
+
+Target Label: Exploit
 
 #### Relationship Properties
 
@@ -364,7 +436,7 @@ Target Label: NetworkService
 
 ### ORIGIN_GENERATED
 
-Target Label: Report
+Target Label: UserAccount
 
 #### Relationship Properties
 

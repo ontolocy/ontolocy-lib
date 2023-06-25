@@ -10,13 +10,13 @@ from .cwe import CWE
 
 
 class CVE(OntolocyNode):
-
     __primaryproperty__: ClassVar[str] = "cve_id"
     __primarylabel__: ClassVar[Optional[str]] = "CVE"
 
     cve_id: constr(to_upper=True, regex=r"CVE-\d{4}-\d{4,8}")  # noqa: F722
     published_date: Optional[datetime]
     assigner: Optional[str]
+    description: Optional[str]
 
 
 #
