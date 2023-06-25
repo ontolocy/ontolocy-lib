@@ -44,3 +44,6 @@ class OntolocyNode(BaseNode):
             rel = OriginGenerated(source=data_origin, target=self)
 
             rel.merge()
+
+    def get_identifier(self) -> str:
+        return str(self.get_primary_property_value())

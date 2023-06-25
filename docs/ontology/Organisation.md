@@ -6,10 +6,41 @@
 | Property Name | Type | Required |
 | ------------- | ---- | -------- |
 | name | str | True |
+| description | str | False |
 | address | str | False |
 
 
 ## Outgoing Relationships
+
+### ORGANISATION_PUBLISHED_THREAT_REPORT
+
+Target Label: Report
+
+#### Relationship Properties
+
+| Property Name | Type | Required |
+| ------------- | ---- | -------- |
+| target | Report | True |
+| source | Organisation | True |
+| context | str | False |
+| url_reference | AnyHttpUrl | False |
+
+
+### ORGANISATION_REPORTED_EXPLOITATION_OF_CVE
+
+Target Label: CVE
+
+#### Relationship Properties
+
+| Property Name | Type | Required |
+| ------------- | ---- | -------- |
+| reported_date | date | True |
+| target | CVE | True |
+| source | Organisation | True |
+| url_reference | AnyHttpUrl | False |
+| description | str | False |
+| required_action | str | False |
+
 
 ### ORGANISATION_ASSIGNED_CVSS_TO_CVE
 

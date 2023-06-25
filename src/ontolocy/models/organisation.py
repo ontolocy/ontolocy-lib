@@ -1,16 +1,22 @@
+from datetime import date
 from typing import ClassVar, Optional
+
+from pydantic import AnyHttpUrl
 
 from ..node import OntolocyNode
 from ..relationship import OntolocyRelationship
-from .cve import CVE
+
+# from .cve import CVE
+
+# from .report import Report
 
 
 class Organisation(OntolocyNode):
-
     __primaryproperty__: ClassVar[str] = "name"
     __primarylabel__: ClassVar[str] = "Organisation"
 
     name: str
+    description: Optional[str]
     address: Optional[str]
 
 
@@ -19,9 +25,9 @@ class Organisation(OntolocyNode):
 #
 
 
-class OrganisationAssignedAssignedCVSSToCVE(OntolocyRelationship):
+class OrganisationAssignedCVSSToCVE(OntolocyRelationship):
     source: Organisation
-    target: CVE
+    target: "CVE"
 
     version: str
     vector_string: str
@@ -39,3 +45,33 @@ class OrganisationAssignedAssignedCVSSToCVE(OntolocyRelationship):
     impact_score: float
 
     __relationshiptype__: ClassVar[str] = "ORGANISATION_ASSIGNED_CVSS_TO_CVE"
+
+
+class OrganisationReportedExploitationOfCVE(OntolocyRelationship):
+    source: Organisation
+    target: "CVE"
+
+    reported_date: date
+    url_reference: Optional[AnyHttpUrl]
+    description: Optional[str]
+    required_action: Optional[str]
+
+    __relationshiptype__: ClassVar[str] = "ORGANISATION_REPORTED_EXPLOITATION_OF_CVE"
+
+
+class OrganisationPublishedThreatReport(OntolocyRelationship):
+    __relationshiptype__: ClassVar[str] = "ORGANISATION_PUBLISHED_THREAT_REPORT"
+
+    source: Organisation
+    target: "Report"
+
+    context: Optional[str]
+    url_reference: Optional[AnyHttpUrl]
+
+
+from .cve import CVE  # noqa: E402
+from .report import Report  # noqa: E402
+
+OrganisationAssignedCVSSToCVE.update_forward_refs()
+OrganisationPublishedThreatReport.update_forward_refs()
+OrganisationReportedExploitationOfCVE.update_forward_refs()

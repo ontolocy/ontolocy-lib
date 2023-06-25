@@ -32,6 +32,7 @@ def test_basic_ips(ip_address, private, version):
 
     assert ip.private is private
     assert ip.ip_version == version
+    assert ip.get_identifier() == ip_address
 
     if private:
         assert ip.namespace is not None

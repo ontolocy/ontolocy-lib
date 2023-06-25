@@ -14,6 +14,30 @@
 
 ## Outgoing Relationships
 
+### IP_ADDRESS_OBSERVED_WITH_HOSTNAME
+
+Target Label: DomainName
+
+#### Relationship Properties
+
+| Property Name | Type | Required |
+| ------------- | ---- | -------- |
+| target | DomainName | True |
+| source | IPAddressNode | True |
+
+
+### IP_ADDRESS_HAS_OPEN_PORT
+
+Target Label: ListeningSocket
+
+#### Relationship Properties
+
+| Property Name | Type | Required |
+| ------------- | ---- | -------- |
+| target | ListeningSocket | True |
+| source | IPAddressNode | True |
+
+
 ### IP_ADDRESS_LOCATED_IN_COUNTRY
 
 Target Label: Country
@@ -38,15 +62,15 @@ Target Label: ASN
 | source | IPAddressNode | True |
 
 
-### IP_ADDRESS_HAS_OPEN_PORT
+### IP_ADDRESS_MAPS_TO_MAC_ADDRESS
 
-Target Label: ListeningSocket
+Target Label: MACAddress
 
 #### Relationship Properties
 
 | Property Name | Type | Required |
 | ------------- | ---- | -------- |
-| target | ListeningSocket | True |
+| target | MACAddress | True |
 | source | IPAddressNode | True |
 
 
