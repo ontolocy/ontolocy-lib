@@ -22,11 +22,23 @@ from ontolocy.models.cobaltstrikebeacon import (
     CobaltStrikeBeacon,
 )
 from ontolocy.models.cobaltstrikewatermark import CobaltStrikeWatermark
+from ontolocy.models.control import (
+    Control,
+    ControlMitigatesAttackTechnique,
+    ControlRelatedToControl,
+)
 from ontolocy.models.country import Country
 from ontolocy.models.cpe import CPE
 from ontolocy.models.cve import CVE, CVERelatesToCPE, CVERelatesToCWE
 from ontolocy.models.cwe import CWE
 from ontolocy.models.cyberharm import CyberHarm
+from ontolocy.models.dnsrecord import (
+    DNSRecord,
+    DNSRecordForDomain,
+    DNSRecordPointsToDomainName,
+    DNSRecordPointsToIPAddress,
+)
+from ontolocy.models.domainname import DomainName, DomainNameHasDNSRecord
 from ontolocy.models.exploit import Exploit, ExploitExploitsVulnerability
 from ontolocy.models.host import Host
 from ontolocy.models.intrusionset import (
@@ -43,8 +55,9 @@ from ontolocy.models.ip import (
     IPAddressHasOpenPort,
     IPAddressIdentifiedAsPlatform,
     IPAddressLocatedInCountry,
-    IPAddressNode,
     IPAddressMapsToMACAddress,
+    IPAddressNode,
+    IPAddressObservedWithHostname,
 )
 from ontolocy.models.jarmhash import JarmHash
 from ontolocy.models.listeningsocket import (
@@ -78,7 +91,9 @@ from ontolocy.models.mitreattacktechnique import (
 from ontolocy.models.networkservice import NetworkService, NetworkServiceRunsOnPort
 from ontolocy.models.organisation import (
     Organisation,
-    OrganisationAssignedAssignedCVSSToCVE,
+    OrganisationAssignedCVSSToCVE,
+    OrganisationPublishedThreatReport,
+    OrganisationReportedExploitationOfCVE,
 )
 from ontolocy.models.port import Port
 from ontolocy.models.report import (
@@ -106,6 +121,7 @@ from ontolocy.models.threatactor import (
     ThreatActorIsOfType,
 )
 from ontolocy.models.url import URLNode, UrlRedirectsToUrl
+from ontolocy.models.useraccount import UserAccount, UserAccountAuthorizedOnHost
 from ontolocy.models.x509certificate import X509Certificate
 from ontolocy.node import OntolocyNode
 from ontolocy.relationship import OntolocyRelationship
@@ -136,6 +152,9 @@ __all__ = [
     "CobaltStikeBeaconCollectedFrom",
     "CobaltStikeBeaconHasWatermark",
     "CobaltStrikeWatermark",
+    "Control",
+    "ControlMitigatesAttackTechnique",
+    "ControlRelatedToControl",
     "Country",
     "CPE",
     "CVE",
@@ -143,6 +162,12 @@ __all__ = [
     "CVERelatesToCWE",
     "CWE",
     "CyberHarm",
+    "DNSRecord",
+    "DNSRecordForDomain",
+    "DNSRecordPointsToDomainName",
+    "DNSRecordPointsToIPAddress",
+    "DomainName",
+    "DomainNameHasDNSRecord",
     "Exploit",
     "ExploitExploitsVulnerability",
     "Host",
@@ -159,11 +184,13 @@ __all__ = [
     "IPAddressIdentifiedAsPlatform",
     "IPAddressLocatedInCountry",
     "IPAddressMapsToMACAddress",
+    "IPAddressObservedWithHostname",
     "JarmHash",
     "ListeningSocket",
     "ListeningSocketUsesPort",
     "ServiceIdentifiedAsPlatform",
     "MACAddress",
+    "MACAddressAssignedToHost",
     "MitreAttackTactic",
     "MitreTacticIncludesTechnique",
     "MitreAttackTechnique",
@@ -180,7 +207,9 @@ __all__ = [
     "OpenPortPresentsBanner",
     "OpenPortPresentsX509Certificate",
     "Organisation",
-    "OrganisationAssignedAssignedCVSSToCVE",
+    "OrganisationAssignedCVSSToCVE",
+    "OrganisationPublishedThreatReport",
+    "OrganisationReportedExploitationOfCVE",
     "Port",
     "Report",
     "ReportMentionsCountry",
@@ -206,4 +235,6 @@ __all__ = [
     "X509Certificate",
     "URLNode",
     "UrlRedirectsToUrl",
+    "UserAccount",
+    "UserAccountAuthorizedOnHost",
 ]

@@ -13,6 +13,20 @@
 
 ## Outgoing Relationships
 
+### THREAT_ACTOR_LINKED_TO_THREAT_ACTOR
+
+Target Label: ThreatActor
+
+#### Relationship Properties
+
+| Property Name | Type | Required |
+| ------------- | ---- | -------- |
+| target | ThreatActor | True |
+| source | ThreatActor | True |
+| url_reference | HttpUrl | False |
+| context | str | False |
+
+
 ### THREAT_ACTOR_ATTRIBUTED_TO_NATION
 
 Target Label: Country

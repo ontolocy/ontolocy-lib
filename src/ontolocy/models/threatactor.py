@@ -9,7 +9,6 @@ from .country import Country
 
 
 class ThreatActor(OntolocyNode):
-
     __primaryproperty__: ClassVar[str] = "unique_id"
     __primarylabel__: ClassVar[Optional[str]] = "ThreatActor"
 
@@ -38,3 +37,12 @@ class ThreatActorIsOfType(OntolocyRelationship):
     url_reference: Optional[HttpUrl]
 
     __relationshiptype__: ClassVar[str] = "THREAT_ACTOR_IS_OF_TYPE"
+
+
+class ThreatActorLinkedToThreatActor(OntolocyRelationship):
+    source: ThreatActor
+    target: ThreatActor
+    url_reference: Optional[HttpUrl]
+    context: Optional[str]
+
+    __relationshiptype__: ClassVar[str] = "THREAT_ACTOR_LINKED_TO_THREAT_ACTOR"

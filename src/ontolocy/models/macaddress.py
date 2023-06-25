@@ -2,17 +2,18 @@ from typing import ClassVar, Optional
 
 from pydantic import constr, validator
 
-from ..relationship import OntolocyRelationship
 from ..node import OntolocyNode
+from ..relationship import OntolocyRelationship
 from .host import Host
 
 
 class MACAddress(OntolocyNode):
-
     __primaryproperty__: ClassVar[str] = "mac_address"
     __primarylabel__: ClassVar[Optional[str]] = "MACAddress"
 
-    mac_address: constr(regex=r"^([0-9A-Fa-f]{2}[:-]){5}([0-9A-Fa-f]{2})$")
+    mac_address: constr(
+        regex=r"^([0-9A-Fa-f]{2}[:-]){5}([0-9A-Fa-f]{2})$"  # noqa: F722
+    )
 
     @validator("mac_address", always=True)
     def format_mac_address(cls, v: str) -> str:
@@ -25,7 +26,6 @@ class MACAddress(OntolocyNode):
 
 
 class MACAddressAssignedToHost(OntolocyRelationship):
-
     __relationshiptype__: ClassVar[str] = "MAC_ADDRESS_ASSIGNED_TO_HOST"
 
     source: MACAddress

@@ -14,18 +14,6 @@
 
 ## Outgoing Relationships
 
-### CAPEC_PATTERN_MAPS_TO_ATTACK_TECHNIQUE
-
-Target Label: MitreAttackTechnique
-
-#### Relationship Properties
-
-| Property Name | Type | Required |
-| ------------- | ---- | -------- |
-| target | MitreAttackTechnique | True |
-| source | CAPECPattern | True |
-
-
 ### CAPEC_PATTERN_RELATES_TO_CWE
 
 Target Label: CWE
@@ -35,6 +23,18 @@ Target Label: CWE
 | Property Name | Type | Required |
 | ------------- | ---- | -------- |
 | target | CWE | True |
+| source | CAPECPattern | True |
+
+
+### CAPEC_PATTERN_MAPS_TO_ATTACK_TECHNIQUE
+
+Target Label: MitreAttackTechnique
+
+#### Relationship Properties
+
+| Property Name | Type | Required |
+| ------------- | ---- | -------- |
+| target | MitreAttackTechnique | True |
 | source | CAPECPattern | True |
 
 

@@ -1,13 +1,14 @@
 import re
+from datetime import datetime
 from typing import ClassVar, Optional
 
 from pydantic import validator
 
 from ..node import OntolocyNode
+from ..relationship import OntolocyRelationship
 
 
 class DomainName(OntolocyNode):
-
     __primaryproperty__: ClassVar[str] = "name"
     __primarylabel__: ClassVar[Optional[str]] = "DomainName"
 
@@ -22,3 +23,17 @@ class DomainName(OntolocyNode):
             raise ValueError("Doesn't look like a valid domain")
 
         return v
+
+
+class DomainNameHasDNSRecord(OntolocyRelationship):
+    __relationshiptype__: ClassVar[str] = "DOMAIN_NAME_HAS_DNS_RECORD"
+
+    source: DomainName
+    target: "DNSRecord"
+
+    observation_date: datetime
+
+
+from .dnsrecord import DNSRecord  # noqa: E402
+
+DomainNameHasDNSRecord.update_forward_refs()

@@ -12,13 +12,11 @@ from .threatactor import ThreatActor
 
 
 class IntrusionSet(OntolocyNode):
-
     __primaryproperty__: ClassVar[str] = "unique_id"
     __primarylabel__: ClassVar[Optional[str]] = "IntrusionSet"
 
     name: str
     unique_id: str
-    name_giver: Optional[str]
     description: Optional[str]
     url_reference: Optional[HttpUrl]
 

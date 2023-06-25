@@ -14,10 +14,10 @@ from .ip import IPAddressNode
 from .mitreattacksoftware import MitreAttackSoftware
 from .mitreattacktechnique import MitreAttackTechnique
 from .sector import Sector
+from .threatactor import ThreatActor
 
 
 class Report(OntolocyNode):
-
     __primaryproperty__: ClassVar[str] = "url_reference"
     __primarylabel__: ClassVar[Optional[str]] = "Report"
 
@@ -80,6 +80,13 @@ class ReportIdentifiesIntrusionSet(OntolocyRelationship):
     target: IntrusionSet
 
     __relationshiptype__: ClassVar[str] = "REPORT_IDENTIFIES_INTRUSION_SET"
+
+
+class ReportIdentifiesThreatActor(OntolocyRelationship):
+    source: Report
+    target: ThreatActor
+
+    __relationshiptype__: ClassVar[str] = "REPORT_IDENTIFIES_THREAT_ACTOR"
 
 
 class ReportIdentifiesTechnique(OntolocyRelationship):

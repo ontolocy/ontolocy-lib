@@ -21,7 +21,6 @@ class IPVersionEnum(str, Enum):
 
 
 class IPAddressNode(OntolocyNode):
-
     __primaryproperty__: ClassVar[str] = "unique_id"
     __primarylabel__: ClassVar[str] = "IPAddress"
 
@@ -43,7 +42,6 @@ class IPAddressNode(OntolocyNode):
 
     @validator("ip_version", always=True)
     def mark_ip_version(cls, v, values: Dict[str, Any]):
-
         versions = {4: IPVersionEnum.ipv4, 6: IPVersionEnum.ipv6}
         if v is None and "ip_address" in values:
             return versions[ip_address(values["ip_address"]).version]
@@ -70,9 +68,7 @@ class IPAddressNode(OntolocyNode):
 
     @validator("unique_id", always=True)
     def generate_instance_id(cls, v: Optional[UUID], values: Dict[str, Any]) -> UUID:
-
         if v is None:
-
             key_values = [values["ip_address"], values["namespace"]]
 
             v = generate_deterministic_uuid(key_values)
@@ -81,7 +77,6 @@ class IPAddressNode(OntolocyNode):
 
 
 class IPAddressHasOpenPort(OntolocyRelationship):
-
     __relationshiptype__: ClassVar[str] = "IP_ADDRESS_HAS_OPEN_PORT"
 
     source: IPAddressNode
@@ -89,7 +84,6 @@ class IPAddressHasOpenPort(OntolocyRelationship):
 
 
 class IPAddressBelongsToASN(OntolocyRelationship):
-
     __relationshiptype__: ClassVar[str] = "IP_ADDRESS_BELONGS_TO_ASN"
 
     source: IPAddressNode
@@ -97,7 +91,6 @@ class IPAddressBelongsToASN(OntolocyRelationship):
 
 
 class IPAddressLocatedInCountry(OntolocyRelationship):
-
     __relationshiptype__: ClassVar[str] = "IP_ADDRESS_LOCATED_IN_COUNTRY"
 
     source: IPAddressNode
@@ -105,7 +98,6 @@ class IPAddressLocatedInCountry(OntolocyRelationship):
 
 
 class IPAddressIdentifiedAsPlatform(OntolocyRelationship):
-
     __relationshiptype__: ClassVar[str] = "IP_ADDRESS_IDENTIFIED_AS_PLATFORM"
 
     source: IPAddressNode
@@ -113,8 +105,19 @@ class IPAddressIdentifiedAsPlatform(OntolocyRelationship):
 
 
 class IPAddressMapsToMACAddress(OntolocyRelationship):
-
     __relationshiptype__: ClassVar[str] = "IP_ADDRESS_MAPS_TO_MAC_ADDRESS"
 
     source: IPAddressNode
     target: MACAddress
+
+
+class IPAddressObservedWithHostname(OntolocyRelationship):
+    __relationshiptype__: ClassVar[str] = "IP_ADDRESS_OBSERVED_WITH_HOSTNAME"
+
+    source: IPAddressNode
+    target: "DomainName"
+
+
+from .domainname import DomainName  # noqa: E402
+
+IPAddressObservedWithHostname.update_forward_refs()
