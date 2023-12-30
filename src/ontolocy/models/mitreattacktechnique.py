@@ -8,7 +8,6 @@ from ..relationship import OntolocyRelationship
 
 
 class MitreAttackTechnique(OntolocyNode):
-
     __primaryproperty__: ClassVar[str] = "stix_id"
     __primarylabel__: ClassVar[str] = "MitreAttackTechnique"
 
@@ -19,7 +18,7 @@ class MitreAttackTechnique(OntolocyNode):
     stix_spec_version: str = "2.1"
     stix_revoked: Optional[bool] = False
 
-    attack_id: constr(to_upper=True, regex=r"T\d{4}(?:\.\d{3})?")  # noqa: F722
+    attack_id: constr(to_upper=True, pattern=r"T\d{4}(?:\.\d{3})?")  # noqa: F722
     attack_spec_version: str
     attack_subtechnique: Optional[bool] = False
     attack_version: str
@@ -34,6 +33,9 @@ class MitreAttackTechnique(OntolocyNode):
             return False
         else:
             return v
+
+    def __str__(self) -> str:
+        return f"{self.attack_id}: {self.name}"
 
 
 #

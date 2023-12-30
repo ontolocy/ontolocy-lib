@@ -26,6 +26,7 @@ from ontolocy.models.control import (
     Control,
     ControlMitigatesAttackTechnique,
     ControlRelatedToControl,
+    ControlHasParentControl,
 )
 from ontolocy.models.country import Country
 from ontolocy.models.cpe import CPE
@@ -153,6 +154,7 @@ __all__ = [
     "CobaltStikeBeaconHasWatermark",
     "CobaltStrikeWatermark",
     "Control",
+    "ControlHasParentControl",
     "ControlMitigatesAttackTechnique",
     "ControlRelatedToControl",
     "Country",

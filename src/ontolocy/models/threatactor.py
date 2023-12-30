@@ -17,6 +17,9 @@ class ThreatActor(OntolocyNode):
     description: Optional[str]
     url_reference: Optional[HttpUrl]
 
+    def __str__(self):
+        return self.name
+
 
 #
 # OUTGOING RELATIONSHIPS

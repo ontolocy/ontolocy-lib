@@ -25,7 +25,7 @@ class Report(OntolocyNode):
     author: str
     url_reference: HttpUrl
     published_date: date
-    summary: Optional[str]
+    summary: Optional[str] = None
 
 
 #

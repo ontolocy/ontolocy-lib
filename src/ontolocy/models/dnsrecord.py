@@ -17,7 +17,7 @@ class DNSRecord(OntolocyNode):
     name: str
     content: str
 
-    unique_id: Optional[UUID]
+    unique_id: Optional[UUID] = None
 
     @validator("unique_id", always=True)
     def generate_dnsrecord_uuid(cls, v: Optional[UUID], values: Dict[str, Any]) -> UUID:

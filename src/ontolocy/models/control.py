@@ -21,6 +21,7 @@ class Control(OntolocyNode):
     description: Optional[str]
     context: Optional[str]
     unique_id: Optional[str]
+    url_reference: Optional[AnyHttpUrl]
 
     @validator("unique_id", always=True)
     def generate_uuid(cls, v: Optional[UUID], values: Dict[str, Any]) -> UUID:
@@ -36,6 +37,9 @@ class Control(OntolocyNode):
 
         return v
 
+    def __str__(self) -> str:
+        return f"{self.name} ({self.framework})"
+
 
 #
 # OUTGOING RELATIONSHIPS
@@ -46,9 +50,20 @@ class ControlRelatedToControl(OntolocyRelationship):
     source: Control
     target: Control
 
+    context: Optional[str]
     url_reference: Optional[AnyHttpUrl]
 
     __relationshiptype__: ClassVar[str] = "CONTROL_RELATED_TO_CONTROL"
+
+
+class ControlHasParentControl(OntolocyRelationship):
+    source: Control
+    target: Control
+
+    context: Optional[str]
+    url_reference: Optional[AnyHttpUrl]
+
+    __relationshiptype__: ClassVar[str] = "CONTROL_HAS_PARENT_CONTROL"
 
 
 class ControlMitigatesAttackTechnique(OntolocyRelationship):

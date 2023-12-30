@@ -16,11 +16,9 @@ class OntolocyNode(BaseNode):
         data_origin: Optional[DataOrigin] = None,
         deduplicate=True,
     ) -> list:
-
         nodes = cls.merge_df(df, deduplicate=deduplicate)
 
         if data_origin is not None:
-
             data_origin.merge()
 
             rels = [OriginGenerated(source=data_origin, target=x) for x in nodes]
@@ -33,7 +31,6 @@ class OntolocyNode(BaseNode):
         self,
         data_origin: Optional[DataOrigin] = None,
     ) -> None:
-
         # first merge in this node
         self.merge()
 
@@ -47,3 +44,6 @@ class OntolocyNode(BaseNode):
 
     def get_identifier(self) -> str:
         return str(self.get_primary_property_value())
+
+    def __str__(self) -> str:
+        return self.get_identifier()

@@ -19,7 +19,7 @@ class CPE(OntolocyNode):
     __primarylabel__: ClassVar[Optional[str]] = "CPE"
 
     cpe: constr(
-        regex=(
+        pattern=(
             r"(cpe:2\.3:[aho\*\-](:(((\?*|\*?)([a-zA-Z0-9\-\._]|"  # noqa: F722
             r"(\\[\\\*\?!#$$%&'\(\)\+,/:;<=>@\[\]\^`\{\|}~]))+(\?*|\*?))|[\*\-])){5}"
             r"(:(([a-zA-Z]{2,3}(-([a-zA-Z]{2}|[0-9]{3}))?)|[\*\-]))(:(((\?*|\*?)"
@@ -27,13 +27,12 @@ class CPE(OntolocyNode):
         )
     )
     cpe_version: str = "2.3"
-    part: str = None
-    vendor: str = None
-    product: str = None
+    part: Optional[str] = None
+    vendor: Optional[str] = None
+    product: Optional[str] = None
 
     @validator("cpe", always=True, pre=True)
     def set_cpe(cls, v):
-
         # hack to handle CPEs with colons in (which will be escaped with a backslash)
         v = v.replace(r"\:", r"\;")
 

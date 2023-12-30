@@ -25,7 +25,7 @@ class IPAddressNode(OntolocyNode):
     __primarylabel__: ClassVar[str] = "IPAddress"
 
     ip_address: IPvAnyAddress
-    ip_version: Optional[IPVersionEnum]
+    ip_version: Optional[IPVersionEnum] = None
     private: Optional[bool] = None
     namespace: Optional[str] = None
 

@@ -27,8 +27,8 @@ class ActorType(OntolocyNode):
     __primarylabel__: ClassVar[Optional[str]] = "ActorType"
 
     unique_id: ActorTypeEnum
-    name: Optional[str]
-    description: Optional[str]
+    name: Optional[str] = None
+    description: Optional[str] = None
 
     @validator("name", always=True)
     def set_actor_name(cls, v, values):

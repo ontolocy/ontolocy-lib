@@ -9,7 +9,6 @@ from .mitreattacktechnique import MitreAttackTechnique
 
 
 class MitreAttackTactic(OntolocyNode):
-
     __primaryproperty__: ClassVar[str] = "stix_id"
     __primarylabel__: ClassVar[str] = "MitreAttackTactic"
 
@@ -20,7 +19,7 @@ class MitreAttackTactic(OntolocyNode):
     stix_spec_version: str = "2.1"
     stix_revoked: Optional[bool] = False
 
-    attack_id: constr(to_upper=True, regex=r"TA\d{4}")  # noqa: F722
+    attack_id: constr(to_upper=True, pattern=r"TA\d{4}")  # noqa: F722
     attack_spec_version: str
     attack_version: str
     attack_shortname: str
