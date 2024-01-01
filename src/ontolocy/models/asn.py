@@ -32,4 +32,4 @@ class ASNHasWhoIsRegisteredContact(OntolocyRelationship):
 
 from .organisation import Organisation  # noqa: E402
 
-ASNHasWhoIsRegisteredContact.update_forward_refs()
+ASNHasWhoIsRegisteredContact.model_rebuild()

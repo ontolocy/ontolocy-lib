@@ -17,8 +17,11 @@ class IntrusionSet(OntolocyNode):
 
     name: str
     unique_id: str
-    description: Optional[str]
-    url_reference: Optional[HttpUrl]
+    description: Optional[str] = None
+    url_reference: Optional[HttpUrl] = None
+
+    def __str__(self):
+        return self.name
 
 
 #

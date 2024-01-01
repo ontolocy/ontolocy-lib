@@ -7,12 +7,11 @@ from neontology import BaseRelationship
 from .dataorigin import DataOrigin
 
 
-class OntolocyRelationship(BaseRelationship, ABC):
-
-    data_origin_name: Optional[str]
-    data_origin_reference: Optional[str]
-    data_origin_license: Optional[str]
-    data_origin_sharing: Optional[str]
+class OntolocyRelationship(BaseRelationship, ABC, validate_default=True):
+    data_origin_name: Optional[str] = None
+    data_origin_reference: Optional[str] = None
+    data_origin_license: Optional[str] = None
+    data_origin_sharing: Optional[str] = None
 
     @classmethod
     def ingest_df(
@@ -22,7 +21,6 @@ class OntolocyRelationship(BaseRelationship, ABC):
         source_prop: Optional[str] = None,
         target_prop: Optional[str] = None,
     ):
-
         input_df = df.copy()
 
         if data_origin is not None:

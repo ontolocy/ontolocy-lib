@@ -27,12 +27,11 @@ from ontolocy import (
     ],
 )
 def test_basic_ips(ip_address, private, version):
-
     ip = IPAddressNode(ip_address=ip_address)
 
     assert ip.private is private
     assert ip.ip_version == version
-    assert ip.get_identifier() == ip_address
+    assert str(ip) == ip_address
 
     if private:
         assert ip.namespace is not None
@@ -50,7 +49,6 @@ def test_basic_ips(ip_address, private, version):
     ],
 )
 def test_repeatable_unique_id_public(ip_address, unique_id):
-
     ip1 = IPAddressNode(ip_address=ip_address, namespace="this shouldn't matter")
 
     uuid1 = ip1.unique_id
@@ -65,7 +63,6 @@ def test_repeatable_unique_id_public(ip_address, unique_id):
 
 
 def test_repeatable_unique_id_private():
-
     ip1 = IPAddressNode(ip_address="192.168.0.1", namespace="ontolocy-test")
 
     uuid1 = ip1.unique_id
@@ -80,7 +77,6 @@ def test_repeatable_unique_id_private():
 
 
 def test_unique_id_private():
-
     ip1 = IPAddressNode(ip_address="192.168.0.1")
 
     uuid1 = ip1.unique_id
@@ -93,7 +89,6 @@ def test_unique_id_private():
 
 
 def test_ingest_df(use_graph):
-
     my_ips = [
         {
             "ip_address": "192.168.10.1",
@@ -117,13 +112,12 @@ def test_ingest_df(use_graph):
     RETURN COUNT(DISTINCT ip)
     """
 
-    result = use_graph.evaluate(cypher)
+    result = use_graph.evaluate_query_single(cypher)
 
     assert result == 2
 
 
 def test_merge_df(use_graph):
-
     my_ips = [
         {
             "ip_address": "192.168.10.1",
@@ -187,7 +181,6 @@ def test_merge_df(use_graph):
 
 
 def test_ip_address_has_open_port(use_graph):
-
     ip = IPAddressNode(ip_address="8.8.8.8")
     ip.merge()
 
@@ -203,13 +196,12 @@ def test_ip_address_has_open_port(use_graph):
     RETURN COUNT(DISTINCT op)
     """
 
-    result = use_graph.evaluate(cypher)
+    result = use_graph.evaluate_query_single(cypher)
 
     assert result == 1
 
 
 def test_ip_address_belongs_to_asn(use_graph):
-
     ip = IPAddressNode(ip_address="8.8.8.8")
     ip.merge()
 
@@ -232,13 +224,12 @@ def test_ip_address_belongs_to_asn(use_graph):
     RETURN COUNT(DISTINCT asn)
     """
 
-    result = use_graph.evaluate(cypher)
+    result = use_graph.evaluate_query_single(cypher)
 
     assert result == 1
 
 
 def test_ip_address_located_in_country(use_graph):
-
     ip = IPAddressNode(ip_address="8.8.8.8")
     ip.merge()
 
@@ -254,6 +245,6 @@ def test_ip_address_located_in_country(use_graph):
     RETURN COUNT(DISTINCT country)
     """
 
-    result = use_graph.evaluate(cypher)
+    result = use_graph.evaluate_query_single(cypher)
 
     assert result == 1

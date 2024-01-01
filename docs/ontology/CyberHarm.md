@@ -5,13 +5,11 @@
 
 | Property Name | Type | Required |
 | ------------- | ---- | -------- |
-| url_reference | HttpUrl | True |
+| description | Optional | True |
+| url_reference | Url | True |
 | harm_type | str | True |
 | unique_id | str | True |
 | name | str | True |
-| description | str | False |
 
-
-## Outgoing Relationships
 
 

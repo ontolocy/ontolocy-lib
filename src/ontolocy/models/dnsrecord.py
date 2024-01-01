@@ -1,8 +1,8 @@
 from datetime import datetime
-from typing import Any, ClassVar, Dict, Optional
+from typing import ClassVar, Optional
 from uuid import UUID
 
-from pydantic import validator
+from pydantic import ValidationInfo, field_validator
 
 from ..node import OntolocyNode
 from ..relationship import OntolocyRelationship
@@ -17,10 +17,12 @@ class DNSRecord(OntolocyNode):
     name: str
     content: str
 
-    unique_id: Optional[UUID]
+    unique_id: Optional[UUID] = None
 
-    @validator("unique_id", always=True)
-    def generate_dnsrecord_uuid(cls, v: Optional[UUID], values: Dict[str, Any]) -> UUID:
+    @field_validator("unique_id")
+    def generate_dnsrecord_uuid(cls, v: Optional[UUID], info: ValidationInfo) -> UUID:
+        values = info.data
+
         if v is None:
             key_values = [
                 values["type"],
@@ -62,9 +64,9 @@ class DNSRecordForDomain(OntolocyRelationship):
 
 from .domainname import DomainName  # noqa: E402
 
-DNSRecordPointsToDomainName.update_forward_refs()
-DNSRecordForDomain.update_forward_refs()
+DNSRecordPointsToDomainName.model_rebuild()
+DNSRecordForDomain.model_rebuild()
 
 from .ip import IPAddressNode  # noqa: E402
 
-DNSRecordPointsToIPAddress.update_forward_refs()
+DNSRecordPointsToIPAddress.model_rebuild()

@@ -5,13 +5,11 @@
 
 | Property Name | Type | Required |
 | ------------- | ---- | -------- |
-| cpe | ConstrainedStrValue | True |
+| cpe | str | True |
 | cpe_version | str | False |
-| part | str | False |
-| vendor | str | False |
-| product | str | False |
+| part | Optional | False |
+| vendor | Optional | False |
+| product | Optional | False |
 
-
-## Outgoing Relationships
 
 

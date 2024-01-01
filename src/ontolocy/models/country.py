@@ -1,6 +1,6 @@
 from typing import ClassVar, Optional
 
-from pydantic import validator
+from pydantic import ValidationInfo, field_validator
 
 from ..node import OntolocyNode
 
@@ -257,14 +257,20 @@ country_to_code = {y: x for x, y in country_codes.items()}
 
 
 class Country(OntolocyNode):
-
     __primaryproperty__: ClassVar[str] = "country_code"
     __primarylabel__: ClassVar[Optional[str]] = "Country"
 
     country_code: str
     name: Optional[str] = None
 
-    @validator("country_code")
+    def __str__(self) -> str:
+        if self.name is not None:
+            return self.name
+        else:
+            return self.country_code
+
+    @field_validator("country_code")
+    @classmethod
     def check_country_code(cls, v):
         if v not in country_codes:
             raise ValueError(
@@ -273,8 +279,9 @@ class Country(OntolocyNode):
         else:
             return v.upper()
 
-    @validator("name", always=True)
-    def set_country_name(cls, v, values):
+    @field_validator("name")
+    def set_country_name(cls, v, info: ValidationInfo):
+        values = info.data
         if v is None and "country_code" in values:
             return country_codes[values["country_code"]]
         else:

@@ -5,11 +5,9 @@
 
 | Property Name | Type | Required |
 | ------------- | ---- | -------- |
+| keywords | Optional | True |
 | unique_id | str | True |
 | name | str | True |
-| keywords | str | False |
 
-
-## Outgoing Relationships
 
 

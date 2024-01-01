@@ -8,6 +8,7 @@
 | name | str | True |
 
 
+
 ## Outgoing Relationships
 
 ### DOMAIN_NAME_HAS_DNS_RECORD
@@ -21,6 +22,7 @@ Target Label: DNSRecord
 | observation_date | datetime | True |
 | target | DNSRecord | True |
 | source | DomainName | True |
+
 
 
 

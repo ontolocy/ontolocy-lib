@@ -11,12 +11,10 @@ report = Report(
 
 
 def test_report():
-
-    assert report.get_primary_property_value() == "https://example.com"
+    assert report.get_primary_property_value() == "https://example.com/"
 
 
 def test_report_mentions_cve(use_graph):
-
     report.merge()
 
     cve = CVE(cve_id="CVE-2021-44832")
@@ -33,6 +31,6 @@ def test_report_mentions_cve(use_graph):
 
     params = {"url_reference": str(report.get_primary_property_value())}
 
-    result = use_graph.evaluate(cypher, params)
+    result = use_graph.evaluate_query_single(cypher, params)
 
     assert result == 1

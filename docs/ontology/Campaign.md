@@ -6,38 +6,26 @@
 | Property Name | Type | Required |
 | ------------- | ---- | -------- |
 | unique_id | str | True |
+| summary | Optional | True |
 | activity_datetime | datetime | True |
-| url_reference | HttpUrl | True |
+| url_reference | Url | True |
 | title | str | True |
-| summary | str | False |
+
 
 
 ## Outgoing Relationships
 
-### CAMPAIGN_TARGETS_COUNTRY
+### CAMPAIGN_BY_INTRUSION_SET
 
-Target Label: Country
-
-#### Relationship Properties
-
-| Property Name | Type | Required |
-| ------------- | ---- | -------- |
-| target | Country | True |
-| source | Campaign | True |
-| url_reference | HttpUrl | False |
-
-
-### CAMPAIGN_TARGETS_SECTOR
-
-Target Label: Sector
+Target Label: IntrusionSet
 
 #### Relationship Properties
 
 | Property Name | Type | Required |
 | ------------- | ---- | -------- |
-| target | Sector | True |
+| url_reference | Optional | True |
+| target | IntrusionSet | True |
 | source | Campaign | True |
-| url_reference | HttpUrl | False |
 
 
 ### CAMPAIGN_CAUSED_CYBER_HARM
@@ -48,35 +36,9 @@ Target Label: CyberHarm
 
 | Property Name | Type | Required |
 | ------------- | ---- | -------- |
+| url_reference | Optional | True |
 | target | CyberHarm | True |
 | source | Campaign | True |
-| url_reference | HttpUrl | False |
-
-
-### CAMPAIGN_BY_INTRUSION_SET
-
-Target Label: IntrusionSet
-
-#### Relationship Properties
-
-| Property Name | Type | Required |
-| ------------- | ---- | -------- |
-| target | IntrusionSet | True |
-| source | Campaign | True |
-| url_reference | HttpUrl | False |
-
-
-### CAMPAIGN_USES_TECHNIQUE
-
-Target Label: MitreAttackTechnique
-
-#### Relationship Properties
-
-| Property Name | Type | Required |
-| ------------- | ---- | -------- |
-| target | MitreAttackTechnique | True |
-| source | Campaign | True |
-| url_reference | HttpUrl | False |
 
 
 ### CAMPAIGN_USES_CVE
@@ -87,9 +49,49 @@ Target Label: CVE
 
 | Property Name | Type | Required |
 | ------------- | ---- | -------- |
+| url_reference | Optional | True |
 | target | CVE | True |
 | source | Campaign | True |
-| url_reference | HttpUrl | False |
+
+
+### CAMPAIGN_TARGETS_COUNTRY
+
+Target Label: Country
+
+#### Relationship Properties
+
+| Property Name | Type | Required |
+| ------------- | ---- | -------- |
+| url_reference | Optional | True |
+| target | Country | True |
+| source | Campaign | True |
+
+
+### CAMPAIGN_USES_TECHNIQUE
+
+Target Label: MitreAttackTechnique
+
+#### Relationship Properties
+
+| Property Name | Type | Required |
+| ------------- | ---- | -------- |
+| url_reference | Optional | True |
+| target | MitreAttackTechnique | True |
+| source | Campaign | True |
+
+
+### CAMPAIGN_TARGETS_SECTOR
+
+Target Label: Sector
+
+#### Relationship Properties
+
+| Property Name | Type | Required |
+| ------------- | ---- | -------- |
+| url_reference | Optional | True |
+| target | Sector | True |
+| source | Campaign | True |
+
 
 
 

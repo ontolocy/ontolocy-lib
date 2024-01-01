@@ -6,9 +6,10 @@
 | Property Name | Type | Required |
 | ------------- | ---- | -------- |
 | username | str | True |
-| local_hostname | str | False |
-| namespace | str | False |
-| unique_id | UUID | False |
+| local_hostname | Optional | False |
+| namespace | Optional | False |
+| unique_id | Optional | False |
+
 
 
 ## Outgoing Relationships
@@ -23,6 +24,7 @@ Target Label: Host
 | ------------- | ---- | -------- |
 | target | Host | True |
 | source | UserAccount | True |
+
 
 
 

@@ -13,6 +13,4 @@
 | cwe_id | int | True |
 
 
-## Outgoing Relationships
-
 

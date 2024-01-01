@@ -67,7 +67,6 @@ stix_dict = {
 
 
 def test_capec():
-
     capec = CAPECPattern(
         capec_id=1001,
         description="hello world",
@@ -80,7 +79,6 @@ def test_capec():
 
 
 def test_capec_maps_to_attack(use_graph):
-
     capec = CAPECPattern(
         capec_id=1001,
         description="hello world",
@@ -121,6 +119,6 @@ def test_capec_maps_to_attack(use_graph):
 
     params = {"capec_id": capec.get_primary_property_value()}
 
-    result = use_graph.evaluate(cypher, params)
+    result = use_graph.evaluate_query_single(cypher, params)
 
     assert result == 1

@@ -1,8 +1,8 @@
 from enum import Enum
-from typing import Any, ClassVar, Dict, Optional
+from typing import ClassVar, Optional
 from uuid import UUID
 
-from pydantic import validator
+from pydantic import ValidationInfo, field_validator
 
 from ..node import OntolocyNode
 from ..utils import generate_deterministic_uuid
@@ -15,7 +15,6 @@ class PortProtocolEnum(str, Enum):
 
 
 class Port(OntolocyNode):
-
     __primarylabel__: ClassVar[str] = "Port"
     __primaryproperty__: ClassVar[str] = "unique_id"
 
@@ -24,11 +23,14 @@ class Port(OntolocyNode):
 
     unique_id: Optional[UUID] = None
 
-    @validator("unique_id", always=True)
-    def generate_socket_uuid(cls, v: Optional[UUID], values: Dict[str, Any]) -> UUID:
+    def __str__(self) -> str:
+        return f"{self.port_number} ({self.protocol.value})"
+
+    @field_validator("unique_id")
+    def generate_socket_uuid(cls, v: Optional[UUID], info: ValidationInfo) -> UUID:
+        values = info.data
 
         if v is None:
-
             key_values = [
                 values["port_number"],
                 values["protocol"],

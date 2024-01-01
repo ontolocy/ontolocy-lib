@@ -6,11 +6,9 @@
 | Property Name | Type | Required |
 | ------------- | ---- | -------- |
 | hostname | str | True |
-| os | HostOSEnum | False |
-| namespace | str | False |
-| unique_id | UUID | False |
+| os | Optional | False |
+| namespace | Optional | False |
+| unique_id | Optional | False |
 
-
-## Outgoing Relationships
 
 

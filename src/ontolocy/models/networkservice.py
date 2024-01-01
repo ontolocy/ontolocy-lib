@@ -6,12 +6,11 @@ from .port import Port
 
 
 class NetworkService(OntolocyNode):
-
     __primaryproperty__: ClassVar[str] = "name"
     __primarylabel__: ClassVar[Optional[str]] = "NetworkService"
 
     name: str
-    description: Optional[str]
+    description: Optional[str] = None
 
 
 #

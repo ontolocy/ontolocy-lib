@@ -8,14 +8,30 @@
 | framework | str | True |
 | name | str | True |
 | control_id | str | True |
-| version | str | False |
-| framework_version | str | False |
-| description | str | False |
-| context | str | False |
-| unique_id | str | False |
+| version | Optional | False |
+| framework_version | Optional | False |
+| description | Optional | False |
+| context | Optional | False |
+| unique_id | Optional | False |
+| url_reference | Optional | False |
+
 
 
 ## Outgoing Relationships
+
+### CONTROL_HAS_PARENT_CONTROL
+
+Target Label: Control
+
+#### Relationship Properties
+
+| Property Name | Type | Required |
+| ------------- | ---- | -------- |
+| url_reference | Optional | True |
+| context | Optional | True |
+| target | Control | True |
+| source | Control | True |
+
 
 ### CONTROL_MITIGATES_ATTACK_TECHNIQUE
 
@@ -25,9 +41,9 @@ Target Label: MitreAttackTechnique
 
 | Property Name | Type | Required |
 | ------------- | ---- | -------- |
+| url_reference | Optional | True |
 | target | MitreAttackTechnique | True |
 | source | Control | True |
-| url_reference | AnyHttpUrl | False |
 
 
 ### CONTROL_RELATED_TO_CONTROL
@@ -38,9 +54,11 @@ Target Label: Control
 
 | Property Name | Type | Required |
 | ------------- | ---- | -------- |
+| url_reference | Optional | True |
+| context | Optional | True |
 | target | Control | True |
 | source | Control | True |
-| url_reference | AnyHttpUrl | False |
+
 
 
 

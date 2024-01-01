@@ -34,6 +34,6 @@ def test_ingest_node(use_graph):
     RETURN COUNT(DISTINCT cp)
     """
 
-    result = use_graph.evaluate(cypher)
+    result = use_graph.evaluate_query_single(cypher)
 
     assert result == 1

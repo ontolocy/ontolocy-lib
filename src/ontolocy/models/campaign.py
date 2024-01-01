@@ -14,7 +14,6 @@ from .sector import Sector
 
 
 class Campaign(OntolocyNode):
-
     __primaryproperty__: ClassVar[str] = "unique_id"
     __primarylabel__: ClassVar[Optional[str]] = "Campaign"
 
@@ -23,6 +22,9 @@ class Campaign(OntolocyNode):
     activity_datetime: datetime
     summary: Optional[str]
     unique_id: str
+
+    def __str__(self) -> str:
+        return self.title
 
 
 #

@@ -1,6 +1,7 @@
 from typing import ClassVar, Optional
 
-from pydantic import constr, validator
+from pydantic import StringConstraints, field_validator
+from typing_extensions import Annotated
 
 from ..node import OntolocyNode
 from ..relationship import OntolocyRelationship
@@ -11,11 +12,14 @@ class MACAddress(OntolocyNode):
     __primaryproperty__: ClassVar[str] = "mac_address"
     __primarylabel__: ClassVar[Optional[str]] = "MACAddress"
 
-    mac_address: constr(
-        regex=r"^([0-9A-Fa-f]{2}[:-]){5}([0-9A-Fa-f]{2})$"  # noqa: F722
-    )
+    mac_address: Annotated[
+        str,
+        StringConstraints(
+            pattern=r"^([0-9A-Fa-f]{2}[:-]){5}([0-9A-Fa-f]{2})$"  # noqa: F722
+        ),
+    ]
 
-    @validator("mac_address", always=True)
+    @field_validator("mac_address")
     def format_mac_address(cls, v: str) -> str:
         """We want to standardize on colons and uppercase letters"""
 
@@ -31,4 +35,4 @@ class MACAddressAssignedToHost(OntolocyRelationship):
     source: MACAddress
     target: Host
 
-    interface: Optional[str]
+    interface: Optional[str] = None
