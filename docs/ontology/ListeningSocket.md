@@ -8,8 +8,11 @@
 | ip_address | IPvAnyAddress | True |
 | port_number | int | True |
 | protocol | ListeningSocketProtocolEnum | True |
-| ip_address_unique_id | UUID | False |
-| unique_id | UUID | False |
+| private | Optional | False |
+| namespace | Optional | False |
+| ip_address_unique_id | Optional | False |
+| unique_id | Optional | False |
+
 
 
 ## Outgoing Relationships
@@ -26,6 +29,18 @@ Target Label: Banner
 | source | ListeningSocket | True |
 
 
+### LISTENING_SOCKET_USES_PORT
+
+Target Label: Port
+
+#### Relationship Properties
+
+| Property Name | Type | Required |
+| ------------- | ---- | -------- |
+| target | Port | True |
+| source | ListeningSocket | True |
+
+
 ### OPEN_PORT_HAS_JARM_HASH
 
 Target Label: JarmHash
@@ -38,29 +53,17 @@ Target Label: JarmHash
 | source | ListeningSocket | True |
 
 
-### SERVICE_IDENTIFIED_AS_PLATFORM
+### SERVICE_HOSTS_URL
 
-Target Label: CPE
-
-#### Relationship Properties
-
-| Property Name | Type | Required |
-| ------------- | ---- | -------- |
-| target | CPE | True |
-| source | ListeningSocket | True |
-| status_code | int | False |
-
-
-### LISTENING_SOCKET_USES_PORT
-
-Target Label: Port
+Target Label: URL
 
 #### Relationship Properties
 
 | Property Name | Type | Required |
 | ------------- | ---- | -------- |
-| target | Port | True |
+| target | URLNode | True |
 | source | ListeningSocket | True |
+| status_code | Optional | False |
 
 
 ### OPEN_PORT_PRESENTS_X509_CERTIFICATE
@@ -75,17 +78,19 @@ Target Label: X509Certificate
 | source | ListeningSocket | True |
 
 
-### SERVICE_HOSTS_URL
+### SERVICE_IDENTIFIED_AS_PLATFORM
 
-Target Label: URL
+Target Label: CPE
 
 #### Relationship Properties
 
 | Property Name | Type | Required |
 | ------------- | ---- | -------- |
-| target | URLNode | True |
+| cpe | Optional | True |
+| target | CPE | True |
 | source | ListeningSocket | True |
-| status_code | int | False |
+| status_code | Optional | False |
+
 
 
 

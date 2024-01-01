@@ -7,7 +7,7 @@
 | ------------- | ---- | -------- |
 | description | str | True |
 | name | str | True |
-| ref_url | HttpUrl | True |
+| ref_url | Url | True |
 | attack_id | str | True |
 | attack_last_seen_citation | str | True |
 | attack_first_seen_citation | str | True |
@@ -20,20 +20,21 @@
 | stix_type | str | True |
 | stix_id | str | True |
 | stix_spec_version | str | False |
-| stix_revoked | bool | False |
+| stix_revoked | Optional | False |
+
 
 
 ## Outgoing Relationships
 
-### MITRE_CAMPAIGN_USES_TECHNIQUE
+### MITRE_CAMPAIGN_ATTRIBUTED_TO_INTRUSION_SET
 
-Target Label: MitreAttackTechnique
+Target Label: IntrusionSet
 
 #### Relationship Properties
 
 | Property Name | Type | Required |
 | ------------- | ---- | -------- |
-| target | MitreAttackTechnique | True |
+| target | IntrusionSet | True |
 | source | MitreAttackCampaign | True |
 
 
@@ -49,16 +50,17 @@ Target Label: MitreAttackSoftware
 | source | MitreAttackCampaign | True |
 
 
-### MITRE_CAMPAIGN_ATTRIBUTED_TO_INTRUSION_SET
+### MITRE_CAMPAIGN_USES_TECHNIQUE
 
-Target Label: IntrusionSet
+Target Label: MitreAttackTechnique
 
 #### Relationship Properties
 
 | Property Name | Type | Required |
 | ------------- | ---- | -------- |
-| target | IntrusionSet | True |
+| target | MitreAttackTechnique | True |
 | source | MitreAttackCampaign | True |
+
 
 
 

@@ -5,7 +5,8 @@
 
 | Property Name | Type | Required |
 | ------------- | ---- | -------- |
-| url | AnyUrl | True |
+| url | Url | True |
+
 
 
 ## Outgoing Relationships
@@ -20,6 +21,7 @@ Target Label: URL
 | ------------- | ---- | -------- |
 | target | URLNode | True |
 | source | URLNode | True |
+
 
 
 

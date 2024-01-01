@@ -6,10 +6,8 @@
 | Property Name | Type | Required |
 | ------------- | ---- | -------- |
 | unique_id | ActorTypeEnum | True |
-| name | str | False |
-| description | str | False |
+| name | Optional | False |
+| description | Optional | False |
 
-
-## Outgoing Relationships
 
 

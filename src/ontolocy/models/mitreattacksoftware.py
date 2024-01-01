@@ -1,7 +1,7 @@
 from datetime import datetime
 from typing import ClassVar, Optional
 
-from pydantic import HttpUrl, validator
+from pydantic import HttpUrl, field_validator
 
 from ..node import OntolocyNode
 from ..relationship import OntolocyRelationship
@@ -28,7 +28,8 @@ class MitreAttackSoftware(OntolocyNode):
     name: str
     description: Optional[str] = None
 
-    @validator("stix_revoked")
+    @field_validator("stix_revoked")
+    @classmethod
     def set_false(cls, v):
         if v is None:
             return False

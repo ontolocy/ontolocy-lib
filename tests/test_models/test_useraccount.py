@@ -12,4 +12,4 @@ def test_control():
 
     assert user1.get_primary_property_value() != user3.get_primary_property_value()
 
-    assert user1.get_identifier() == "Admin"
+    assert str(user1) == "Admin"

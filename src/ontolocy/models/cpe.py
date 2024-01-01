@@ -1,6 +1,7 @@
 from typing import ClassVar, Optional
 
-from pydantic import constr, validator
+from pydantic import StringConstraints, ValidationInfo, field_validator
+from typing_extensions import Annotated
 
 from ..node import OntolocyNode
 
@@ -18,22 +19,24 @@ class CPE(OntolocyNode):
     __primaryproperty__: ClassVar[str] = "cpe"
     __primarylabel__: ClassVar[Optional[str]] = "CPE"
 
-    cpe: constr(
-        regex=(
-            r"(cpe:2\.3:[aho\*\-](:(((\?*|\*?)([a-zA-Z0-9\-\._]|"  # noqa: F722
-            r"(\\[\\\*\?!#$$%&'\(\)\+,/:;<=>@\[\]\^`\{\|}~]))+(\?*|\*?))|[\*\-])){5}"
-            r"(:(([a-zA-Z]{2,3}(-([a-zA-Z]{2}|[0-9]{3}))?)|[\*\-]))(:(((\?*|\*?)"
-            r"([a-zA-Z0-9\-\._]|(\\[\\\*\?!#$$%&'\(\)\+,/:;<=>@\[\]\^`\{\|}~]))+(\?*|\*?))|[\*\-])){4})"
-        )
-    )
+    cpe: Annotated[
+        str,
+        StringConstraints(
+            pattern=(
+                r"(cpe:2\.3:[aho\*\-](:(((\?*|\*?)([a-zA-Z0-9\-\._]|"  # noqa: F722
+                r"(\\[\\\*\?!#$$%&'\(\)\+,/:;<=>@\[\]\^`\{\|}~]))+(\?*|\*?))|[\*\-])){5}"
+                r"(:(([a-zA-Z]{2,3}(-([a-zA-Z]{2}|[0-9]{3}))?)|[\*\-]))(:(((\?*|\*?)"
+                r"([a-zA-Z0-9\-\._]|(\\[\\\*\?!#$$%&'\(\)\+,/:;<=>@\[\]\^`\{\|}~]))+(\?*|\*?))|[\*\-])){4})"
+            )
+        ),
+    ]
     cpe_version: str = "2.3"
-    part: str = None
-    vendor: str = None
-    product: str = None
+    part: Optional[str] = None
+    vendor: Optional[str] = None
+    product: Optional[str] = None
 
-    @validator("cpe", always=True, pre=True)
+    @field_validator("cpe", mode="before")
     def set_cpe(cls, v):
-
         # hack to handle CPEs with colons in (which will be escaped with a backslash)
         v = v.replace(r"\:", r"\;")
 
@@ -62,8 +65,9 @@ class CPE(OntolocyNode):
 
         return v
 
-    @validator("part", always=True)
-    def set_part(cls, v, values):
+    @field_validator("part")
+    def set_part(cls, v, info: ValidationInfo):
+        values = info.data
         if v is None and "cpe" in values:
             cpe_parts = values["cpe"].split(":")
             if cpe_parts[2] in ["a", "h", "o"]:
@@ -73,16 +77,18 @@ class CPE(OntolocyNode):
         else:
             return v
 
-    @validator("vendor", always=True)
-    def set_vendor(cls, v, values):
+    @field_validator("vendor")
+    def set_vendor(cls, v, info: ValidationInfo):
+        values = info.data
         if v is None and "cpe" in values:
             cpe_parts = values["cpe"].split(":")
             return cpe_parts[3]
         else:
             return v
 
-    @validator("product", always=True)
-    def set_product(cls, v, values):
+    @field_validator("product")
+    def set_product(cls, v, info: ValidationInfo):
+        values = info.data
         if v is None and "cpe" in values:
             cpe_parts = values["cpe"].split(":")
             return cpe_parts[4]

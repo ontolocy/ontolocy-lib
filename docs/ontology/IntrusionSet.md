@@ -7,11 +7,25 @@
 | ------------- | ---- | -------- |
 | unique_id | str | True |
 | name | str | True |
-| description | str | False |
-| url_reference | HttpUrl | False |
+| description | Optional | False |
+| url_reference | Optional | False |
+
 
 
 ## Outgoing Relationships
+
+### INTRUSION_SET_IS_OF_TYPE
+
+Target Label: ActorType
+
+#### Relationship Properties
+
+| Property Name | Type | Required |
+| ------------- | ---- | -------- |
+| url_reference | Optional | True |
+| target | ActorType | True |
+| source | IntrusionSet | True |
+
 
 ### INTRUSION_SET_LINKED_TO_THREAT_ACTOR
 
@@ -21,20 +35,8 @@ Target Label: ThreatActor
 
 | Property Name | Type | Required |
 | ------------- | ---- | -------- |
+| url_reference | Optional | True |
 | target | ThreatActor | True |
-| source | IntrusionSet | True |
-| url_reference | HttpUrl | False |
-
-
-### INTRUSION_SET_USES_SOFTWARE
-
-Target Label: MitreAttackSoftware
-
-#### Relationship Properties
-
-| Property Name | Type | Required |
-| ------------- | ---- | -------- |
-| target | MitreAttackSoftware | True |
 | source | IntrusionSet | True |
 
 
@@ -46,9 +48,9 @@ Target Label: Country
 
 | Property Name | Type | Required |
 | ------------- | ---- | -------- |
+| url_reference | Optional | True |
 | target | Country | True |
 | source | IntrusionSet | True |
-| url_reference | HttpUrl | False |
 
 
 ### INTRUSION_SET_USES_TECHNIQUE
@@ -71,22 +73,22 @@ Target Label: IntrusionSet
 
 | Property Name | Type | Required |
 | ------------- | ---- | -------- |
+| url_reference | Optional | True |
 | target | IntrusionSet | True |
 | source | IntrusionSet | True |
-| url_reference | HttpUrl | False |
 
 
-### INTRUSION_SET_IS_OF_TYPE
+### INTRUSION_SET_USES_SOFTWARE
 
-Target Label: ActorType
+Target Label: MitreAttackSoftware
 
 #### Relationship Properties
 
 | Property Name | Type | Required |
 | ------------- | ---- | -------- |
-| target | ActorType | True |
+| target | MitreAttackSoftware | True |
 | source | IntrusionSet | True |
-| url_reference | HttpUrl | False |
+
 
 
 

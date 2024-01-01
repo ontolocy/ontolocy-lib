@@ -8,7 +8,8 @@
 | content | str | True |
 | name | str | True |
 | type | str | True |
-| unique_id | UUID | False |
+| unique_id | Optional | False |
+
 
 
 ## Outgoing Relationships
@@ -26,6 +27,19 @@ Target Label: IPAddress
 | source | DNSRecord | True |
 
 
+### DNS_RECORD_FOR_DOMAIN
+
+Target Label: DomainName
+
+#### Relationship Properties
+
+| Property Name | Type | Required |
+| ------------- | ---- | -------- |
+| observation_date | datetime | True |
+| target | DomainName | True |
+| source | DNSRecord | True |
+
+
 ### DNS_RECORD_POINTS_TO_DOMAIN_NAME
 
 Target Label: DomainName
@@ -38,18 +52,6 @@ Target Label: DomainName
 | target | DomainName | True |
 | source | DNSRecord | True |
 
-
-### DNS_RECORD_FOR_DOMAIN
-
-Target Label: DomainName
-
-#### Relationship Properties
-
-| Property Name | Type | Required |
-| ------------- | ---- | -------- |
-| observation_date | datetime | True |
-| target | DomainName | True |
-| source | DNSRecord | True |
 
 
 

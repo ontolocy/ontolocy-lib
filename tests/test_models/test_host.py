@@ -4,14 +4,12 @@ from ontolocy import Host
 
 
 def test_host():
-
     host = Host(hostname="Windows1")
 
-    assert host.get_identifier() == "Windows1"
+    assert str(host) == "Windows1"
 
 
 def test_host_different_namespaces():
-
     host1 = Host(hostname="Windows1")
     host2 = Host(hostname="Windows1")
 
@@ -19,7 +17,6 @@ def test_host_different_namespaces():
 
 
 def test_host_same_namespaces():
-
     host1 = Host(hostname="Windows1", namespace="TestCase")
     host2 = Host(hostname="Windows1", namespace="TestCase")
 

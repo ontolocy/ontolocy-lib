@@ -6,7 +6,7 @@
 | Property Name | Type | Required |
 | ------------- | ---- | -------- |
 | name | str | True |
-| ref_url | HttpUrl | True |
+| ref_url | Url | True |
 | attack_id | str | True |
 | attack_version | str | True |
 | attack_spec_version | str | True |
@@ -15,8 +15,9 @@
 | stix_type | str | True |
 | stix_id | str | True |
 | stix_spec_version | str | False |
-| stix_revoked | bool | False |
-| description | str | False |
+| stix_revoked | Optional | False |
+| description | Optional | False |
+
 
 
 ## Outgoing Relationships
@@ -31,6 +32,7 @@ Target Label: MitreAttackTechnique
 | ------------- | ---- | -------- |
 | target | MitreAttackTechnique | True |
 | source | MitreAttackSoftware | True |
+
 
 
 

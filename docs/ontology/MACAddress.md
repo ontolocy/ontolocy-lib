@@ -5,7 +5,8 @@
 
 | Property Name | Type | Required |
 | ------------- | ---- | -------- |
-| mac_address | ConstrainedStrValue | True |
+| mac_address | str | True |
+
 
 
 ## Outgoing Relationships
@@ -20,7 +21,8 @@ Target Label: Host
 | ------------- | ---- | -------- |
 | target | Host | True |
 | source | MACAddress | True |
-| interface | str | False |
+| interface | Optional | False |
+
 
 
 

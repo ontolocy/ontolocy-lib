@@ -24,6 +24,7 @@ from ontolocy.models.cobaltstrikebeacon import (
 from ontolocy.models.cobaltstrikewatermark import CobaltStrikeWatermark
 from ontolocy.models.control import (
     Control,
+    ControlHasParentControl,
     ControlMitigatesAttackTechnique,
     ControlRelatedToControl,
 )
@@ -153,6 +154,7 @@ __all__ = [
     "CobaltStikeBeaconHasWatermark",
     "CobaltStrikeWatermark",
     "Control",
+    "ControlHasParentControl",
     "ControlMitigatesAttackTechnique",
     "ControlRelatedToControl",
     "Country",

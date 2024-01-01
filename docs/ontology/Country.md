@@ -6,9 +6,7 @@
 | Property Name | Type | Required |
 | ------------- | ---- | -------- |
 | country_code | str | True |
-| name | str | False |
+| name | Optional | False |
 
-
-## Outgoing Relationships
 
 

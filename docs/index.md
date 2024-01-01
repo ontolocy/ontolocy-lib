@@ -2,7 +2,9 @@
 
 ## Build cyber graphs with Python and Neo4j
 
-Ontolocy is an open source framework for builing cyber security graphs using Python and the Neo4j graph database.
+Ontolocy is an open source framework for building cyber security graphs using Python, Pydantic, Pandas and a Neo4j graph database.
+
+Ontolocy is currently in alpha, so the ontology is likely to change.
 
 ## Installation
 
