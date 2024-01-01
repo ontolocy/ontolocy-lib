@@ -1,9 +1,9 @@
 from typing import ClassVar, Optional
 
-from pydantic import StringConstraints, field_validator, ValidationInfo
+from pydantic import StringConstraints, ValidationInfo, field_validator
+from typing_extensions import Annotated
 
 from ..node import OntolocyNode
-from typing_extensions import Annotated
 
 
 class CPE(OntolocyNode):

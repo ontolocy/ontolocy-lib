@@ -8,6 +8,4 @@
 | value | int | True |
 
 
-## Outgoing Relationships
-
 

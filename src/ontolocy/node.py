@@ -1,5 +1,6 @@
 from typing import ClassVar, Optional
 from warnings import warn
+
 import pandas as pd
 from neontology import BaseNode
 

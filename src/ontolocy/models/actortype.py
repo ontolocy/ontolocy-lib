@@ -1,7 +1,7 @@
 from enum import Enum
 from typing import ClassVar, Optional
 
-from pydantic import field_validator, ValidationInfo
+from pydantic import ValidationInfo, field_validator
 
 from ..node import OntolocyNode
 
@@ -20,7 +20,11 @@ actor_type_taxonomy = {
     },
     "commercial-provider": {
         "name": "Commercial Provider",
-        "description": "An actor who sells offensive cyber services to others, and those services are deemed legal in the jurisdiction that they operate. Also known as 'hackers-for-hire'",
+        "description": (
+            "An actor who sells offensive cyber services to others,"
+            " and those services are deemed legal in the jurisdiction that they operate within."
+            " Also known as 'hackers-for-hire'"
+        ),
     },
 }
 

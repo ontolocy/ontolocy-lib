@@ -6,10 +6,11 @@
 | Property Name | Type | Required |
 | ------------- | ---- | -------- |
 | name | str | True |
-| reference | str | False |
-| license | str | False |
-| sharing | str | False |
-| unique_id | UUID | False |
+| reference | Optional | False |
+| license | Optional | False |
+| sharing | Optional | False |
+| unique_id | Optional | False |
+
 
 
 ## Outgoing Relationships
@@ -444,6 +445,7 @@ Target Label: UserAccount
 | ------------- | ---- | -------- |
 | target | BaseNode | True |
 | source | DataOrigin | True |
+
 
 
 

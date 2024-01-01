@@ -1,8 +1,8 @@
 from enum import Enum
-from typing import Any, ClassVar, Dict, Optional
+from typing import ClassVar, Optional
 from uuid import UUID, uuid4
 
-from pydantic import field_validator, ValidationInfo
+from pydantic import ValidationInfo, field_validator
 
 from ..node import OntolocyNode
 from ..utils import generate_deterministic_uuid

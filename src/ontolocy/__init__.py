@@ -24,9 +24,9 @@ from ontolocy.models.cobaltstrikebeacon import (
 from ontolocy.models.cobaltstrikewatermark import CobaltStrikeWatermark
 from ontolocy.models.control import (
     Control,
+    ControlHasParentControl,
     ControlMitigatesAttackTechnique,
     ControlRelatedToControl,
-    ControlHasParentControl,
 )
 from ontolocy.models.country import Country
 from ontolocy.models.cpe import CPE

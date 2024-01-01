@@ -1,7 +1,7 @@
 import hashlib
 from typing import ClassVar, Optional
 
-from pydantic import field_validator, ValidationInfo
+from pydantic import ValidationInfo, field_validator
 
 from ..node import OntolocyNode
 

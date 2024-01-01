@@ -1,7 +1,7 @@
-from typing import Any, ClassVar, Dict, Optional
+from typing import ClassVar, Optional
 from uuid import UUID
 
-from pydantic import AnyHttpUrl, field_validator, ValidationInfo
+from pydantic import AnyHttpUrl, ValidationInfo, field_validator
 
 from ..node import OntolocyNode
 from ..relationship import OntolocyRelationship
@@ -41,9 +41,6 @@ class Control(OntolocyNode):
             v = str(generate_deterministic_uuid(key_values))
 
         return v
-
-    def __str__(self) -> str:
-        return f"{self.name} ({self.framework})"
 
 
 #

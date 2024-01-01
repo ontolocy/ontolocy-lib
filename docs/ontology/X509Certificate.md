@@ -6,23 +6,21 @@
 | Property Name | Type | Required |
 | ------------- | ---- | -------- |
 | sha1 | str | True |
-| sha256 | str | False |
-| md5 | str | False |
-| serial_number | str | False |
-| issuer_country | str | False |
-| issuer_cn | str | False |
-| issuer_organisation | str | False |
-| issuer_locality | str | False |
-| issuer_state | str | False |
-| issuer_ou | str | False |
-| subject_country | str | False |
-| subject_cn | str | False |
-| subject_organisation | str | False |
-| subject_locality | str | False |
-| subject_state | str | False |
-| subject_ou | str | False |
+| sha256 | Optional | False |
+| md5 | Optional | False |
+| serial_number | Optional | False |
+| issuer_country | Optional | False |
+| issuer_cn | Optional | False |
+| issuer_organisation | Optional | False |
+| issuer_locality | Optional | False |
+| issuer_state | Optional | False |
+| issuer_ou | Optional | False |
+| subject_country | Optional | False |
+| subject_cn | Optional | False |
+| subject_organisation | Optional | False |
+| subject_locality | Optional | False |
+| subject_state | Optional | False |
+| subject_ou | Optional | False |
 
-
-## Outgoing Relationships
 
 

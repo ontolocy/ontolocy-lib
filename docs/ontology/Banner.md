@@ -6,9 +6,7 @@
 | Property Name | Type | Required |
 | ------------- | ---- | -------- |
 | banner | str | True |
-| sha1 | str | False |
+| sha1 | Optional | False |
 
-
-## Outgoing Relationships
 
 

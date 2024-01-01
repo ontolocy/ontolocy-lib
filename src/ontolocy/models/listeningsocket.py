@@ -1,9 +1,10 @@
 from enum import Enum
-from typing import Any, ClassVar, Dict, Optional
-from uuid import UUID, uuid4
 from ipaddress import ip_address
+from typing import ClassVar, Optional
+from uuid import UUID, uuid4
 
-from pydantic import StringConstraints, IPvAnyAddress, field_validator, ValidationInfo
+from pydantic import IPvAnyAddress, StringConstraints, ValidationInfo, field_validator
+from typing_extensions import Annotated
 
 from ontolocy.models.port import Port
 from ontolocy.node import OntolocyNode
@@ -15,7 +16,6 @@ from .cpe import CPE
 from .jarmhash import JarmHash
 from .url import URLNode
 from .x509certificate import X509Certificate
-from typing_extensions import Annotated
 
 
 class ListeningSocketProtocolEnum(str, Enum):
@@ -160,7 +160,7 @@ class ServiceIdentifiedAsPlatform(OntolocyRelationship):
             raise ValueError("Doesn't look like a valid CPE")
 
         if cpe_parts[1] == "2.3":
-            v = f"cpe"
+            v = "cpe"
 
             for idx in range(1, 13):
                 v += ":"

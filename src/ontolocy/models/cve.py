@@ -2,12 +2,12 @@ from datetime import datetime
 from typing import ClassVar, Optional
 
 from pydantic import StringConstraints
+from typing_extensions import Annotated
 
 from ..node import OntolocyNode
 from ..relationship import OntolocyRelationship
 from .cpe import CPE
 from .cwe import CWE
-from typing_extensions import Annotated
 
 
 class CVE(OntolocyNode):

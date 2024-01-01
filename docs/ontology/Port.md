@@ -7,9 +7,7 @@
 | ------------- | ---- | -------- |
 | protocol | PortProtocolEnum | True |
 | port_number | int | True |
-| unique_id | UUID | False |
+| unique_id | Optional | False |
 
-
-## Outgoing Relationships
 
 

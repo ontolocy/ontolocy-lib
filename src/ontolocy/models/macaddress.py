@@ -1,11 +1,11 @@
 from typing import ClassVar, Optional
 
 from pydantic import StringConstraints, field_validator
+from typing_extensions import Annotated
 
 from ..node import OntolocyNode
 from ..relationship import OntolocyRelationship
 from .host import Host
-from typing_extensions import Annotated
 
 
 class MACAddress(OntolocyNode):

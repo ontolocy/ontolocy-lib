@@ -13,6 +13,7 @@
 | number | int | True |
 
 
+
 ## Outgoing Relationships
 
 ### ASN_HAS_REGISTERED_CONTACT
@@ -25,6 +26,7 @@ Target Label: Organisation
 | ------------- | ---- | -------- |
 | target | Organisation | True |
 | source | ASN | True |
+
 
 
 

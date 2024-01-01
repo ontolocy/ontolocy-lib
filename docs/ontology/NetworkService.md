@@ -6,7 +6,8 @@
 | Property Name | Type | Required |
 | ------------- | ---- | -------- |
 | name | str | True |
-| description | str | False |
+| description | Optional | False |
+
 
 
 ## Outgoing Relationships
@@ -21,6 +22,7 @@ Target Label: Port
 | ------------- | ---- | -------- |
 | target | Port | True |
 | source | NetworkService | True |
+
 
 
 

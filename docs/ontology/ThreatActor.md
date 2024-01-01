@@ -5,26 +5,26 @@
 
 | Property Name | Type | Required |
 | ------------- | ---- | -------- |
+| url_reference | Optional | True |
+| description | Optional | True |
 | unique_id | str | True |
 | name | str | True |
-| description | str | False |
-| url_reference | HttpUrl | False |
+
 
 
 ## Outgoing Relationships
 
-### THREAT_ACTOR_LINKED_TO_THREAT_ACTOR
+### THREAT_ACTOR_IS_OF_TYPE
 
-Target Label: ThreatActor
+Target Label: ActorType
 
 #### Relationship Properties
 
 | Property Name | Type | Required |
 | ------------- | ---- | -------- |
-| target | ThreatActor | True |
+| url_reference | Optional | True |
+| target | ActorType | True |
 | source | ThreatActor | True |
-| url_reference | HttpUrl | False |
-| context | str | False |
 
 
 ### THREAT_ACTOR_ATTRIBUTED_TO_NATION
@@ -35,22 +35,24 @@ Target Label: Country
 
 | Property Name | Type | Required |
 | ------------- | ---- | -------- |
+| url_reference | Optional | True |
 | target | Country | True |
 | source | ThreatActor | True |
-| url_reference | HttpUrl | False |
 
 
-### THREAT_ACTOR_IS_OF_TYPE
+### THREAT_ACTOR_LINKED_TO_THREAT_ACTOR
 
-Target Label: ActorType
+Target Label: ThreatActor
 
 #### Relationship Properties
 
 | Property Name | Type | Required |
 | ------------- | ---- | -------- |
-| target | ActorType | True |
+| context | Optional | True |
+| url_reference | Optional | True |
+| target | ThreatActor | True |
 | source | ThreatActor | True |
-| url_reference | HttpUrl | False |
+
 
 
 
