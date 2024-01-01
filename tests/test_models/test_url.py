@@ -2,14 +2,12 @@ from ontolocy.models.url import URLNode, UrlRedirectsToUrl
 
 
 def test_url():
-
     my_url = URLNode(url="http://example.com/hello")
 
-    assert my_url.url == "http://example.com/hello"
+    assert str(my_url.url) == "http://example.com/hello"
 
 
 def test_redirects_rel(use_graph):
-
     url1 = URLNode(url="http://example.com/foo")
     url1.merge()
 

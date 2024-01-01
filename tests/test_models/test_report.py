@@ -11,12 +11,10 @@ report = Report(
 
 
 def test_report():
-
-    assert report.get_primary_property_value() == "https://example.com"
+    assert report.get_primary_property_value() == "https://example.com/"
 
 
 def test_report_mentions_cve(use_graph):
-
     report.merge()
 
     cve = CVE(cve_id="CVE-2021-44832")

@@ -2,13 +2,12 @@ from typing import Any, ClassVar, Dict, Optional
 from uuid import UUID
 
 from neontology import BaseNode, BaseRelationship
-from pydantic import validator
+from pydantic import field_validator, ValidationInfo
 
 from .utils import generate_deterministic_uuid
 
 
-class DataOrigin(BaseNode):
-
+class DataOrigin(BaseNode, validate_default=True):
     __primaryproperty__: ClassVar[str] = "unique_id"
     __primarylabel__: ClassVar[Optional[str]] = "DataOrigin"
 
@@ -19,11 +18,10 @@ class DataOrigin(BaseNode):
 
     unique_id: Optional[UUID] = None
 
-    @validator("unique_id", always=True)
-    def generate_unique_id(cls, v: Optional[UUID], values: Dict[str, Any]) -> UUID:
-
+    @field_validator("unique_id")
+    def generate_unique_id(cls, v: Optional[UUID], info: ValidationInfo) -> UUID:
+        values = info.data
         if v is None:
-
             key_values = [
                 values["name"],
                 values["reference"],
@@ -37,7 +35,6 @@ class DataOrigin(BaseNode):
 
 
 class OriginGenerated(BaseRelationship):
-
     __relationshiptype__: ClassVar[Optional[str]] = "ORIGIN_GENERATED"
 
     source: DataOrigin

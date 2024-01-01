@@ -1,10 +1,11 @@
 from datetime import datetime
 from typing import ClassVar, Optional
 
-from pydantic import HttpUrl, constr, validator
+from pydantic import field_validator, StringConstraints, HttpUrl
 
 from ..node import OntolocyNode
 from ..relationship import OntolocyRelationship
+from typing_extensions import Annotated
 
 
 class MitreAttackTechnique(OntolocyNode):
@@ -18,7 +19,7 @@ class MitreAttackTechnique(OntolocyNode):
     stix_spec_version: str = "2.1"
     stix_revoked: Optional[bool] = False
 
-    attack_id: constr(to_upper=True, pattern=r"T\d{4}(?:\.\d{3})?")  # noqa: F722
+    attack_id: Annotated[str, StringConstraints(to_upper=True, pattern=r"T\d{4}(?:\.\d{3})?")]  # noqa: F722
     attack_spec_version: str
     attack_subtechnique: Optional[bool] = False
     attack_version: str
@@ -27,7 +28,8 @@ class MitreAttackTechnique(OntolocyNode):
     name: str
     description: str
 
-    @validator("stix_revoked", "attack_subtechnique")
+    @field_validator("stix_revoked", "attack_subtechnique")
+    @classmethod
     def set_false(cls, v):
         if v is None:
             return False

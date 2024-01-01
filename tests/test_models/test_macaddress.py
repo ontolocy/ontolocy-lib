@@ -12,14 +12,12 @@ from ontolocy import MACAddress, Host, MACAddressAssignedToHost
     ],
 )
 def test_mac(input, formatted):
-
     mac = MACAddress(mac_address=input)
 
-    assert mac.get_identifier() == formatted
+    assert str(mac) == formatted
 
 
 def test_mac_address_assigned_to_host(use_graph):
-
     mac = MACAddress(mac_address="01:02:03:04:AB:CD")
     mac.merge()
 

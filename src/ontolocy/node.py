@@ -1,12 +1,12 @@
 from typing import ClassVar, Optional
-
+from warnings import warn
 import pandas as pd
 from neontology import BaseNode
 
 from .dataorigin import DataOrigin, OriginGenerated
 
 
-class OntolocyNode(BaseNode):
+class OntolocyNode(BaseNode, validate_default=True):
     __primarylabel__: ClassVar[Optional[str]] = None
 
     @classmethod
@@ -34,7 +34,7 @@ class OntolocyNode(BaseNode):
         # first merge in this node
         self.merge()
 
-        # if a data_origin is specified, merge that and then creat the OriginGenerated relationship
+        # if a data_origin is specified, merge that and then create the OriginGenerated relationship
         if data_origin is not None:
             data_origin.merge()
 
@@ -43,7 +43,8 @@ class OntolocyNode(BaseNode):
             rel.merge()
 
     def get_identifier(self) -> str:
+        warn("'get_identifier' method is deprecated", DeprecationWarning)
         return str(self.get_primary_property_value())
 
     def __str__(self) -> str:
-        return self.get_identifier()
+        return str(self.get_primary_property_value())

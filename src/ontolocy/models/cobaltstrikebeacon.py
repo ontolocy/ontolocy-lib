@@ -1,7 +1,7 @@
 from typing import Any, ClassVar, Dict, Optional
 from uuid import UUID
 
-from pydantic import validator
+from pydantic import field_validator, ValidationInfo
 
 from ..node import OntolocyNode
 from ..relationship import OntolocyRelationship
@@ -11,7 +11,6 @@ from .listeningsocket import ListeningSocket
 
 
 class CobaltStrikeBeacon(OntolocyNode):
-
     __primaryproperty__: ClassVar[str] = "unique_id"
     __primarylabel__: ClassVar[Optional[str]] = "CobaltStrikeBeacon"
 
@@ -25,13 +24,12 @@ class CobaltStrikeBeacon(OntolocyNode):
     submituri: str
     watermark: Optional[int] = None
 
-    unique_id: Optional[UUID]
+    unique_id: Optional[UUID] = None
 
-    @validator("unique_id", always=True)
-    def generate_dnsrecord_uuid(cls, v: Optional[UUID], values: Dict[str, Any]) -> UUID:
-
+    @field_validator("unique_id")
+    def generate_dnsrecord_uuid(cls, v: Optional[UUID], info: ValidationInfo) -> UUID:
+        values = info.data
         if v is None:
-
             key_values = [
                 values["beacontype"],
                 values["port"],
@@ -45,7 +43,6 @@ class CobaltStrikeBeacon(OntolocyNode):
 
 
 class CobaltStikeBeaconCollectedFrom(OntolocyRelationship):
-
     __relationshiptype__: ClassVar[str] = "COBALT_STRIKE_BEACON_COLLECTED_FROM"
 
     source: CobaltStrikeBeacon
@@ -53,7 +50,6 @@ class CobaltStikeBeaconCollectedFrom(OntolocyRelationship):
 
 
 class CobaltStikeBeaconHasWatermark(OntolocyRelationship):
-
     __relationshiptype__: ClassVar[str] = "COBALT_STRIKE_BEACON_HAS_WATERMARK"
 
     source: CobaltStrikeBeacon

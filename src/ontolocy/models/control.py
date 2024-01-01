@@ -1,7 +1,7 @@
 from typing import Any, ClassVar, Dict, Optional
 from uuid import UUID
 
-from pydantic import AnyHttpUrl, validator
+from pydantic import AnyHttpUrl, field_validator, ValidationInfo
 
 from ..node import OntolocyNode
 from ..relationship import OntolocyRelationship
@@ -15,16 +15,20 @@ class Control(OntolocyNode):
 
     control_id: str
     name: str
-    version: Optional[str]
     framework: str
-    framework_version: Optional[str]
-    description: Optional[str]
-    context: Optional[str]
-    unique_id: Optional[str]
-    url_reference: Optional[AnyHttpUrl]
+    version: Optional[str] = None
+    framework_version: Optional[str] = None
+    description: Optional[str] = None
+    context: Optional[str] = None
+    unique_id: Optional[str] = None
+    url_reference: Optional[AnyHttpUrl] = None
 
-    @validator("unique_id", always=True)
-    def generate_uuid(cls, v: Optional[UUID], values: Dict[str, Any]) -> UUID:
+    def __str__(self) -> str:
+        return f"{self.control_id}: {self.name}"
+
+    @field_validator("unique_id")
+    def generate_uuid(cls, v: Optional[UUID], info: ValidationInfo) -> UUID:
+        values = info.data
         if v is None:
             key_values = [
                 values["control_id"],
@@ -33,7 +37,8 @@ class Control(OntolocyNode):
                 values["framework_version"],
             ]
 
-            v = generate_deterministic_uuid(key_values)
+            # the unique id should be a string rather than a UUID
+            v = str(generate_deterministic_uuid(key_values))
 
         return v
 

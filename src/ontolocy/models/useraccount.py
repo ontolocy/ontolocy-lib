@@ -1,7 +1,7 @@
 from typing import Any, ClassVar, Dict, Optional
 from uuid import UUID, uuid4
 
-from pydantic import validator
+from pydantic import field_validator, ValidationInfo
 
 from ..node import OntolocyNode
 from ..relationship import OntolocyRelationship
@@ -10,32 +10,30 @@ from .host import Host
 
 
 class UserAccount(OntolocyNode):
-
     __primaryproperty__: ClassVar[str] = "unique_id"
     __primarylabel__: ClassVar[Optional[str]] = "UserAccount"
 
     username: str
-    local_hostname: Optional[str]
+    local_hostname: Optional[str] = None
     namespace: Optional[str] = None
     unique_id: Optional[UUID] = None
 
-    def get_identifier(self) -> str:
+    def __str__(self) -> str:
         return self.username
 
-    @validator("namespace", always=True)
-    def set_namespace(cls, v, values: Dict[str, Any]) -> str:
-
+    @field_validator("namespace")
+    def set_namespace(cls, v) -> str:
         if v is None:
             return str(uuid4())
 
         else:
             return v
 
-    @validator("unique_id", always=True)
-    def generate_instance_id(cls, v: Optional[UUID], values: Dict[str, Any]) -> UUID:
+    @field_validator("unique_id")
+    def generate_instance_id(cls, v: Optional[UUID], info: ValidationInfo) -> UUID:
+        values = info.data
 
         if v is None:
-
             key_values = [
                 values["username"],
                 values["local_hostname"],
@@ -48,7 +46,6 @@ class UserAccount(OntolocyNode):
 
 
 class UserAccountAuthorizedOnHost(OntolocyRelationship):
-
     __relationshiptype__: ClassVar[str] = "USER_ACCOUNT_AUTHORIZED_ON_HOST"
 
     source: UserAccount

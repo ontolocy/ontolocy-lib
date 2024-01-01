@@ -1,22 +1,25 @@
 from datetime import datetime
 from typing import ClassVar, Optional
 
-from pydantic import constr
+from pydantic import StringConstraints
 
 from ..node import OntolocyNode
 from ..relationship import OntolocyRelationship
 from .cpe import CPE
 from .cwe import CWE
+from typing_extensions import Annotated
 
 
 class CVE(OntolocyNode):
     __primaryproperty__: ClassVar[str] = "cve_id"
     __primarylabel__: ClassVar[Optional[str]] = "CVE"
 
-    cve_id: constr(to_upper=True, pattern=r"CVE-\d{4}-\d{4,8}")  # noqa: F722
-    published_date: Optional[datetime]
-    assigner: Optional[str]
-    description: Optional[str]
+    cve_id: Annotated[
+        str, StringConstraints(to_upper=True, pattern=r"(CVE|cve)-\d{4}-\d{4,8}")
+    ]  # noqa: F722
+    published_date: Optional[datetime] = None
+    assigner: Optional[str] = None
+    description: Optional[str] = None
 
 
 #

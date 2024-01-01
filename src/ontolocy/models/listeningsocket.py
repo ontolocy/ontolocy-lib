@@ -3,7 +3,7 @@ from typing import Any, ClassVar, Dict, Optional
 from uuid import UUID, uuid4
 from ipaddress import ip_address
 
-from pydantic import IPvAnyAddress, validator, constr
+from pydantic import StringConstraints, IPvAnyAddress, field_validator, ValidationInfo
 
 from ontolocy.models.port import Port
 from ontolocy.node import OntolocyNode
@@ -15,6 +15,7 @@ from .cpe import CPE
 from .jarmhash import JarmHash
 from .url import URLNode
 from .x509certificate import X509Certificate
+from typing_extensions import Annotated
 
 
 class ListeningSocketProtocolEnum(str, Enum):
@@ -38,11 +39,12 @@ class ListeningSocket(OntolocyNode):
 
     unique_id: Optional[UUID] = None
 
-    def get_identifier(self) -> str:
-        return f"{self.ip_address}:{self.port_number}"
+    def __str__(self) -> str:
+        return f"{self.ip_address}:{self.port_number} ({self.protocol.value})"
 
-    @validator("unique_id", always=True)
-    def generate_socket_uuid(cls, v: Optional[UUID], values: Dict[str, Any]) -> UUID:
+    @field_validator("unique_id")
+    def generate_socket_uuid(cls, v: Optional[UUID], info: ValidationInfo) -> UUID:
+        values = info.data
         if v is None:
             key_values = [
                 values["protocol"],
@@ -55,15 +57,18 @@ class ListeningSocket(OntolocyNode):
 
         return v
 
-    @validator("private", always=True)
-    def mark_private(cls, v, values: Dict[str, Any]):
+    @field_validator("private")
+    def mark_private(cls, v, info: ValidationInfo):
+        values = info.data
         if v is None and "ip_address" in values:
             return ip_address(values["ip_address"]).is_private
         else:
             return v
 
-    @validator("namespace", always=True)
-    def set_namespace(cls, v, values: Dict[str, Any]):
+    @field_validator("namespace")
+    def set_namespace(cls, v, info: ValidationInfo):
+        values = info.data
+
         if values["private"] is False:
             return None
 
@@ -73,8 +78,9 @@ class ListeningSocket(OntolocyNode):
         else:
             return v
 
-    @validator("ip_address_unique_id", always=True)
-    def generate_ip_id(cls, v: Optional[UUID], values: Dict[str, Any]) -> UUID:
+    @field_validator("ip_address_unique_id")
+    def generate_ip_id(cls, v: Optional[UUID], info: ValidationInfo) -> UUID:
+        values = info.data
         if v is None:
             key_values = [values["ip_address"], values["namespace"]]
 
@@ -130,17 +136,20 @@ class ServiceIdentifiedAsPlatform(OntolocyRelationship):
     status_code: Optional[int] = None
 
     cpe: Optional[
-        constr(
-            pattern=(
-                r"(cpe:2\.3:[aho\*\-](:(((\?*|\*?)([a-zA-Z0-9\-\._]|"  # noqa: F722
-                r"(\\[\\\*\?!#$$%&'\(\)\+,/:;<=>@\[\]\^`\{\|}~]))+(\?*|\*?))|[\*\-])){5}"
-                r"(:(([a-zA-Z]{2,3}(-([a-zA-Z]{2}|[0-9]{3}))?)|[\*\-]))(:(((\?*|\*?)"
-                r"([a-zA-Z0-9\-\._]|(\\[\\\*\?!#$$%&'\(\)\+,/:;<=>@\[\]\^`\{\|}~]))+(\?*|\*?))|[\*\-])){4})"
-            )
-        )
+        Annotated[
+            str,
+            StringConstraints(
+                pattern=(
+                    r"(cpe:2\.3:[aho\*\-](:(((\?*|\*?)([a-zA-Z0-9\-\._]|"  # noqa: F722
+                    r"(\\[\\\*\?!#$$%&'\(\)\+,/:;<=>@\[\]\^`\{\|}~]))+(\?*|\*?))|[\*\-])){5}"
+                    r"(:(([a-zA-Z]{2,3}(-([a-zA-Z]{2}|[0-9]{3}))?)|[\*\-]))(:(((\?*|\*?)"
+                    r"([a-zA-Z0-9\-\._]|(\\[\\\*\?!#$$%&'\(\)\+,/:;<=>@\[\]\^`\{\|}~]))+(\?*|\*?))|[\*\-])){4})"
+                )
+            ),
+        ]
     ]
 
-    @validator("cpe", always=True, pre=True)
+    @field_validator("cpe", mode="before")
     def set_cpe(cls, v):
         # hack to handle CPEs with colons in (which will be escaped with a backslash)
         v = v.replace(r"\:", r"\;")

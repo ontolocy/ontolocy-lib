@@ -17,7 +17,7 @@ def test_define_socket():
 
     assert my_sock.port_number == 22
     assert isinstance(my_sock.unique_id, UUID)
-    assert my_sock.get_identifier() == "192.168.10.101:22"
+    assert str(my_sock) == "192.168.10.101:22 (tcp)"
 
 
 def test_define_socket_same_unique_id():

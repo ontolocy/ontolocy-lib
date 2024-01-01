@@ -16,8 +16,8 @@ class Organisation(OntolocyNode):
     __primarylabel__: ClassVar[str] = "Organisation"
 
     name: str
-    description: Optional[str]
-    address: Optional[str]
+    description: Optional[str] = None
+    address: Optional[str] = None
 
 
 #
@@ -72,6 +72,6 @@ class OrganisationPublishedThreatReport(OntolocyRelationship):
 from .cve import CVE  # noqa: E402
 from .report import Report  # noqa: E402
 
-OrganisationAssignedCVSSToCVE.update_forward_refs()
-OrganisationPublishedThreatReport.update_forward_refs()
-OrganisationReportedExploitationOfCVE.update_forward_refs()
+OrganisationAssignedCVSSToCVE.model_rebuild()
+OrganisationPublishedThreatReport.model_rebuild()
+OrganisationReportedExploitationOfCVE.model_rebuild()
