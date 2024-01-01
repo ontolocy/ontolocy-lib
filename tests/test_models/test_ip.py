@@ -112,7 +112,7 @@ def test_ingest_df(use_graph):
     RETURN COUNT(DISTINCT ip)
     """
 
-    result = use_graph.evaluate(cypher)
+    result = use_graph.evaluate_query_single(cypher)
 
     assert result == 2
 
@@ -196,7 +196,7 @@ def test_ip_address_has_open_port(use_graph):
     RETURN COUNT(DISTINCT op)
     """
 
-    result = use_graph.evaluate(cypher)
+    result = use_graph.evaluate_query_single(cypher)
 
     assert result == 1
 
@@ -224,7 +224,7 @@ def test_ip_address_belongs_to_asn(use_graph):
     RETURN COUNT(DISTINCT asn)
     """
 
-    result = use_graph.evaluate(cypher)
+    result = use_graph.evaluate_query_single(cypher)
 
     assert result == 1
 
@@ -245,6 +245,6 @@ def test_ip_address_located_in_country(use_graph):
     RETURN COUNT(DISTINCT country)
     """
 
-    result = use_graph.evaluate(cypher)
+    result = use_graph.evaluate_query_single(cypher)
 
     assert result == 1

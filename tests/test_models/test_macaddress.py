@@ -33,6 +33,6 @@ def test_mac_address_assigned_to_host(use_graph):
     RETURN COUNT(DISTINCT host)
     """
 
-    result = use_graph.evaluate(cypher)
+    result = use_graph.evaluate_query_single(cypher)
 
     assert result == 1

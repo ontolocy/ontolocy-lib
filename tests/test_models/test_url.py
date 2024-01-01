@@ -23,6 +23,6 @@ def test_redirects_rel(use_graph):
     RETURN COUNT(DISTINCT r)
     """
 
-    result = use_graph.evaluate(cypher)
+    result = use_graph.evaluate_query_single(cypher)
 
     assert result == 1

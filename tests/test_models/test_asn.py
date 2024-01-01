@@ -3,7 +3,6 @@ from ontolocy.models.organisation import Organisation
 
 
 def test_define_asn():
-
     my_asn = ASN(
         number="123",
         network_name="Example ASN",
@@ -18,7 +17,6 @@ def test_define_asn():
 
 
 def test_create_asn(use_graph):
-
     my_asn = ASN(
         number="123",
         network_name="Example ASN",
@@ -32,19 +30,16 @@ def test_create_asn(use_graph):
     cypher = """
     MATCH (n:ASN)
     WHERE n.number = 123
-    RETURN n
+    RETURN n{.*}
     """
 
-    result = use_graph.evaluate(cypher)
-
-    assert result.has_label("ASN")
+    result = use_graph.evaluate_query_single(cypher)
 
     assert result.get("number") == 123
     assert result.get("network_name") == "Example ASN"
 
 
 def test_asn_registered_contact(use_graph):
-
     org = Organisation(name="GOOGLE LLC")
     org.merge()
 
@@ -67,6 +62,6 @@ def test_asn_registered_contact(use_graph):
     RETURN COUNT(DISTINCT org)
     """
 
-    result = use_graph.evaluate(cypher)
+    result = use_graph.evaluate_query_single(cypher)
 
     assert result == 1

@@ -3,7 +3,6 @@
 import os
 
 import pytest
-from py2neo import Graph
 from dotenv import load_dotenv
 
 from neontology import GraphConnection, init_neontology
@@ -11,7 +10,6 @@ from neontology import GraphConnection, init_neontology
 
 @pytest.fixture(scope="session")
 def neo4j_db():
-
     load_dotenv()
 
     neo4j_uri = os.getenv("TEST_NEO4J_URI")
@@ -24,7 +22,7 @@ def neo4j_db():
 
     init_neontology(neo4j_uri, neo4j_username, neo4j_password)
 
-    graph = Graph(neo4j_uri, auth=(neo4j_username, neo4j_password))
+    graph_connection = GraphConnection(neo4j_uri, neo4j_username, neo4j_password)
 
     # confirm we're starting with an empty database
     cypher = """
@@ -32,15 +30,13 @@ def neo4j_db():
     RETURN COUNT(n)
     """
 
-    node_count = graph.evaluate(cypher)
+    node_count = graph_connection.evaluate_query_single(cypher)
 
     assert (
         node_count == 0
     ), f"Looks like there are {node_count} nodes in the database, it should be empty."
 
-    yield graph
-
-    graph_connection = GraphConnection()
+    yield graph_connection
 
     # tidy up by explicitly closing the graph connection here
     # otherwise something weird happens which closes the connection before
@@ -57,7 +53,6 @@ def pytest_collection_modifyitems(config, items):
 
 @pytest.fixture(scope="function")
 def use_graph(neo4j_db):
-
     yield neo4j_db
 
     # at the end of every individual test function, we want to empty the database
@@ -67,4 +62,4 @@ def use_graph(neo4j_db):
     DETACH DELETE n
     """
 
-    neo4j_db.evaluate(cypher)
+    neo4j_db.evaluate_query_single(cypher)

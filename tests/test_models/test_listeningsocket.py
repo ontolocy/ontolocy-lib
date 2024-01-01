@@ -93,7 +93,7 @@ def test_listening_socket_uses_port(use_graph):
 
     params = {"socket_id": socket.get_primary_property_value()}
 
-    result = use_graph.evaluate(cypher, params)
+    result = use_graph.evaluate_query_single(cypher, params)
 
     assert result == 1
 
@@ -116,6 +116,6 @@ def test_listening_socket_has_url(use_graph):
 
     params = {"socket_id": socket.get_primary_property_value()}
 
-    result = use_graph.evaluate(cypher, params)
+    result = use_graph.evaluate_query_single(cypher, params)
 
     assert result == 1
