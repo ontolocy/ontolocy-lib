@@ -14,16 +14,16 @@
 
 ## Outgoing Relationships
 
-### DNS_RECORD_POINTS_TO_IP_ADDRESS
+### DNS_RECORD_POINTS_TO_DOMAIN_NAME
 
-Target Label: IPAddress
+Target Label: DomainName
 
 #### Relationship Properties
 
 | Property Name | Type | Required |
 | ------------- | ---- | -------- |
 | observation_date | datetime | True |
-| target | IPAddressNode | True |
+| target | DomainName | True |
 | source | DNSRecord | True |
 
 
@@ -40,16 +40,16 @@ Target Label: DomainName
 | source | DNSRecord | True |
 
 
-### DNS_RECORD_POINTS_TO_DOMAIN_NAME
+### DNS_RECORD_POINTS_TO_IP_ADDRESS
 
-Target Label: DomainName
+Target Label: IPAddress
 
 #### Relationship Properties
 
 | Property Name | Type | Required |
 | ------------- | ---- | -------- |
 | observation_date | datetime | True |
-| target | DomainName | True |
+| target | IPAddressNode | True |
 | source | DNSRecord | True |
 
 

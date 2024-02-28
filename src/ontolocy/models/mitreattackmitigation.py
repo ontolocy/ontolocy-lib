@@ -1,11 +1,10 @@
 from datetime import datetime
 from typing import ClassVar, Optional
 
-from pydantic import HttpUrl, field_validator
+from pydantic import HttpUrl
 
 from ..node import OntolocyNode
 from ..relationship import OntolocyRelationship
-from .intrusionset import IntrusionSet
 from .mitreattacktechnique import MitreAttackTechnique
 
 
@@ -40,6 +39,6 @@ class MitreAttackMitigationDefendsAgainstTechnique(OntolocyRelationship):
     source: MitreAttackMitigation
     target: MitreAttackTechnique
 
-    __relationshiptype__: ClassVar[str] = (
-        "MITRE_ATTACK_MITIGATION_DEFENDS_AGAINST_TECHNIQUE"
-    )
+    __relationshiptype__: ClassVar[
+        str
+    ] = "MITRE_ATTACK_MITIGATION_DEFENDS_AGAINST_TECHNIQUE"

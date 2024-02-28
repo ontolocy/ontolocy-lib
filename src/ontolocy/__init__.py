@@ -77,6 +77,24 @@ from ontolocy.models.mitreattackcampaign import (
     MitreCampaignUsesSoftware,
     MitreCampaignUsesTechnique,
 )
+from ontolocy.models.mitreattackdatacomponent import (
+    MitreAttackDataComponent,
+    MitreAttackDataComponentDetectsTechnique,
+)
+from ontolocy.models.mitreattackdatasource import (
+    MitreAttackDataSource,
+    MitreAttackDataSourceHasComponent,
+)
+from ontolocy.models.mitreattackgroup import (
+    MitreAttackGroup,
+    MitreAttackGroupLinkedToIntrusionSet,
+    MitreAttackGroupUsesSoftware,
+    MitreAttackGroupUsesTechnique,
+)
+from ontolocy.models.mitreattackmitigation import (
+    MitreAttackMitigation,
+    MitreAttackMitigationDefendsAgainstTechnique,
+)
 from ontolocy.models.mitreattacksoftware import (
     MitreAttackSoftware,
     MitreSoftwareUsesTechnique,
@@ -88,24 +106,6 @@ from ontolocy.models.mitreattacktactic import (
 from ontolocy.models.mitreattacktechnique import (
     MitreAttackTechnique,
     MitreSubtechniqueOf,
-)
-from ontolocy.models.mitreattackdatacomponent import (
-    MitreAttackDataComponent,
-    MitreAttackDataComponentDetectsTechnique,
-)
-from ontolocy.models.mitreattackdatasource import (
-    MitreAttackDataSource,
-    MitreAttackDataSourceHasComponent,
-)
-from ontolocy.models.mitreattackmitigation import (
-    MitreAttackMitigation,
-    MitreAttackMitigationDefendsAgainstTechnique,
-)
-from ontolocy.models.mitreattackgroup import (
-    MitreAttackGroup,
-    MitreAttackGroupLinkedToIntrusionSet,
-    MitreAttackGroupUsesSoftware,
-    MitreAttackGroupUsesTechnique,
 )
 from ontolocy.models.networkservice import NetworkService, NetworkServiceRunsOnPort
 from ontolocy.models.organisation import (

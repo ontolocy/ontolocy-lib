@@ -425,6 +425,54 @@ Target Label: MitreAttackTactic
 
 ### ORIGIN_GENERATED
 
+Target Label: MitreAttackDataComponent
+
+#### Relationship Properties
+
+| Property Name | Type | Required |
+| ------------- | ---- | -------- |
+| target | BaseNode | True |
+| source | DataOrigin | True |
+
+
+### ORIGIN_GENERATED
+
+Target Label: MitreAttackDataSource
+
+#### Relationship Properties
+
+| Property Name | Type | Required |
+| ------------- | ---- | -------- |
+| target | BaseNode | True |
+| source | DataOrigin | True |
+
+
+### ORIGIN_GENERATED
+
+Target Label: MitreAttackMitigation
+
+#### Relationship Properties
+
+| Property Name | Type | Required |
+| ------------- | ---- | -------- |
+| target | BaseNode | True |
+| source | DataOrigin | True |
+
+
+### ORIGIN_GENERATED
+
+Target Label: MitreAttackGroup
+
+#### Relationship Properties
+
+| Property Name | Type | Required |
+| ------------- | ---- | -------- |
+| target | BaseNode | True |
+| source | DataOrigin | True |
+
+
+### ORIGIN_GENERATED
+
 Target Label: NetworkService
 
 #### Relationship Properties

@@ -21,10 +21,23 @@
 | stix_id | str | True |
 | stix_spec_version | str | False |
 | stix_revoked | Optional | False |
+| attack_deprecated | Optional | False |
 
 
 
 ## Outgoing Relationships
+
+### MITRE_CAMPAIGN_USES_TECHNIQUE
+
+Target Label: MitreAttackTechnique
+
+#### Relationship Properties
+
+| Property Name | Type | Required |
+| ------------- | ---- | -------- |
+| target | MitreAttackTechnique | True |
+| source | MitreAttackCampaign | True |
+
 
 ### MITRE_CAMPAIGN_ATTRIBUTED_TO_INTRUSION_SET
 
@@ -47,18 +60,6 @@ Target Label: MitreAttackSoftware
 | Property Name | Type | Required |
 | ------------- | ---- | -------- |
 | target | MitreAttackSoftware | True |
-| source | MitreAttackCampaign | True |
-
-
-### MITRE_CAMPAIGN_USES_TECHNIQUE
-
-Target Label: MitreAttackTechnique
-
-#### Relationship Properties
-
-| Property Name | Type | Required |
-| ------------- | ---- | -------- |
-| target | MitreAttackTechnique | True |
 | source | MitreAttackCampaign | True |
 
 

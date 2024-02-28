@@ -1,11 +1,11 @@
 from datetime import date
-from typing import ClassVar, Optional, List
+from typing import ClassVar, List, Optional
 
-from pydantic import HttpUrl, field_validator, ValidationInfo
+from pydantic import HttpUrl, ValidationInfo, field_validator
 
-from ..utils import generate_deterministic_uuid
 from ..node import OntolocyNode
 from ..relationship import OntolocyRelationship
+from ..utils import generate_deterministic_uuid
 from .campaign import Campaign
 from .country import Country
 from .cve import CVE

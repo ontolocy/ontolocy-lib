@@ -1,8 +1,6 @@
 from datetime import datetime
 from typing import ClassVar, Optional
 
-from pydantic import HttpUrl, field_validator
-
 from ..node import OntolocyNode
 from ..relationship import OntolocyRelationship
 from .mitreattacktechnique import MitreAttackTechnique
@@ -37,6 +35,6 @@ class MitreAttackDataComponentDetectsTechnique(OntolocyRelationship):
     source: MitreAttackDataComponent
     target: MitreAttackTechnique
 
-    __relationshiptype__: ClassVar[str] = (
-        "MITRE_ATTACK_DATA_COMPONENT_DETECTS_TECHNIQUE"
-    )
+    __relationshiptype__: ClassVar[
+        str
+    ] = "MITRE_ATTACK_DATA_COMPONENT_DETECTS_TECHNIQUE"
