@@ -1,7 +1,7 @@
 from datetime import datetime
 from typing import ClassVar, Optional
 
-from pydantic import HttpUrl, StringConstraints, field_validator
+from pydantic import HttpUrl, StringConstraints
 from typing_extensions import Annotated
 
 from ..node import OntolocyNode
@@ -26,18 +26,11 @@ class MitreAttackTactic(OntolocyNode):
     attack_spec_version: str
     attack_version: str
     attack_shortname: str
+    attack_deprecated: Optional[bool] = False
 
     ref_url: HttpUrl
     name: str
     description: str
-
-    @field_validator("stix_revoked")
-    @classmethod
-    def set_false(cls, v):
-        if v is None:
-            return False
-        else:
-            return v
 
 
 #

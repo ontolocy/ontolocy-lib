@@ -77,6 +77,24 @@ from ontolocy.models.mitreattackcampaign import (
     MitreCampaignUsesSoftware,
     MitreCampaignUsesTechnique,
 )
+from ontolocy.models.mitreattackdatacomponent import (
+    MitreAttackDataComponent,
+    MitreAttackDataComponentDetectsTechnique,
+)
+from ontolocy.models.mitreattackdatasource import (
+    MitreAttackDataSource,
+    MitreAttackDataSourceHasComponent,
+)
+from ontolocy.models.mitreattackgroup import (
+    MitreAttackGroup,
+    MitreAttackGroupLinkedToIntrusionSet,
+    MitreAttackGroupUsesSoftware,
+    MitreAttackGroupUsesTechnique,
+)
+from ontolocy.models.mitreattackmitigation import (
+    MitreAttackMitigation,
+    MitreAttackMitigationDefendsAgainstTechnique,
+)
 from ontolocy.models.mitreattacksoftware import (
     MitreAttackSoftware,
     MitreSoftwareUsesTechnique,
@@ -203,6 +221,16 @@ __all__ = [
     "MitreAttackSoftware",
     "MitreSoftwareUsesTechnique",
     "MitreCampaignAttributedTo",
+    "MitreAttackDataComponent",
+    "MitreAttackDataComponentDetectsTechnique",
+    "MitreAttackDataSource",
+    "MitreAttackDataSourceHasComponent",
+    "MitreAttackMitigation",
+    "MitreAttackMitigationDefendsAgainstTechnique",
+    "MitreAttackGroup",
+    "MitreAttackGroupLinkedToIntrusionSet",
+    "MitreAttackGroupUsesSoftware",
+    "MitreAttackGroupUsesTechnique",
     "NetworkService",
     "NetworkServiceRunsOnPort",
     "OpenPortHasJarmHash",

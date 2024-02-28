@@ -8,10 +8,10 @@ from ..relationship import OntolocyRelationship
 from .mitreattacktechnique import MitreAttackTechnique
 
 
-class MitreAttackSoftware(OntolocyNode):
+class MitreAttackMitigation(OntolocyNode):
 
     __primaryproperty__: ClassVar[str] = "stix_id"
-    __primarylabel__: ClassVar[str] = "MitreAttackSoftware"
+    __primarylabel__: ClassVar[str] = "MitreAttackMitigation"
 
     stix_id: str
     stix_type: str
@@ -27,7 +27,7 @@ class MitreAttackSoftware(OntolocyNode):
 
     ref_url: HttpUrl
     name: str
-    description: Optional[str] = None
+    description: str
 
 
 #
@@ -35,8 +35,10 @@ class MitreAttackSoftware(OntolocyNode):
 #
 
 
-class MitreSoftwareUsesTechnique(OntolocyRelationship):
-    source: MitreAttackSoftware
+class MitreAttackMitigationDefendsAgainstTechnique(OntolocyRelationship):
+    source: MitreAttackMitigation
     target: MitreAttackTechnique
 
-    __relationshiptype__: ClassVar[str] = "MITRE_SOFTWARE_USES_TECHNIQUE"
+    __relationshiptype__: ClassVar[
+        str
+    ] = "MITRE_ATTACK_MITIGATION_DEFENDS_AGAINST_TECHNIQUE"

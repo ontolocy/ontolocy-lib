@@ -29,7 +29,7 @@ class ThreatActor(OntolocyNode):
 class ThreatActorAttributedToNation(OntolocyRelationship):
     source: ThreatActor
     target: Country
-    url_reference: Optional[HttpUrl]
+    url_reference: Optional[HttpUrl] = None
 
     __relationshiptype__: ClassVar[str] = "THREAT_ACTOR_ATTRIBUTED_TO_NATION"
 
@@ -37,7 +37,7 @@ class ThreatActorAttributedToNation(OntolocyRelationship):
 class ThreatActorIsOfType(OntolocyRelationship):
     source: ThreatActor
     target: ActorType
-    url_reference: Optional[HttpUrl]
+    url_reference: Optional[HttpUrl] = None
 
     __relationshiptype__: ClassVar[str] = "THREAT_ACTOR_IS_OF_TYPE"
 
@@ -45,7 +45,7 @@ class ThreatActorIsOfType(OntolocyRelationship):
 class ThreatActorLinkedToThreatActor(OntolocyRelationship):
     source: ThreatActor
     target: ThreatActor
-    url_reference: Optional[HttpUrl]
-    context: Optional[str]
+    url_reference: Optional[HttpUrl] = None
+    context: Optional[str] = None
 
     __relationshiptype__: ClassVar[str] = "THREAT_ACTOR_LINKED_TO_THREAT_ACTOR"

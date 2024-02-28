@@ -34,7 +34,7 @@ class ListeningSocket(OntolocyNode):
     private: Optional[bool] = None
     namespace: Optional[str] = None
     ip_address_unique_id: Optional[
-        UUID
+        str
     ] = None  # for private IPs, uniquely identify the IP to avoid collisions
 
     unique_id: Optional[UUID] = None
@@ -79,12 +79,15 @@ class ListeningSocket(OntolocyNode):
             return v
 
     @field_validator("ip_address_unique_id")
-    def generate_ip_id(cls, v: Optional[UUID], info: ValidationInfo) -> UUID:
+    def generate_ip_id(cls, v: Optional[UUID], info: ValidationInfo) -> str:
         values = info.data
-        if v is None:
+        if v is None and values["private"] and values.get("namespace"):
             key_values = [values["ip_address"], values["namespace"]]
 
-            v = generate_deterministic_uuid(key_values)
+            v = str(generate_deterministic_uuid(key_values))
+
+        elif v is None:
+            v = str(values["ip_address"])
 
         return v
 

@@ -15,6 +15,30 @@
 
 ## Outgoing Relationships
 
+### IP_ADDRESS_IDENTIFIED_AS_PLATFORM
+
+Target Label: CPE
+
+#### Relationship Properties
+
+| Property Name | Type | Required |
+| ------------- | ---- | -------- |
+| target | CPE | True |
+| source | IPAddressNode | True |
+
+
+### IP_ADDRESS_LOCATED_IN_COUNTRY
+
+Target Label: Country
+
+#### Relationship Properties
+
+| Property Name | Type | Required |
+| ------------- | ---- | -------- |
+| target | Country | True |
+| source | IPAddressNode | True |
+
+
 ### IP_ADDRESS_MAPS_TO_MAC_ADDRESS
 
 Target Label: MACAddress
@@ -39,30 +63,6 @@ Target Label: DomainName
 | source | IPAddressNode | True |
 
 
-### IP_ADDRESS_BELONGS_TO_ASN
-
-Target Label: ASN
-
-#### Relationship Properties
-
-| Property Name | Type | Required |
-| ------------- | ---- | -------- |
-| target | ASN | True |
-| source | IPAddressNode | True |
-
-
-### IP_ADDRESS_IDENTIFIED_AS_PLATFORM
-
-Target Label: CPE
-
-#### Relationship Properties
-
-| Property Name | Type | Required |
-| ------------- | ---- | -------- |
-| target | CPE | True |
-| source | IPAddressNode | True |
-
-
 ### IP_ADDRESS_HAS_OPEN_PORT
 
 Target Label: ListeningSocket
@@ -75,15 +75,15 @@ Target Label: ListeningSocket
 | source | IPAddressNode | True |
 
 
-### IP_ADDRESS_LOCATED_IN_COUNTRY
+### IP_ADDRESS_BELONGS_TO_ASN
 
-Target Label: Country
+Target Label: ASN
 
 #### Relationship Properties
 
 | Property Name | Type | Required |
 | ------------- | ---- | -------- |
-| target | Country | True |
+| target | ASN | True |
 | source | IPAddressNode | True |
 
 

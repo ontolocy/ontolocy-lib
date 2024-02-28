@@ -18,6 +18,6 @@ def test_basic_ports(port_number, protocol, unique_id, port_str):
     assert port.protocol == protocol
     assert port.port_number == int(port_number)
 
-    assert port.unique_id == UUID(unique_id)
+    assert port.unique_id == unique_id
 
     assert str(port) == port_str
