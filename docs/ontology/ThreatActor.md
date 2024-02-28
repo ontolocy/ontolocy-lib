@@ -22,22 +22,9 @@ Target Label: ActorType
 
 | Property Name | Type | Required |
 | ------------- | ---- | -------- |
-| url_reference | Optional | True |
 | target | ActorType | True |
 | source | ThreatActor | True |
-
-
-### THREAT_ACTOR_ATTRIBUTED_TO_NATION
-
-Target Label: Country
-
-#### Relationship Properties
-
-| Property Name | Type | Required |
-| ------------- | ---- | -------- |
-| url_reference | Optional | True |
-| target | Country | True |
-| source | ThreatActor | True |
+| url_reference | Optional | False |
 
 
 ### THREAT_ACTOR_LINKED_TO_THREAT_ACTOR
@@ -48,10 +35,23 @@ Target Label: ThreatActor
 
 | Property Name | Type | Required |
 | ------------- | ---- | -------- |
-| context | Optional | True |
-| url_reference | Optional | True |
 | target | ThreatActor | True |
 | source | ThreatActor | True |
+| url_reference | Optional | False |
+| context | Optional | False |
+
+
+### THREAT_ACTOR_ATTRIBUTED_TO_NATION
+
+Target Label: Country
+
+#### Relationship Properties
+
+| Property Name | Type | Required |
+| ------------- | ---- | -------- |
+| target | Country | True |
+| source | ThreatActor | True |
+| url_reference | Optional | False |
 
 
 

@@ -5,13 +5,13 @@ from pydantic import HttpUrl
 
 from ..node import OntolocyNode
 from ..relationship import OntolocyRelationship
-from .mitreattacktechnique import MitreAttackTechnique
+from .mitreattackdatacomponent import MitreAttackDataComponent
 
 
-class MitreAttackSoftware(OntolocyNode):
+class MitreAttackDataSource(OntolocyNode):
 
     __primaryproperty__: ClassVar[str] = "stix_id"
-    __primarylabel__: ClassVar[str] = "MitreAttackSoftware"
+    __primarylabel__: ClassVar[str] = "MitreAttackDataSource"
 
     stix_id: str
     stix_type: str
@@ -27,7 +27,7 @@ class MitreAttackSoftware(OntolocyNode):
 
     ref_url: HttpUrl
     name: str
-    description: Optional[str] = None
+    description: str
 
 
 #
@@ -35,8 +35,8 @@ class MitreAttackSoftware(OntolocyNode):
 #
 
 
-class MitreSoftwareUsesTechnique(OntolocyRelationship):
-    source: MitreAttackSoftware
-    target: MitreAttackTechnique
+class MitreAttackDataSourceHasComponent(OntolocyRelationship):
+    source: MitreAttackDataSource
+    target: MitreAttackDataComponent
 
-    __relationshiptype__: ClassVar[str] = "MITRE_SOFTWARE_USES_TECHNIQUE"
+    __relationshiptype__: ClassVar[str] = "MITRE_ATTACK_DATA_SOURCE_HAS_COMPONENT"

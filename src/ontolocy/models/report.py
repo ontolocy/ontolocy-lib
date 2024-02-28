@@ -1,10 +1,11 @@
 from datetime import date
-from typing import ClassVar, Optional
+from typing import ClassVar, List, Optional
 
-from pydantic import HttpUrl
+from pydantic import HttpUrl, ValidationInfo, field_validator
 
 from ..node import OntolocyNode
 from ..relationship import OntolocyRelationship
+from ..utils import generate_deterministic_uuid
 from .campaign import Campaign
 from .country import Country
 from .cve import CVE
@@ -18,7 +19,7 @@ from .threatactor import ThreatActor
 
 
 class Report(OntolocyNode):
-    __primaryproperty__: ClassVar[str] = "url_reference"
+    __primaryproperty__: ClassVar[str] = "unique_id"
     __primarylabel__: ClassVar[Optional[str]] = "Report"
 
     title: str
@@ -26,6 +27,23 @@ class Report(OntolocyNode):
     url_reference: HttpUrl
     published_date: date
     summary: Optional[str] = None
+
+    additional_urls: Optional[List[HttpUrl]] = None
+    unique_id: Optional[str] = None
+
+    def __str__(self) -> str:
+        return self.title
+
+    @field_validator("unique_id")
+    def generate_socket_uuid(cls, v: Optional[str], info: ValidationInfo) -> str:
+        values = info.data
+
+        if v is None:
+            key_values = [values["title"], values["author"], values["published_date"]]
+
+            v = str(generate_deterministic_uuid(key_values))
+
+        return v
 
 
 #

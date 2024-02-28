@@ -1,6 +1,8 @@
 from ontolocy import Report, ReportMentionsCVE
 from ontolocy.models.cve import CVE
 
+from pydantic import HttpUrl
+
 report = Report(
     title="My First Report",
     author="Test Author",
@@ -10,8 +12,24 @@ report = Report(
 )
 
 
+report2 = Report(
+    title="My Second Report",
+    author="Test Author",
+    url_reference="https://example.com/#report",
+    published_date="2022-10-01",
+    summary="This is just a test",
+    additional_urls=["https://example.com/#1", "https://example.com/#2"],
+    unique_id="my-second-report",
+)
+
+
 def test_report():
-    assert report.get_primary_property_value() == "https://example.com/"
+    assert report.get_primary_property_value() == "bbaecd6b-ab55-5bd3-8cc7-b415cb8b7a29"
+
+
+def test_report2():
+    assert report2.get_primary_property_value() == "my-second-report"
+    assert report2.additional_urls[1] == HttpUrl("https://example.com/#2")
 
 
 def test_report_mentions_cve(use_graph):
@@ -25,11 +43,11 @@ def test_report_mentions_cve(use_graph):
 
     cypher = f"""
     MATCH (report:Report)-[r:REPORT_MENTIONS_CVE]->(cve:CVE)
-    WHERE report.url_reference = $url_reference
+    WHERE report.unique_id = $unique_id
     RETURN COUNT(DISTINCT r)
     """
 
-    params = {"url_reference": str(report.get_primary_property_value())}
+    params = {"unique_id": str(report.get_primary_property_value())}
 
     result = use_graph.evaluate_query_single(cypher, params)
 

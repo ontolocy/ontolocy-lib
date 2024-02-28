@@ -17,30 +17,6 @@
 
 ## Outgoing Relationships
 
-### OPEN_PORT_PRESENTS_BANNER
-
-Target Label: Banner
-
-#### Relationship Properties
-
-| Property Name | Type | Required |
-| ------------- | ---- | -------- |
-| target | Banner | True |
-| source | ListeningSocket | True |
-
-
-### LISTENING_SOCKET_USES_PORT
-
-Target Label: Port
-
-#### Relationship Properties
-
-| Property Name | Type | Required |
-| ------------- | ---- | -------- |
-| target | Port | True |
-| source | ListeningSocket | True |
-
-
 ### OPEN_PORT_HAS_JARM_HASH
 
 Target Label: JarmHash
@@ -51,19 +27,6 @@ Target Label: JarmHash
 | ------------- | ---- | -------- |
 | target | JarmHash | True |
 | source | ListeningSocket | True |
-
-
-### SERVICE_HOSTS_URL
-
-Target Label: URL
-
-#### Relationship Properties
-
-| Property Name | Type | Required |
-| ------------- | ---- | -------- |
-| target | URLNode | True |
-| source | ListeningSocket | True |
-| status_code | Optional | False |
 
 
 ### OPEN_PORT_PRESENTS_X509_CERTIFICATE
@@ -78,6 +41,18 @@ Target Label: X509Certificate
 | source | ListeningSocket | True |
 
 
+### OPEN_PORT_PRESENTS_BANNER
+
+Target Label: Banner
+
+#### Relationship Properties
+
+| Property Name | Type | Required |
+| ------------- | ---- | -------- |
+| target | Banner | True |
+| source | ListeningSocket | True |
+
+
 ### SERVICE_IDENTIFIED_AS_PLATFORM
 
 Target Label: CPE
@@ -88,6 +63,31 @@ Target Label: CPE
 | ------------- | ---- | -------- |
 | cpe | Optional | True |
 | target | CPE | True |
+| source | ListeningSocket | True |
+| status_code | Optional | False |
+
+
+### LISTENING_SOCKET_USES_PORT
+
+Target Label: Port
+
+#### Relationship Properties
+
+| Property Name | Type | Required |
+| ------------- | ---- | -------- |
+| target | Port | True |
+| source | ListeningSocket | True |
+
+
+### SERVICE_HOSTS_URL
+
+Target Label: URL
+
+#### Relationship Properties
+
+| Property Name | Type | Required |
+| ------------- | ---- | -------- |
+| target | URLNode | True |
 | source | ListeningSocket | True |
 | status_code | Optional | False |
 

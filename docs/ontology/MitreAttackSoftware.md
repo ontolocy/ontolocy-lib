@@ -16,6 +16,7 @@
 | stix_id | str | True |
 | stix_spec_version | str | False |
 | stix_revoked | Optional | False |
+| attack_deprecated | Optional | False |
 | description | Optional | False |
 
 

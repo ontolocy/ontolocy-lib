@@ -43,9 +43,9 @@ def test_basic_ips(ip_address, private, version):
 @pytest.mark.parametrize(
     "ip_address,unique_id",
     [
-        ("1.1.1.1", "b3845f07-e8e2-5374-85cd-1c5e381a095f"),
-        ("8.8.8.8", "918605df-3e1c-5fc8-ae3b-f76918df2b55"),
-        ("2001:4860:4860::8888", "37d7589d-643e-5f19-8f88-1564af8972ef"),
+        ("1.1.1.1", "1.1.1.1"),
+        ("8.8.8.8", "8.8.8.8"),
+        ("2001:4860:4860::8888", "2001:4860:4860::8888"),
     ],
 )
 def test_repeatable_unique_id_public(ip_address, unique_id):
@@ -59,7 +59,7 @@ def test_repeatable_unique_id_public(ip_address, unique_id):
 
     assert uuid1 == uuid2
 
-    assert uuid1 == UUID(unique_id)
+    assert uuid1 == unique_id
 
 
 def test_repeatable_unique_id_private():
@@ -73,7 +73,7 @@ def test_repeatable_unique_id_private():
 
     assert uuid1 == uuid2
 
-    assert uuid1 == UUID("9ec0a0fc-1fc5-50b1-925c-db5393faf934")
+    assert uuid1 == "9ec0a0fc-1fc5-50b1-925c-db5393faf934"
 
 
 def test_unique_id_private():
@@ -86,6 +86,12 @@ def test_unique_id_private():
     uuid2 = ip2.unique_id
 
     assert uuid1 != uuid2
+
+
+def test_unique_id_public():
+    ip1 = IPAddressNode(ip_address="1.1.1.1")
+
+    assert ip1.unique_id == "1.1.1.1"
 
 
 def test_ingest_df(use_graph):

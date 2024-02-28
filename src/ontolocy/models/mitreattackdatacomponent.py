@@ -1,17 +1,15 @@
 from datetime import datetime
 from typing import ClassVar, Optional
 
-from pydantic import HttpUrl
-
 from ..node import OntolocyNode
 from ..relationship import OntolocyRelationship
 from .mitreattacktechnique import MitreAttackTechnique
 
 
-class MitreAttackSoftware(OntolocyNode):
+class MitreAttackDataComponent(OntolocyNode):
 
     __primaryproperty__: ClassVar[str] = "stix_id"
-    __primarylabel__: ClassVar[str] = "MitreAttackSoftware"
+    __primarylabel__: ClassVar[str] = "MitreAttackDataComponent"
 
     stix_id: str
     stix_type: str
@@ -22,12 +20,10 @@ class MitreAttackSoftware(OntolocyNode):
 
     attack_spec_version: str
     attack_version: str
-    attack_id: str
     attack_deprecated: Optional[bool] = False
 
-    ref_url: HttpUrl
     name: str
-    description: Optional[str] = None
+    description: str
 
 
 #
@@ -35,8 +31,10 @@ class MitreAttackSoftware(OntolocyNode):
 #
 
 
-class MitreSoftwareUsesTechnique(OntolocyRelationship):
-    source: MitreAttackSoftware
+class MitreAttackDataComponentDetectsTechnique(OntolocyRelationship):
+    source: MitreAttackDataComponent
     target: MitreAttackTechnique
 
-    __relationshiptype__: ClassVar[str] = "MITRE_SOFTWARE_USES_TECHNIQUE"
+    __relationshiptype__: ClassVar[
+        str
+    ] = "MITRE_ATTACK_DATA_COMPONENT_DETECTS_TECHNIQUE"
