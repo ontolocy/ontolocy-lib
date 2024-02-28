@@ -118,6 +118,11 @@ sectors = {
         "name": "Insurance",
         "keywords": ["insurance"],
     },
+    "legal": {
+        "sector_id": "legal-services",
+        "name": "Legal Services",
+        "keywords": ["legal services", "law firms"],
+    },
     "manufacturing": {
         "sector_id": "manufacturing",
         "name": "Manufacturing",
@@ -167,10 +172,9 @@ sectors = {
 
 
 class Sector(OntolocyNode):
-
     __primaryproperty__: ClassVar[str] = "unique_id"
     __primarylabel__: ClassVar[Optional[str]] = "Sector"
 
     name: str
     unique_id: str
-    keywords: Optional[List[str]]
+    keywords: Optional[List[str]] = None

@@ -23,18 +23,11 @@ class MitreAttackSoftware(OntolocyNode):
     attack_spec_version: str
     attack_version: str
     attack_id: str
+    attack_deprecated: Optional[bool] = False
 
     ref_url: HttpUrl
     name: str
     description: Optional[str] = None
-
-    @field_validator("stix_revoked")
-    @classmethod
-    def set_false(cls, v):
-        if v is None:
-            return False
-        else:
-            return v
 
 
 #

@@ -29,18 +29,11 @@ class MitreAttackCampaign(OntolocyNode):
     attack_first_seen_citation: str
     attack_last_seen_citation: str
     attack_id: str
+    attack_deprecated: Optional[bool] = False
 
     ref_url: HttpUrl
     name: str
     description: str
-
-    @field_validator("stix_revoked")
-    @classmethod
-    def set_false(cls, v):
-        if v is None:
-            return False
-        else:
-            return v
 
 
 #

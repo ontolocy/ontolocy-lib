@@ -38,4 +38,18 @@ class CVERelatesToCPE(OntolocyRelationship):
     source: CVE
     target: CPE
 
+    cpe: Optional[
+        Annotated[
+            str,
+            StringConstraints(
+                pattern=(
+                    r"(cpe:2\.3:[aho\*\-](:(((\?*|\*?)([a-zA-Z0-9\-\._]|"  # noqa: F722
+                    r"(\\[\\\*\?!#$$%&'\(\)\+,/:;<=>@\[\]\^`\{\|}~]))+(\?*|\*?))|[\*\-])){5}"
+                    r"(:(([a-zA-Z]{2,3}(-([a-zA-Z]{2}|[0-9]{3}))?)|[\*\-]))(:(((\?*|\*?)"
+                    r"([a-zA-Z0-9\-\._]|(\\[\\\*\?!#$$%&'\(\)\+,/:;<=>@\[\]\^`\{\|}~]))+(\?*|\*?))|[\*\-])){4})"
+                )
+            ),
+        ]
+    ] = None
+
     __relationshiptype__: ClassVar[str] = "CVE_RELATES_TO_CPE"

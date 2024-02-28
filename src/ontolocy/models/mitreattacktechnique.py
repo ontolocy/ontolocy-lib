@@ -25,18 +25,11 @@ class MitreAttackTechnique(OntolocyNode):
     attack_spec_version: str
     attack_subtechnique: Optional[bool] = False
     attack_version: str
+    attack_deprecated: Optional[bool] = False
 
     ref_url: HttpUrl
     name: str
     description: str
-
-    @field_validator("stix_revoked", "attack_subtechnique")
-    @classmethod
-    def set_false(cls, v):
-        if v is None:
-            return False
-        else:
-            return v
 
     def __str__(self) -> str:
         return f"{self.attack_id}: {self.name}"

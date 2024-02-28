@@ -29,7 +29,7 @@ class IPAddressNode(OntolocyNode):
     private: Optional[bool] = None
     namespace: Optional[str] = None
 
-    unique_id: Optional[UUID] = None
+    unique_id: Optional[str] = None
 
     def __str__(self) -> str:
         return str(self.ip_address)
@@ -71,12 +71,15 @@ class IPAddressNode(OntolocyNode):
             return v
 
     @field_validator("unique_id")
-    def generate_instance_id(cls, v: Optional[UUID], info: ValidationInfo) -> UUID:
+    def generate_instance_id(cls, v: Optional[UUID], info: ValidationInfo) -> str:
         values = info.data
-        if v is None:
+        if v is None and values["private"] and values.get("namespace"):
             key_values = [values["ip_address"], values["namespace"]]
 
-            v = generate_deterministic_uuid(key_values)
+            v = str(generate_deterministic_uuid(key_values))
+
+        elif v is None:
+            v = str(values["ip_address"])
 
         return v
 

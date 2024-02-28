@@ -21,7 +21,7 @@ class Host(OntolocyNode):
     hostname: str
     os: Optional[HostOSEnum] = None
     namespace: Optional[str] = None
-    unique_id: Optional[UUID] = None
+    unique_id: Optional[str] = None
 
     def __str__(self) -> str:
         return self.hostname
@@ -41,6 +41,6 @@ class Host(OntolocyNode):
         if v is None:
             key_values = [values["hostname"], values["namespace"]]
 
-            v = generate_deterministic_uuid(key_values)
+            v = str(generate_deterministic_uuid(key_values))
 
         return v

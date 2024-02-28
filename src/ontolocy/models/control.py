@@ -52,8 +52,8 @@ class ControlRelatedToControl(OntolocyRelationship):
     source: Control
     target: Control
 
-    context: Optional[str]
-    url_reference: Optional[AnyHttpUrl]
+    context: Optional[str] = None
+    url_reference: Optional[AnyHttpUrl] = None
 
     __relationshiptype__: ClassVar[str] = "CONTROL_RELATED_TO_CONTROL"
 
@@ -62,8 +62,8 @@ class ControlHasParentControl(OntolocyRelationship):
     source: Control
     target: Control
 
-    context: Optional[str]
-    url_reference: Optional[AnyHttpUrl]
+    context: Optional[str] = None
+    url_reference: Optional[AnyHttpUrl] = None
 
     __relationshiptype__: ClassVar[str] = "CONTROL_HAS_PARENT_CONTROL"
 
@@ -72,6 +72,6 @@ class ControlMitigatesAttackTechnique(OntolocyRelationship):
     source: Control
     target: MitreAttackTechnique
 
-    url_reference: Optional[AnyHttpUrl]
+    url_reference: Optional[AnyHttpUrl] = None
 
     __relationshiptype__: ClassVar[str] = "CONTROL_MITIGATES_ATTACK_TECHNIQUE"

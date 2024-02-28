@@ -1,17 +1,18 @@
 from datetime import datetime
 from typing import ClassVar, Optional
 
-from pydantic import HttpUrl, StringConstraints, field_validator
-from typing_extensions import Annotated
+from pydantic import HttpUrl, field_validator
 
 from ..node import OntolocyNode
 from ..relationship import OntolocyRelationship
 from .mitreattacktechnique import MitreAttackTechnique
+from .mitreattackdatacomponent import MitreAttackDataComponent
 
 
-class MitreAttackTactic(OntolocyNode):
+class MitreAttackDataSource(OntolocyNode):
+
     __primaryproperty__: ClassVar[str] = "stix_id"
-    __primarylabel__: ClassVar[str] = "MitreAttackTactic"
+    __primarylabel__: ClassVar[str] = "MitreAttackDataSource"
 
     stix_id: str
     stix_type: str
@@ -20,12 +21,9 @@ class MitreAttackTactic(OntolocyNode):
     stix_spec_version: str = "2.1"
     stix_revoked: Optional[bool] = False
 
-    attack_id: Annotated[
-        str, StringConstraints(to_upper=True, pattern=r"TA\d{4}")
-    ]  # noqa: F722
     attack_spec_version: str
     attack_version: str
-    attack_shortname: str
+    attack_id: str
     attack_deprecated: Optional[bool] = False
 
     ref_url: HttpUrl
@@ -38,8 +36,8 @@ class MitreAttackTactic(OntolocyNode):
 #
 
 
-class MitreTacticIncludesTechnique(OntolocyRelationship):
-    source: MitreAttackTactic
-    target: MitreAttackTechnique
+class MitreAttackDataSourceHasComponent(OntolocyRelationship):
+    source: MitreAttackDataSource
+    target: MitreAttackDataComponent
 
-    __relationshiptype__: ClassVar[str] = "MITRE_TACTIC_INCLUDES_TECHNIQUE"
+    __relationshiptype__: ClassVar[str] = "MITRE_ATTACK_DATA_SOURCE_HAS_COMPONENT"
