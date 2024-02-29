@@ -1,4 +1,4 @@
-from typing import ClassVar, Optional
+from typing import ClassVar, Optional, List
 
 from pydantic import HttpUrl
 
@@ -19,6 +19,7 @@ class IntrusionSet(OntolocyNode):
     unique_id: str
     description: Optional[str] = None
     url_reference: Optional[HttpUrl] = None
+    additional_urls: Optional[List[HttpUrl]] = None
 
     def __str__(self):
         return self.name

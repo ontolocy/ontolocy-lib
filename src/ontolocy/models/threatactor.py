@@ -1,4 +1,4 @@
-from typing import ClassVar, Optional
+from typing import ClassVar, Optional, List
 
 from pydantic import HttpUrl
 
@@ -16,6 +16,7 @@ class ThreatActor(OntolocyNode):
     unique_id: str
     description: Optional[str]
     url_reference: Optional[HttpUrl]
+    additional_urls: Optional[List[HttpUrl]] = None
 
     def __str__(self):
         return self.name
