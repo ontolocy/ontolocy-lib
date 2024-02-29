@@ -15,15 +15,15 @@
 
 ## Outgoing Relationships
 
-### IP_ADDRESS_IDENTIFIED_AS_PLATFORM
+### IP_ADDRESS_MAPS_TO_MAC_ADDRESS
 
-Target Label: CPE
+Target Label: MACAddress
 
 #### Relationship Properties
 
 | Property Name | Type | Required |
 | ------------- | ---- | -------- |
-| target | CPE | True |
+| target | MACAddress | True |
 | source | IPAddressNode | True |
 
 
@@ -39,15 +39,15 @@ Target Label: Country
 | source | IPAddressNode | True |
 
 
-### IP_ADDRESS_MAPS_TO_MAC_ADDRESS
+### IP_ADDRESS_HAS_OPEN_PORT
 
-Target Label: MACAddress
+Target Label: ListeningSocket
 
 #### Relationship Properties
 
 | Property Name | Type | Required |
 | ------------- | ---- | -------- |
-| target | MACAddress | True |
+| target | ListeningSocket | True |
 | source | IPAddressNode | True |
 
 
@@ -63,15 +63,15 @@ Target Label: DomainName
 | source | IPAddressNode | True |
 
 
-### IP_ADDRESS_HAS_OPEN_PORT
+### IP_ADDRESS_IDENTIFIED_AS_PLATFORM
 
-Target Label: ListeningSocket
+Target Label: CPE
 
 #### Relationship Properties
 
 | Property Name | Type | Required |
 | ------------- | ---- | -------- |
-| target | ListeningSocket | True |
+| target | CPE | True |
 | source | IPAddressNode | True |
 
 

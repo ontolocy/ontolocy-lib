@@ -15,19 +15,6 @@
 
 ## Outgoing Relationships
 
-### CAMPAIGN_TARGETS_COUNTRY
-
-Target Label: Country
-
-#### Relationship Properties
-
-| Property Name | Type | Required |
-| ------------- | ---- | -------- |
-| url_reference | Optional | True |
-| target | Country | True |
-| source | Campaign | True |
-
-
 ### CAMPAIGN_BY_INTRUSION_SET
 
 Target Label: IntrusionSet
@@ -41,16 +28,29 @@ Target Label: IntrusionSet
 | source | Campaign | True |
 
 
-### CAMPAIGN_USES_CVE
+### CAMPAIGN_USES_TECHNIQUE
 
-Target Label: CVE
+Target Label: MitreAttackTechnique
 
 #### Relationship Properties
 
 | Property Name | Type | Required |
 | ------------- | ---- | -------- |
 | url_reference | Optional | True |
-| target | CVE | True |
+| target | MitreAttackTechnique | True |
+| source | Campaign | True |
+
+
+### CAMPAIGN_TARGETS_COUNTRY
+
+Target Label: Country
+
+#### Relationship Properties
+
+| Property Name | Type | Required |
+| ------------- | ---- | -------- |
+| url_reference | Optional | True |
+| target | Country | True |
 | source | Campaign | True |
 
 
@@ -80,16 +80,16 @@ Target Label: Sector
 | source | Campaign | True |
 
 
-### CAMPAIGN_USES_TECHNIQUE
+### CAMPAIGN_USES_CVE
 
-Target Label: MitreAttackTechnique
+Target Label: CVE
 
 #### Relationship Properties
 
 | Property Name | Type | Required |
 | ------------- | ---- | -------- |
 | url_reference | Optional | True |
-| target | MitreAttackTechnique | True |
+| target | CVE | True |
 | source | Campaign | True |
 
 

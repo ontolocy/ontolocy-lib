@@ -9,35 +9,11 @@
 | name | str | True |
 | description | Optional | False |
 | url_reference | Optional | False |
+| additional_urls | Optional | False |
 
 
 
 ## Outgoing Relationships
-
-### INTRUSION_SET_USES_SOFTWARE
-
-Target Label: MitreAttackSoftware
-
-#### Relationship Properties
-
-| Property Name | Type | Required |
-| ------------- | ---- | -------- |
-| target | MitreAttackSoftware | True |
-| source | IntrusionSet | True |
-
-
-### INTRUSION_SET_ATTRIBUTED_TO_NATION
-
-Target Label: Country
-
-#### Relationship Properties
-
-| Property Name | Type | Required |
-| ------------- | ---- | -------- |
-| url_reference | Optional | True |
-| target | Country | True |
-| source | IntrusionSet | True |
-
 
 ### INTRUSION_SET_LINKED_TO_THREAT_ACTOR
 
@@ -49,19 +25,6 @@ Target Label: ThreatActor
 | ------------- | ---- | -------- |
 | url_reference | Optional | True |
 | target | ThreatActor | True |
-| source | IntrusionSet | True |
-
-
-### INTRUSION_SET_LINKED_TO_INTRUSION_SET
-
-Target Label: IntrusionSet
-
-#### Relationship Properties
-
-| Property Name | Type | Required |
-| ------------- | ---- | -------- |
-| url_reference | Optional | True |
-| target | IntrusionSet | True |
 | source | IntrusionSet | True |
 
 
@@ -78,6 +41,32 @@ Target Label: ActorType
 | source | IntrusionSet | True |
 
 
+### INTRUSION_SET_ATTRIBUTED_TO_NATION
+
+Target Label: Country
+
+#### Relationship Properties
+
+| Property Name | Type | Required |
+| ------------- | ---- | -------- |
+| url_reference | Optional | True |
+| target | Country | True |
+| source | IntrusionSet | True |
+
+
+### INTRUSION_SET_LINKED_TO_INTRUSION_SET
+
+Target Label: IntrusionSet
+
+#### Relationship Properties
+
+| Property Name | Type | Required |
+| ------------- | ---- | -------- |
+| url_reference | Optional | True |
+| target | IntrusionSet | True |
+| source | IntrusionSet | True |
+
+
 ### INTRUSION_SET_USES_TECHNIQUE
 
 Target Label: MitreAttackTechnique
@@ -87,6 +76,18 @@ Target Label: MitreAttackTechnique
 | Property Name | Type | Required |
 | ------------- | ---- | -------- |
 | target | MitreAttackTechnique | True |
+| source | IntrusionSet | True |
+
+
+### INTRUSION_SET_USES_SOFTWARE
+
+Target Label: MitreAttackSoftware
+
+#### Relationship Properties
+
+| Property Name | Type | Required |
+| ------------- | ---- | -------- |
+| target | MitreAttackSoftware | True |
 | source | IntrusionSet | True |
 
 

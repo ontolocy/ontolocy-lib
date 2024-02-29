@@ -17,18 +17,6 @@
 
 ## Outgoing Relationships
 
-### OPEN_PORT_HAS_JARM_HASH
-
-Target Label: JarmHash
-
-#### Relationship Properties
-
-| Property Name | Type | Required |
-| ------------- | ---- | -------- |
-| target | JarmHash | True |
-| source | ListeningSocket | True |
-
-
 ### OPEN_PORT_PRESENTS_X509_CERTIFICATE
 
 Target Label: X509Certificate
@@ -41,15 +29,40 @@ Target Label: X509Certificate
 | source | ListeningSocket | True |
 
 
-### OPEN_PORT_PRESENTS_BANNER
+### OPEN_PORT_HAS_JARM_HASH
 
-Target Label: Banner
+Target Label: JarmHash
 
 #### Relationship Properties
 
 | Property Name | Type | Required |
 | ------------- | ---- | -------- |
-| target | Banner | True |
+| target | JarmHash | True |
+| source | ListeningSocket | True |
+
+
+### SERVICE_HOSTS_URL
+
+Target Label: URL
+
+#### Relationship Properties
+
+| Property Name | Type | Required |
+| ------------- | ---- | -------- |
+| target | URLNode | True |
+| source | ListeningSocket | True |
+| status_code | Optional | False |
+
+
+### LISTENING_SOCKET_USES_PORT
+
+Target Label: Port
+
+#### Relationship Properties
+
+| Property Name | Type | Required |
+| ------------- | ---- | -------- |
+| target | Port | True |
 | source | ListeningSocket | True |
 
 
@@ -67,29 +80,16 @@ Target Label: CPE
 | status_code | Optional | False |
 
 
-### LISTENING_SOCKET_USES_PORT
+### OPEN_PORT_PRESENTS_BANNER
 
-Target Label: Port
-
-#### Relationship Properties
-
-| Property Name | Type | Required |
-| ------------- | ---- | -------- |
-| target | Port | True |
-| source | ListeningSocket | True |
-
-
-### SERVICE_HOSTS_URL
-
-Target Label: URL
+Target Label: Banner
 
 #### Relationship Properties
 
 | Property Name | Type | Required |
 | ------------- | ---- | -------- |
-| target | URLNode | True |
+| target | Banner | True |
 | source | ListeningSocket | True |
-| status_code | Optional | False |
 
 
 
