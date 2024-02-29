@@ -9,20 +9,21 @@
 | description | Optional | True |
 | unique_id | str | True |
 | name | str | True |
+| additional_urls | Optional | False |
 
 
 
 ## Outgoing Relationships
 
-### THREAT_ACTOR_IS_OF_TYPE
+### THREAT_ACTOR_ATTRIBUTED_TO_NATION
 
-Target Label: ActorType
+Target Label: Country
 
 #### Relationship Properties
 
 | Property Name | Type | Required |
 | ------------- | ---- | -------- |
-| target | ActorType | True |
+| target | Country | True |
 | source | ThreatActor | True |
 | url_reference | Optional | False |
 
@@ -41,15 +42,15 @@ Target Label: ThreatActor
 | context | Optional | False |
 
 
-### THREAT_ACTOR_ATTRIBUTED_TO_NATION
+### THREAT_ACTOR_IS_OF_TYPE
 
-Target Label: Country
+Target Label: ActorType
 
 #### Relationship Properties
 
 | Property Name | Type | Required |
 | ------------- | ---- | -------- |
-| target | Country | True |
+| target | ActorType | True |
 | source | ThreatActor | True |
 | url_reference | Optional | False |
 

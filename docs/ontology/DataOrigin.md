@@ -413,18 +413,6 @@ Target Label: MitreAttackCampaign
 
 ### ORIGIN_GENERATED
 
-Target Label: MitreAttackTactic
-
-#### Relationship Properties
-
-| Property Name | Type | Required |
-| ------------- | ---- | -------- |
-| target | BaseNode | True |
-| source | DataOrigin | True |
-
-
-### ORIGIN_GENERATED
-
 Target Label: MitreAttackDataComponent
 
 #### Relationship Properties
@@ -449,6 +437,18 @@ Target Label: MitreAttackDataSource
 
 ### ORIGIN_GENERATED
 
+Target Label: MitreAttackGroup
+
+#### Relationship Properties
+
+| Property Name | Type | Required |
+| ------------- | ---- | -------- |
+| target | BaseNode | True |
+| source | DataOrigin | True |
+
+
+### ORIGIN_GENERATED
+
 Target Label: MitreAttackMitigation
 
 #### Relationship Properties
@@ -461,7 +461,7 @@ Target Label: MitreAttackMitigation
 
 ### ORIGIN_GENERATED
 
-Target Label: MitreAttackGroup
+Target Label: MitreAttackTactic
 
 #### Relationship Properties
 
