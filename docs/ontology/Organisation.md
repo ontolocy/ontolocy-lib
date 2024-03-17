@@ -13,6 +13,20 @@
 
 ## Outgoing Relationships
 
+### ORGANISATION_PUBLISHED_THREAT_REPORT
+
+Target Label: Report
+
+#### Relationship Properties
+
+| Property Name | Type | Required |
+| ------------- | ---- | -------- |
+| url_reference | Optional | True |
+| context | Optional | True |
+| target | Report | True |
+| source | Organisation | True |
+
+
 ### ORGANISATION_REPORTED_EXPLOITATION_OF_CVE
 
 Target Label: CVE
@@ -52,20 +66,6 @@ Target Label: CVE
 | vector_string | str | True |
 | version | str | True |
 | target | CVE | True |
-| source | Organisation | True |
-
-
-### ORGANISATION_PUBLISHED_THREAT_REPORT
-
-Target Label: Report
-
-#### Relationship Properties
-
-| Property Name | Type | Required |
-| ------------- | ---- | -------- |
-| url_reference | Optional | True |
-| context | Optional | True |
-| target | Report | True |
 | source | Organisation | True |
 
 

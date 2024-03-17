@@ -1,7 +1,7 @@
 from enum import Enum
 from ipaddress import ip_address
 from typing import ClassVar, Optional
-from uuid import UUID, uuid4
+from uuid import uuid4
 
 from pydantic import IPvAnyAddress, StringConstraints, ValidationInfo, field_validator
 from typing_extensions import Annotated
@@ -33,17 +33,17 @@ class ListeningSocket(OntolocyNode):
     ip_address: IPvAnyAddress
     private: Optional[bool] = None
     namespace: Optional[str] = None
-    ip_address_unique_id: Optional[
-        str
-    ] = None  # for private IPs, uniquely identify the IP to avoid collisions
+    ip_address_unique_id: Optional[str] = (
+        None  # for private IPs, uniquely identify the IP to avoid collisions
+    )
 
-    unique_id: Optional[UUID] = None
+    unique_id: Optional[str] = None
 
     def __str__(self) -> str:
         return f"{self.ip_address}:{self.port_number} ({self.protocol.value})"
 
     @field_validator("unique_id")
-    def generate_socket_uuid(cls, v: Optional[UUID], info: ValidationInfo) -> UUID:
+    def generate_socket_uuid(cls, v: Optional[str], info: ValidationInfo) -> str:
         values = info.data
         if v is None:
             key_values = [
@@ -53,7 +53,7 @@ class ListeningSocket(OntolocyNode):
                 values["ip_address_unique_id"],
             ]
 
-            v = generate_deterministic_uuid(key_values)
+            v = str(generate_deterministic_uuid(key_values))
 
         return v
 
@@ -79,7 +79,7 @@ class ListeningSocket(OntolocyNode):
             return v
 
     @field_validator("ip_address_unique_id")
-    def generate_ip_id(cls, v: Optional[UUID], info: ValidationInfo) -> str:
+    def generate_ip_id(cls, v: Optional[str], info: ValidationInfo) -> str:
         values = info.data
         if v is None and values["private"] and values.get("namespace"):
             key_values = [values["ip_address"], values["namespace"]]

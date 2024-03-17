@@ -15,3 +15,17 @@ services:
       retries: 5
       start_period: 20s
       timeout: 10s
+  testneo4j:
+    image: neo4j:5-community
+    ports:
+      - 8474:7474
+      - 8373:7373
+      - 8687:7687
+    environment:
+      - NEO4J_AUTH=${TEST_NEO4J_AUTH}
+    healthcheck:
+      test: curl --fail http://localhost:8474 || exit 1
+      interval: 30s
+      retries: 5
+      start_period: 20s
+      timeout: 10s

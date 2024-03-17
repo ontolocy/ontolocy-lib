@@ -6,6 +6,7 @@ from ..node import OntolocyNode
 from ..relationship import OntolocyRelationship
 from .actortype import ActorType
 from .country import Country
+from .mitreattackgroup import MitreAttackGroup
 from .mitreattacksoftware import MitreAttackSoftware
 from .mitreattacktechnique import MitreAttackTechnique
 from .threatactor import ThreatActor
@@ -28,6 +29,13 @@ class IntrusionSet(OntolocyNode):
 #
 # OUTGOING RELATIONSHIPS
 #
+
+
+class IntrusionSetLinkedToMitreAttackGroup(OntolocyRelationship):
+    source: IntrusionSet
+    target: MitreAttackGroup
+
+    __relationshiptype__: ClassVar[str] = "INTRUSION_SET_LINKED_TO_MITRE_ATTACK_GROUP"
 
 
 class IntrusionSetAttributedToNation(OntolocyRelationship):
