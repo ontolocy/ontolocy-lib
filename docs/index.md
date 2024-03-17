@@ -22,9 +22,9 @@ Put info in a local `.env` file.
 # .env
 NEO4J_URI=neo4j://localhost:7687
 NEO4J_USERNAME=neo4j
-NEO4J_PASSWORD=your-password
+NEO4J_PASSWORD=Neo4jPassword
 
-NEO4J_AUTH=neo4j/your-password      # If running Neo4j with Docker
+NEO4J_AUTH=neo4j/Neo4jPassword     # If running Neo4j with Docker
 ```
 
 ### Import MITRE ATT&CK Data into Neo4j
@@ -33,4 +33,4 @@ NEO4J_AUTH=neo4j/your-password      # If running Neo4j with Docker
 ontolocy parse mitre-attack
 ```
 
-More on [MITRE ATT&CK to Neo4j](./parsers/MitreAttackParser.md).
+More on [MITRE ATT&CK to Neo4j](./ontolocy_parsers/MitreAttackParser.md).
