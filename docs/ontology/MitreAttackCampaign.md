@@ -27,18 +27,6 @@
 
 ## Outgoing Relationships
 
-### MITRE_CAMPAIGN_USES_TECHNIQUE
-
-Target Label: MitreAttackTechnique
-
-#### Relationship Properties
-
-| Property Name | Type | Required |
-| ------------- | ---- | -------- |
-| target | MitreAttackTechnique | True |
-| source | MitreAttackCampaign | True |
-
-
 ### MITRE_CAMPAIGN_USES_SOFTWARE
 
 Target Label: MitreAttackSoftware
@@ -60,6 +48,18 @@ Target Label: IntrusionSet
 | Property Name | Type | Required |
 | ------------- | ---- | -------- |
 | target | IntrusionSet | True |
+| source | MitreAttackCampaign | True |
+
+
+### MITRE_CAMPAIGN_USES_TECHNIQUE
+
+Target Label: MitreAttackTechnique
+
+#### Relationship Properties
+
+| Property Name | Type | Required |
+| ------------- | ---- | -------- |
+| target | MitreAttackTechnique | True |
 | source | MitreAttackCampaign | True |
 
 

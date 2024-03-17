@@ -19,20 +19,6 @@
 
 ## Outgoing Relationships
 
-### CONTROL_RELATED_TO_CONTROL
-
-Target Label: Control
-
-#### Relationship Properties
-
-| Property Name | Type | Required |
-| ------------- | ---- | -------- |
-| target | Control | True |
-| source | Control | True |
-| context | Optional | False |
-| url_reference | Optional | False |
-
-
 ### CONTROL_HAS_PARENT_CONTROL
 
 Target Label: Control
@@ -57,6 +43,20 @@ Target Label: MitreAttackTechnique
 | ------------- | ---- | -------- |
 | target | MitreAttackTechnique | True |
 | source | Control | True |
+| url_reference | Optional | False |
+
+
+### CONTROL_RELATED_TO_CONTROL
+
+Target Label: Control
+
+#### Relationship Properties
+
+| Property Name | Type | Required |
+| ------------- | ---- | -------- |
+| target | Control | True |
+| source | Control | True |
+| context | Optional | False |
 | url_reference | Optional | False |
 
 

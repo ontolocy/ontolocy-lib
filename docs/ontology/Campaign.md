@@ -15,6 +15,32 @@
 
 ## Outgoing Relationships
 
+### CAMPAIGN_TARGETS_SECTOR
+
+Target Label: Sector
+
+#### Relationship Properties
+
+| Property Name | Type | Required |
+| ------------- | ---- | -------- |
+| url_reference | Optional | True |
+| target | Sector | True |
+| source | Campaign | True |
+
+
+### CAMPAIGN_USES_CVE
+
+Target Label: CVE
+
+#### Relationship Properties
+
+| Property Name | Type | Required |
+| ------------- | ---- | -------- |
+| url_reference | Optional | True |
+| target | CVE | True |
+| source | Campaign | True |
+
+
 ### CAMPAIGN_BY_INTRUSION_SET
 
 Target Label: IntrusionSet
@@ -64,32 +90,6 @@ Target Label: CyberHarm
 | ------------- | ---- | -------- |
 | url_reference | Optional | True |
 | target | CyberHarm | True |
-| source | Campaign | True |
-
-
-### CAMPAIGN_TARGETS_SECTOR
-
-Target Label: Sector
-
-#### Relationship Properties
-
-| Property Name | Type | Required |
-| ------------- | ---- | -------- |
-| url_reference | Optional | True |
-| target | Sector | True |
-| source | Campaign | True |
-
-
-### CAMPAIGN_USES_CVE
-
-Target Label: CVE
-
-#### Relationship Properties
-
-| Property Name | Type | Required |
-| ------------- | ---- | -------- |
-| url_reference | Optional | True |
-| target | CVE | True |
 | source | Campaign | True |
 
 

@@ -5,7 +5,6 @@ from pydantic import HttpUrl
 
 from ..node import OntolocyNode
 from ..relationship import OntolocyRelationship
-from .intrusionset import IntrusionSet
 from .mitreattacksoftware import MitreAttackSoftware
 from .mitreattacktechnique import MitreAttackTechnique
 
@@ -35,13 +34,6 @@ class MitreAttackGroup(OntolocyNode):
 #
 # OUTGOING RELATIONSHIPS
 #
-
-
-class MitreAttackGroupLinkedToIntrusionSet(OntolocyRelationship):
-    source: MitreAttackGroup
-    target: IntrusionSet
-
-    __relationshiptype__: ClassVar[str] = "MITRE_ATTACK_GROUP_LINKED_TO_INTRUSION_SET"
 
 
 class MitreAttackGroupUsesTechnique(OntolocyRelationship):

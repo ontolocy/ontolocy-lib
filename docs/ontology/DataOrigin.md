@@ -161,6 +161,18 @@ Target Label: ThreatActor
 
 ### ORIGIN_GENERATED
 
+Target Label: MitreAttackGroup
+
+#### Relationship Properties
+
+| Property Name | Type | Required |
+| ------------- | ---- | -------- |
+| target | BaseNode | True |
+| source | DataOrigin | True |
+
+
+### ORIGIN_GENERATED
+
 Target Label: IntrusionSet
 
 #### Relationship Properties
@@ -426,18 +438,6 @@ Target Label: MitreAttackDataComponent
 ### ORIGIN_GENERATED
 
 Target Label: MitreAttackDataSource
-
-#### Relationship Properties
-
-| Property Name | Type | Required |
-| ------------- | ---- | -------- |
-| target | BaseNode | True |
-| source | DataOrigin | True |
-
-
-### ORIGIN_GENERATED
-
-Target Label: MitreAttackGroup
 
 #### Relationship Properties
 
