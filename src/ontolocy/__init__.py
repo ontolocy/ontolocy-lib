@@ -47,6 +47,7 @@ from ontolocy.models.intrusionset import (
     IntrusionSetAttributedToNation,
     IntrusionSetIsOfType,
     IntrusionSetLinkedToIntrusionSet,
+    IntrusionSetLinkedToMitreAttackGroup,
     IntrusionSetLinkedToThreatActor,
     IntrusionSetUsesSoftware,
     IntrusionSetUsesTechnique,
@@ -87,7 +88,6 @@ from ontolocy.models.mitreattackdatasource import (
 )
 from ontolocy.models.mitreattackgroup import (
     MitreAttackGroup,
-    MitreAttackGroupLinkedToIntrusionSet,
     MitreAttackGroupUsesSoftware,
     MitreAttackGroupUsesTechnique,
 )
@@ -194,6 +194,7 @@ __all__ = [
     "IntrusionSet",
     "IntrusionSetAttributedToNation",
     "IntrusionSetLinkedToIntrusionSet",
+    "IntrusionSetLinkedToMitreAttackGroup",
     "IntrusionSetIsOfType",
     "IntrusionSetLinkedToThreatActor",
     "IntrusionSetUsesSoftware",
@@ -228,7 +229,6 @@ __all__ = [
     "MitreAttackMitigation",
     "MitreAttackMitigationDefendsAgainstTechnique",
     "MitreAttackGroup",
-    "MitreAttackGroupLinkedToIntrusionSet",
     "MitreAttackGroupUsesSoftware",
     "MitreAttackGroupUsesTechnique",
     "NetworkService",

@@ -17,18 +17,6 @@
 
 ## Outgoing Relationships
 
-### OPEN_PORT_PRESENTS_X509_CERTIFICATE
-
-Target Label: X509Certificate
-
-#### Relationship Properties
-
-| Property Name | Type | Required |
-| ------------- | ---- | -------- |
-| target | X509Certificate | True |
-| source | ListeningSocket | True |
-
-
 ### OPEN_PORT_HAS_JARM_HASH
 
 Target Label: JarmHash
@@ -38,6 +26,32 @@ Target Label: JarmHash
 | Property Name | Type | Required |
 | ------------- | ---- | -------- |
 | target | JarmHash | True |
+| source | ListeningSocket | True |
+
+
+### SERVICE_IDENTIFIED_AS_PLATFORM
+
+Target Label: CPE
+
+#### Relationship Properties
+
+| Property Name | Type | Required |
+| ------------- | ---- | -------- |
+| cpe | Optional | True |
+| target | CPE | True |
+| source | ListeningSocket | True |
+| status_code | Optional | False |
+
+
+### OPEN_PORT_PRESENTS_X509_CERTIFICATE
+
+Target Label: X509Certificate
+
+#### Relationship Properties
+
+| Property Name | Type | Required |
+| ------------- | ---- | -------- |
+| target | X509Certificate | True |
 | source | ListeningSocket | True |
 
 
@@ -64,20 +78,6 @@ Target Label: Port
 | ------------- | ---- | -------- |
 | target | Port | True |
 | source | ListeningSocket | True |
-
-
-### SERVICE_IDENTIFIED_AS_PLATFORM
-
-Target Label: CPE
-
-#### Relationship Properties
-
-| Property Name | Type | Required |
-| ------------- | ---- | -------- |
-| cpe | Optional | True |
-| target | CPE | True |
-| source | ListeningSocket | True |
-| status_code | Optional | False |
 
 
 ### OPEN_PORT_PRESENTS_BANNER

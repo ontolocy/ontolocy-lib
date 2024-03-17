@@ -23,15 +23,15 @@
 
 ## Outgoing Relationships
 
-### MITRE_ATTACK_GROUP_LINKED_TO_INTRUSION_SET
+### MITRE_ATTACK_GROUP_USES_SOFTWARE
 
-Target Label: IntrusionSet
+Target Label: MitreAttackSoftware
 
 #### Relationship Properties
 
 | Property Name | Type | Required |
 | ------------- | ---- | -------- |
-| target | IntrusionSet | True |
+| target | MitreAttackSoftware | True |
 | source | MitreAttackGroup | True |
 
 
@@ -44,18 +44,6 @@ Target Label: MitreAttackTechnique
 | Property Name | Type | Required |
 | ------------- | ---- | -------- |
 | target | MitreAttackTechnique | True |
-| source | MitreAttackGroup | True |
-
-
-### MITRE_ATTACK_GROUP_USES_SOFTWARE
-
-Target Label: MitreAttackSoftware
-
-#### Relationship Properties
-
-| Property Name | Type | Required |
-| ------------- | ---- | -------- |
-| target | MitreAttackSoftware | True |
 | source | MitreAttackGroup | True |
 
 

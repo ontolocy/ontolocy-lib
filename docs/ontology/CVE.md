@@ -14,6 +14,18 @@
 
 ## Outgoing Relationships
 
+### CVE_RELATES_TO_CWE
+
+Target Label: CWE
+
+#### Relationship Properties
+
+| Property Name | Type | Required |
+| ------------- | ---- | -------- |
+| target | CWE | True |
+| source | CVE | True |
+
+
 ### CVE_RELATES_TO_CPE
 
 Target Label: CPE
@@ -25,18 +37,6 @@ Target Label: CPE
 | target | CPE | True |
 | source | CVE | True |
 | cpe | Optional | False |
-
-
-### CVE_RELATES_TO_CWE
-
-Target Label: CWE
-
-#### Relationship Properties
-
-| Property Name | Type | Required |
-| ------------- | ---- | -------- |
-| target | CWE | True |
-| source | CVE | True |
 
 
 

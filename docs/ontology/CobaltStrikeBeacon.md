@@ -20,18 +20,6 @@
 
 ## Outgoing Relationships
 
-### COBALT_STRIKE_BEACON_HAS_WATERMARK
-
-Target Label: CobaltStrikeWatermark
-
-#### Relationship Properties
-
-| Property Name | Type | Required |
-| ------------- | ---- | -------- |
-| target | CobaltStrikeWatermark | True |
-| source | CobaltStrikeBeacon | True |
-
-
 ### COBALT_STRIKE_BEACON_COLLECTED_FROM
 
 Target Label: ListeningSocket
@@ -41,6 +29,18 @@ Target Label: ListeningSocket
 | Property Name | Type | Required |
 | ------------- | ---- | -------- |
 | target | ListeningSocket | True |
+| source | CobaltStrikeBeacon | True |
+
+
+### COBALT_STRIKE_BEACON_HAS_WATERMARK
+
+Target Label: CobaltStrikeWatermark
+
+#### Relationship Properties
+
+| Property Name | Type | Required |
+| ------------- | ---- | -------- |
+| target | CobaltStrikeWatermark | True |
 | source | CobaltStrikeBeacon | True |
 
 

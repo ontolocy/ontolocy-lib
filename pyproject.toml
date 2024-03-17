@@ -4,7 +4,9 @@ build-backend = "setuptools.build_meta"
 
 [tool.pytest.ini_options]
 markers = [
-    "uses_graph: marks tests that require access to neo4j (deselect with '-m \"not uses_graph\"')"
+    "uses_graph: marks tests that require access to neo4j (deselect with '-m \"not uses_graph\"')",
+    "slow: marks tests as slow (deselect with '-m \"not slow\"')",
+    "webtest: marks test that reach out to external web resources (deselect with '-m \"not webtest\"')"
 ]
 testpaths = ["tests"]
 pythonpath = ["src"]

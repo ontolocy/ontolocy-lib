@@ -6,6 +6,7 @@ from ..node import OntolocyNode
 from ..relationship import OntolocyRelationship
 from .actortype import ActorType
 from .country import Country
+from .mitreattackgroup import MitreAttackGroup
 from .mitreattacksoftware import MitreAttackSoftware
 from .mitreattacktechnique import MitreAttackTechnique
 from .threatactor import ThreatActor
@@ -30,10 +31,17 @@ class IntrusionSet(OntolocyNode):
 #
 
 
+class IntrusionSetLinkedToMitreAttackGroup(OntolocyRelationship):
+    source: IntrusionSet
+    target: MitreAttackGroup
+
+    __relationshiptype__: ClassVar[str] = "INTRUSION_SET_LINKED_TO_MITRE_ATTACK_GROUP"
+
+
 class IntrusionSetAttributedToNation(OntolocyRelationship):
     source: IntrusionSet
     target: Country
-    url_reference: Optional[HttpUrl]
+    url_reference: Optional[HttpUrl] = None
 
     __relationshiptype__: ClassVar[str] = "INTRUSION_SET_ATTRIBUTED_TO_NATION"
 
@@ -41,7 +49,7 @@ class IntrusionSetAttributedToNation(OntolocyRelationship):
 class IntrusionSetLinkedToIntrusionSet(OntolocyRelationship):
     source: IntrusionSet
     target: IntrusionSet
-    url_reference: Optional[HttpUrl]
+    url_reference: Optional[HttpUrl] = None
 
     __relationshiptype__: ClassVar[str] = "INTRUSION_SET_LINKED_TO_INTRUSION_SET"
 
@@ -49,7 +57,7 @@ class IntrusionSetLinkedToIntrusionSet(OntolocyRelationship):
 class IntrusionSetLinkedToThreatActor(OntolocyRelationship):
     source: IntrusionSet
     target: ThreatActor
-    url_reference: Optional[HttpUrl]
+    url_reference: Optional[HttpUrl] = None
 
     __relationshiptype__: ClassVar[str] = "INTRUSION_SET_LINKED_TO_THREAT_ACTOR"
 
@@ -57,7 +65,7 @@ class IntrusionSetLinkedToThreatActor(OntolocyRelationship):
 class IntrusionSetIsOfType(OntolocyRelationship):
     source: IntrusionSet
     target: ActorType
-    url_reference: Optional[HttpUrl]
+    url_reference: Optional[HttpUrl] = None
 
     __relationshiptype__: ClassVar[str] = "INTRUSION_SET_IS_OF_TYPE"
 

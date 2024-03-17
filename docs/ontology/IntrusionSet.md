@@ -23,8 +23,20 @@ Target Label: ThreatActor
 
 | Property Name | Type | Required |
 | ------------- | ---- | -------- |
-| url_reference | Optional | True |
 | target | ThreatActor | True |
+| source | IntrusionSet | True |
+| url_reference | Optional | False |
+
+
+### INTRUSION_SET_USES_SOFTWARE
+
+Target Label: MitreAttackSoftware
+
+#### Relationship Properties
+
+| Property Name | Type | Required |
+| ------------- | ---- | -------- |
+| target | MitreAttackSoftware | True |
 | source | IntrusionSet | True |
 
 
@@ -36,9 +48,9 @@ Target Label: ActorType
 
 | Property Name | Type | Required |
 | ------------- | ---- | -------- |
-| url_reference | Optional | True |
 | target | ActorType | True |
 | source | IntrusionSet | True |
+| url_reference | Optional | False |
 
 
 ### INTRUSION_SET_ATTRIBUTED_TO_NATION
@@ -49,9 +61,9 @@ Target Label: Country
 
 | Property Name | Type | Required |
 | ------------- | ---- | -------- |
-| url_reference | Optional | True |
 | target | Country | True |
 | source | IntrusionSet | True |
+| url_reference | Optional | False |
 
 
 ### INTRUSION_SET_LINKED_TO_INTRUSION_SET
@@ -62,9 +74,9 @@ Target Label: IntrusionSet
 
 | Property Name | Type | Required |
 | ------------- | ---- | -------- |
-| url_reference | Optional | True |
 | target | IntrusionSet | True |
 | source | IntrusionSet | True |
+| url_reference | Optional | False |
 
 
 ### INTRUSION_SET_USES_TECHNIQUE
@@ -79,15 +91,15 @@ Target Label: MitreAttackTechnique
 | source | IntrusionSet | True |
 
 
-### INTRUSION_SET_USES_SOFTWARE
+### INTRUSION_SET_LINKED_TO_MITRE_ATTACK_GROUP
 
-Target Label: MitreAttackSoftware
+Target Label: MitreAttackGroup
 
 #### Relationship Properties
 
 | Property Name | Type | Required |
 | ------------- | ---- | -------- |
-| target | MitreAttackSoftware | True |
+| target | MitreAttackGroup | True |
 | source | IntrusionSet | True |
 
 
