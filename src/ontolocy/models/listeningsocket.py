@@ -33,9 +33,9 @@ class ListeningSocket(OntolocyNode):
     ip_address: IPvAnyAddress
     private: Optional[bool] = None
     namespace: Optional[str] = None
-    ip_address_unique_id: Optional[str] = (
-        None  # for private IPs, uniquely identify the IP to avoid collisions
-    )
+    ip_address_unique_id: Optional[
+        str
+    ] = None  # for private IPs, uniquely identify the IP to avoid collisions
 
     unique_id: Optional[str] = None
 
