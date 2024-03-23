@@ -15,19 +15,6 @@
 
 ## Outgoing Relationships
 
-### CAMPAIGN_TARGETS_SECTOR
-
-Target Label: Sector
-
-#### Relationship Properties
-
-| Property Name | Type | Required |
-| ------------- | ---- | -------- |
-| url_reference | Optional | True |
-| target | Sector | True |
-| source | Campaign | True |
-
-
 ### CAMPAIGN_USES_CVE
 
 Target Label: CVE
@@ -41,16 +28,16 @@ Target Label: CVE
 | source | Campaign | True |
 
 
-### CAMPAIGN_BY_INTRUSION_SET
+### CAMPAIGN_TARGETS_SECTOR
 
-Target Label: IntrusionSet
+Target Label: Sector
 
 #### Relationship Properties
 
 | Property Name | Type | Required |
 | ------------- | ---- | -------- |
 | url_reference | Optional | True |
-| target | IntrusionSet | True |
+| target | Sector | True |
 | source | Campaign | True |
 
 
@@ -67,16 +54,16 @@ Target Label: MitreAttackTechnique
 | source | Campaign | True |
 
 
-### CAMPAIGN_TARGETS_COUNTRY
+### CAMPAIGN_BY_INTRUSION_SET
 
-Target Label: Country
+Target Label: IntrusionSet
 
 #### Relationship Properties
 
 | Property Name | Type | Required |
 | ------------- | ---- | -------- |
 | url_reference | Optional | True |
-| target | Country | True |
+| target | IntrusionSet | True |
 | source | Campaign | True |
 
 
@@ -90,6 +77,19 @@ Target Label: CyberHarm
 | ------------- | ---- | -------- |
 | url_reference | Optional | True |
 | target | CyberHarm | True |
+| source | Campaign | True |
+
+
+### CAMPAIGN_TARGETS_COUNTRY
+
+Target Label: Country
+
+#### Relationship Properties
+
+| Property Name | Type | Required |
+| ------------- | ---- | -------- |
+| url_reference | Optional | True |
+| target | Country | True |
 | source | Campaign | True |
 
 

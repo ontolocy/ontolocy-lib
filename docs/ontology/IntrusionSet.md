@@ -28,6 +28,44 @@ Target Label: ThreatActor
 | url_reference | Optional | False |
 
 
+### INTRUSION_SET_IS_OF_TYPE
+
+Target Label: ActorType
+
+#### Relationship Properties
+
+| Property Name | Type | Required |
+| ------------- | ---- | -------- |
+| target | ActorType | True |
+| source | IntrusionSet | True |
+| url_reference | Optional | False |
+
+
+### INTRUSION_SET_LINKED_TO_MITRE_ATTACK_GROUP
+
+Target Label: MitreAttackGroup
+
+#### Relationship Properties
+
+| Property Name | Type | Required |
+| ------------- | ---- | -------- |
+| target | MitreAttackGroup | True |
+| source | IntrusionSet | True |
+| url_reference | Optional | False |
+
+
+### INTRUSION_SET_USES_TECHNIQUE
+
+Target Label: MitreAttackTechnique
+
+#### Relationship Properties
+
+| Property Name | Type | Required |
+| ------------- | ---- | -------- |
+| target | MitreAttackTechnique | True |
+| source | IntrusionSet | True |
+
+
 ### INTRUSION_SET_USES_SOFTWARE
 
 Target Label: MitreAttackSoftware
@@ -40,15 +78,16 @@ Target Label: MitreAttackSoftware
 | source | IntrusionSet | True |
 
 
-### INTRUSION_SET_IS_OF_TYPE
+### INTRUSION_SET_AFFILIATED_WITH_INTRUSION_SET
 
-Target Label: ActorType
+Target Label: IntrusionSet
 
 #### Relationship Properties
 
 | Property Name | Type | Required |
 | ------------- | ---- | -------- |
-| target | ActorType | True |
+| context | Optional | True |
+| target | IntrusionSet | True |
 | source | IntrusionSet | True |
 | url_reference | Optional | False |
 
@@ -77,30 +116,6 @@ Target Label: IntrusionSet
 | target | IntrusionSet | True |
 | source | IntrusionSet | True |
 | url_reference | Optional | False |
-
-
-### INTRUSION_SET_USES_TECHNIQUE
-
-Target Label: MitreAttackTechnique
-
-#### Relationship Properties
-
-| Property Name | Type | Required |
-| ------------- | ---- | -------- |
-| target | MitreAttackTechnique | True |
-| source | IntrusionSet | True |
-
-
-### INTRUSION_SET_LINKED_TO_MITRE_ATTACK_GROUP
-
-Target Label: MitreAttackGroup
-
-#### Relationship Properties
-
-| Property Name | Type | Required |
-| ------------- | ---- | -------- |
-| target | MitreAttackGroup | True |
-| source | IntrusionSet | True |
 
 
 
