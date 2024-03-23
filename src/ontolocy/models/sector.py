@@ -38,6 +38,16 @@ sectors = {
         "name": "Construction",
         "keywords": ["construction"],
     },
+    "critical-infrastructure": {
+        "sector_id": "critical-infrastructure",
+        "name": "Critical Infrastructure",
+        "keywords": ["critical infrastructure", "critical national infrastructure"],
+    },
+    "dams": {
+        "sector_id": "dams",
+        "name": "Dams",
+        "keywords": ["dam"],
+    },
     "defense": {
         "sector_id": "defense",
         "name": "Defense",
@@ -73,6 +83,11 @@ sectors = {
         "name": "Local Government",
         "keywords": ["local government"],
     },
+    "government-mfa": {
+        "sector_id": "government-mfa",
+        "name": "Ministries of Foreign Affairs",
+        "keywords": ["ministry of foreign affairs"],
+    },
     "government-national": {
         "sector_id": "government-national",
         "name": "National Government",
@@ -98,10 +113,15 @@ sectors = {
         "name": "Leisure and Hospitality",
         "keywords": ["leisure", "hospitality", "restaurant", "cafe"],
     },
-    "dams": {
-        "sector_id": "dams",
-        "name": "Dams",
-        "keywords": ["dam"],
+    "journalism": {
+        "sector_id": "journalism",
+        "name": "Journalism",
+        "keywords": ["journalism", "journalists"],
+    },
+    "media": {
+        "sector_id": "media",
+        "name": "Media",
+        "keywords": ["media", "tv", "radio"],
     },
     "nuclear": {
         "sector_id": "nuclear",
@@ -143,10 +163,30 @@ sectors = {
         "name": "Pharmaceuticals",
         "keywords": ["pharmaceuticals"],
     },
+    "professional-services": {
+        "sector_id": "professional-services",
+        "name": "Professional Services",
+        "keywords": ["professional services"],
+    },
+    "real-estate": {
+        "sector_id": "real-estate",
+        "name": "Real Estate",
+        "keywords": ["real estate", "estate agents"],
+    },
+    "rail": {
+        "sector_id": "rail",
+        "name": "Rail",
+        "keywords": ["rail", "trains", "freight"],
+    },
     "retail": {
         "sector_id": "retail",
         "name": "Retail",
         "keywords": ["retail"],
+    },
+    "sports": {
+        "sector_id": "sports",
+        "name": "Sport",
+        "keywords": ["sport"],
     },
     "technology": {
         "sector_id": "technology",

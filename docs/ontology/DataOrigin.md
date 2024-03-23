@@ -149,7 +149,7 @@ Target Label: MitreAttackSoftware
 
 ### ORIGIN_GENERATED
 
-Target Label: ThreatActor
+Target Label: MitreAttackGroup
 
 #### Relationship Properties
 
@@ -161,7 +161,7 @@ Target Label: ThreatActor
 
 ### ORIGIN_GENERATED
 
-Target Label: MitreAttackGroup
+Target Label: ThreatActor
 
 #### Relationship Properties
 

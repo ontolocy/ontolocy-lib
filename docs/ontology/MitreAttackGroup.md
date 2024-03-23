@@ -23,18 +23,6 @@
 
 ## Outgoing Relationships
 
-### MITRE_ATTACK_GROUP_USES_SOFTWARE
-
-Target Label: MitreAttackSoftware
-
-#### Relationship Properties
-
-| Property Name | Type | Required |
-| ------------- | ---- | -------- |
-| target | MitreAttackSoftware | True |
-| source | MitreAttackGroup | True |
-
-
 ### MITRE_ATTACK_GROUP_USES_TECHNIQUE
 
 Target Label: MitreAttackTechnique
@@ -44,6 +32,18 @@ Target Label: MitreAttackTechnique
 | Property Name | Type | Required |
 | ------------- | ---- | -------- |
 | target | MitreAttackTechnique | True |
+| source | MitreAttackGroup | True |
+
+
+### MITRE_ATTACK_GROUP_USES_SOFTWARE
+
+Target Label: MitreAttackSoftware
+
+#### Relationship Properties
+
+| Property Name | Type | Required |
+| ------------- | ---- | -------- |
+| target | MitreAttackSoftware | True |
 | source | MitreAttackGroup | True |
 
 
