@@ -34,6 +34,7 @@ class IntrusionSet(OntolocyNode):
 class IntrusionSetLinkedToMitreAttackGroup(OntolocyRelationship):
     source: IntrusionSet
     target: MitreAttackGroup
+    url_reference: Optional[HttpUrl] = None
 
     __relationshiptype__: ClassVar[str] = "INTRUSION_SET_LINKED_TO_MITRE_ATTACK_GROUP"
 
@@ -52,6 +53,15 @@ class IntrusionSetLinkedToIntrusionSet(OntolocyRelationship):
     url_reference: Optional[HttpUrl] = None
 
     __relationshiptype__: ClassVar[str] = "INTRUSION_SET_LINKED_TO_INTRUSION_SET"
+
+
+class IntrusionSetAffiliatedWithIntrusionSet(OntolocyRelationship):
+    source: IntrusionSet
+    target: IntrusionSet
+    url_reference: Optional[HttpUrl] = None
+    context: Optional[str]
+
+    __relationshiptype__: ClassVar[str] = "INTRUSION_SET_AFFILIATED_WITH_INTRUSION_SET"
 
 
 class IntrusionSetLinkedToThreatActor(OntolocyRelationship):

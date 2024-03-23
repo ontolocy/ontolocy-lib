@@ -39,18 +39,6 @@ Target Label: MitreAttackSoftware
 | source | MitreAttackCampaign | True |
 
 
-### MITRE_CAMPAIGN_ATTRIBUTED_TO_INTRUSION_SET
-
-Target Label: IntrusionSet
-
-#### Relationship Properties
-
-| Property Name | Type | Required |
-| ------------- | ---- | -------- |
-| target | IntrusionSet | True |
-| source | MitreAttackCampaign | True |
-
-
 ### MITRE_CAMPAIGN_USES_TECHNIQUE
 
 Target Label: MitreAttackTechnique
@@ -60,6 +48,18 @@ Target Label: MitreAttackTechnique
 | Property Name | Type | Required |
 | ------------- | ---- | -------- |
 | target | MitreAttackTechnique | True |
+| source | MitreAttackCampaign | True |
+
+
+### MITRE_CAMPAIGN_ATTRIBUTED_TO_INTRUSION_SET
+
+Target Label: IntrusionSet
+
+#### Relationship Properties
+
+| Property Name | Type | Required |
+| ------------- | ---- | -------- |
+| target | IntrusionSet | True |
 | source | MitreAttackCampaign | True |
 
 
