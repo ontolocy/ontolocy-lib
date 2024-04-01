@@ -8,11 +8,11 @@ from ..utils import generate_deterministic_uuid
 from .mitreattacktechnique import MitreAttackTechnique
 
 
-class Control(OntolocyNode):
+class Detection(OntolocyNode):
     __primaryproperty__: ClassVar[str] = "unique_id"
-    __primarylabel__: ClassVar[Optional[str]] = "Control"
+    __primarylabel__: ClassVar[Optional[str]] = "Detection"
 
-    control_id: str
+    detection_id: str
     name: str
     framework: str
     version: Optional[str] = None
@@ -23,14 +23,14 @@ class Control(OntolocyNode):
     url_reference: Optional[AnyHttpUrl] = None
 
     def __str__(self) -> str:
-        return f"{self.control_id}: {self.name}"
+        return f"{self.name}"
 
     @field_validator("unique_id")
     def generate_uuid(cls, v: Optional[str], info: ValidationInfo) -> str:
         values = info.data
         if v is None:
             key_values = [
-                values["control_id"],
+                values["detection_id"],
                 values["version"],
                 values["framework"],
                 values["framework_version"],
@@ -47,30 +47,8 @@ class Control(OntolocyNode):
 #
 
 
-class ControlRelatedToControl(OntolocyRelationship):
-    source: Control
-    target: Control
-
-    context: Optional[str] = None
-    url_reference: Optional[AnyHttpUrl] = None
-
-    __relationshiptype__: ClassVar[str] = "CONTROL_RELATED_TO_CONTROL"
-
-
-class ControlHasParentControl(OntolocyRelationship):
-    source: Control
-    target: Control
-
-    context: Optional[str] = None
-    url_reference: Optional[AnyHttpUrl] = None
-
-    __relationshiptype__: ClassVar[str] = "CONTROL_HAS_PARENT_CONTROL"
-
-
-class ControlMitigatesAttackTechnique(OntolocyRelationship):
-    source: Control
+class DetectionForAttackTechnique(OntolocyRelationship):
+    source: Detection
     target: MitreAttackTechnique
 
-    url_reference: Optional[AnyHttpUrl] = None
-
-    __relationshiptype__: ClassVar[str] = "CONTROL_MITIGATES_ATTACK_TECHNIQUE"
+    __relationshiptype__: ClassVar[str] = "DETECTION_FOR_ATTACK_TECHNIQUE"
