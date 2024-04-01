@@ -53,6 +53,11 @@ sectors = {
         "name": "Defense",
         "keywords": ["defense industrial base"],
     },
+    "democracy": {
+        "sector_id": "democracy",
+        "name": "Democracy and Elections",
+        "keywords": ["election", "democratic process"],
+    },
     "education": {
         "sector_id": "education",
         "name": "Education",
@@ -167,6 +172,11 @@ sectors = {
         "sector_id": "professional-services",
         "name": "Professional Services",
         "keywords": ["professional services"],
+    },
+    "political": {
+        "sector_id": "political",
+        "name": "Politicians and Political Parties",
+        "keywords": ["politician", "political party"],
     },
     "real-estate": {
         "sector_id": "real-estate",
