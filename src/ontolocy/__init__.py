@@ -28,11 +28,16 @@ from ontolocy.models.control import (
     ControlMitigatesAttackTechnique,
     ControlRelatedToControl,
 )
+from ontolocy.models.controlvalidationtest import (
+    ControlValidationTest,
+    ControlValidationTestForAttackTechnique,
+)
 from ontolocy.models.country import Country
 from ontolocy.models.cpe import CPE
 from ontolocy.models.cve import CVE, CVERelatesToCPE, CVERelatesToCWE
 from ontolocy.models.cwe import CWE
 from ontolocy.models.cyberharm import CyberHarm
+from ontolocy.models.detection import Detection, DetectionForAttackTechnique
 from ontolocy.models.dnsrecord import (
     DNSRecord,
     DNSRecordForDomain,
@@ -175,6 +180,8 @@ __all__ = [
     "ControlHasParentControl",
     "ControlMitigatesAttackTechnique",
     "ControlRelatedToControl",
+    "ControlValidationTest",
+    "ControlValidationTestForAttackTechnique",
     "Country",
     "CPE",
     "CVE",
@@ -182,6 +189,8 @@ __all__ = [
     "CVERelatesToCWE",
     "CWE",
     "CyberHarm",
+    "Detection",
+    "DetectionForAttackTechnique",
     "DNSRecord",
     "DNSRecordForDomain",
     "DNSRecordPointsToDomainName",
