@@ -59,7 +59,7 @@ class IntrusionSetAffiliatedWithIntrusionSet(OntolocyRelationship):
     source: IntrusionSet
     target: IntrusionSet
     url_reference: Optional[HttpUrl] = None
-    context: Optional[str]
+    context: Optional[str] = None
 
     __relationshiptype__: ClassVar[str] = "INTRUSION_SET_AFFILIATED_WITH_INTRUSION_SET"
 
