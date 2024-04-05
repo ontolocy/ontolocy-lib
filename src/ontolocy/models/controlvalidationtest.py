@@ -1,4 +1,4 @@
-from typing import ClassVar, Optional
+from typing import ClassVar, Optional, List
 
 from pydantic import AnyHttpUrl, ValidationInfo, field_validator
 
@@ -21,6 +21,7 @@ class ControlValidationTest(OntolocyNode):
     context: Optional[str] = None
     unique_id: Optional[str] = None
     url_reference: Optional[AnyHttpUrl] = None
+    platform_tags: Optional[List[str]] = None
 
     def __str__(self) -> str:
         return f"{self.name}"
