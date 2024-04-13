@@ -6,6 +6,7 @@ from pydantic import HttpUrl
 from ..node import OntolocyNode
 from ..relationship import OntolocyRelationship
 from .mitreattacktechnique import MitreAttackTechnique
+from .control import Control
 
 
 class MitreAttackMitigation(OntolocyNode):
@@ -39,6 +40,15 @@ class MitreAttackMitigationDefendsAgainstTechnique(OntolocyRelationship):
     source: MitreAttackMitigation
     target: MitreAttackTechnique
 
-    __relationshiptype__: ClassVar[
-        str
-    ] = "MITRE_ATTACK_MITIGATION_DEFENDS_AGAINST_TECHNIQUE"
+    __relationshiptype__: ClassVar[str] = (
+        "MITRE_ATTACK_MITIGATION_DEFENDS_AGAINST_TECHNIQUE"
+    )
+
+
+class MitreAttackMitigationMapsToControl(OntolocyRelationship):
+    source: MitreAttackMitigation
+    target: Control
+
+    __relationshiptype__: ClassVar[str] = (
+        "MITRE_ATTACK_MITIGATION_DEFENDS_AGAINST_TECHNIQUE"
+    )

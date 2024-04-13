@@ -99,6 +99,7 @@ from ontolocy.models.mitreattackgroup import (
 from ontolocy.models.mitreattackmitigation import (
     MitreAttackMitigation,
     MitreAttackMitigationDefendsAgainstTechnique,
+    MitreAttackMitigationMapsToControl,
 )
 from ontolocy.models.mitreattacksoftware import (
     MitreAttackSoftware,
@@ -237,6 +238,7 @@ __all__ = [
     "MitreAttackDataSourceHasComponent",
     "MitreAttackMitigation",
     "MitreAttackMitigationDefendsAgainstTechnique",
+    "MitreAttackMitigationMapsToControl",
     "MitreAttackGroup",
     "MitreAttackGroupUsesSoftware",
     "MitreAttackGroupUsesTechnique",
