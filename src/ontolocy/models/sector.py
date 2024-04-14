@@ -113,6 +113,11 @@ sectors = {
         "name": "Healthcare",
         "keywords": ["healthcare", "hospital", "care home"],
     },
+    "human-rights": {
+        "sector_id": "human-rights",
+        "name": "Human Rights",
+        "keywords": ["human rights"],
+    },
     "hospitality-leisure": {
         "sector_id": "hospitality-leisure",
         "name": "Leisure and Hospitality",
