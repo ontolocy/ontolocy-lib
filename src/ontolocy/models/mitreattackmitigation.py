@@ -1,7 +1,7 @@
 from datetime import datetime
 from typing import ClassVar, Optional
 
-from pydantic import HttpUrl
+from pydantic import HttpUrl, AnyHttpUrl
 
 from ..node import OntolocyNode
 from ..relationship import OntolocyRelationship
@@ -49,6 +49,7 @@ class MitreAttackMitigationMapsToControl(OntolocyRelationship):
     source: MitreAttackMitigation
     target: Control
 
-    __relationshiptype__: ClassVar[str] = (
-        "MITRE_ATTACK_MITIGATION_DEFENDS_AGAINST_TECHNIQUE"
-    )
+    context: Optional[str] = None
+    url_reference: Optional[AnyHttpUrl] = None
+
+    __relationshiptype__: ClassVar[str] = "MITRE_ATTACK_MITIGATION_MAPS_TO_CONTROL"
