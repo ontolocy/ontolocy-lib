@@ -2,7 +2,7 @@ from typing import ClassVar, Optional
 from uuid import UUID
 
 from neontology import BaseNode, BaseRelationship
-from pydantic import ValidationInfo, field_validator
+from pydantic import ValidationInfo, field_validator, field_serializer
 
 from .utils import generate_deterministic_uuid
 
@@ -32,6 +32,10 @@ class DataOrigin(BaseNode, validate_default=True):
             v = generate_deterministic_uuid(key_values)
 
         return v
+
+    @field_serializer("unique_id")
+    def serialize_ref_url(self, unique_id: UUID, _info):
+        return str(unique_id)
 
 
 class OriginGenerated(BaseRelationship):

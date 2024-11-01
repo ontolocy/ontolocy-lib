@@ -91,7 +91,7 @@ def test_listening_socket_uses_port(use_graph):
     RETURN COUNT(DISTINCT r)
     """
 
-    params = {"socket_id": socket.get_primary_property_value()}
+    params = {"socket_id": socket.get_pp()}
 
     result = use_graph.evaluate_query_single(cypher, params)
 
@@ -114,7 +114,7 @@ def test_listening_socket_has_url(use_graph):
     RETURN COUNT(DISTINCT r)
     """
 
-    params = {"socket_id": socket.get_primary_property_value()}
+    params = {"socket_id": socket.get_pp()}
 
     result = use_graph.evaluate_query_single(cypher, params)
 

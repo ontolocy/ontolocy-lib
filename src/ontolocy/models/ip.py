@@ -3,7 +3,7 @@ from ipaddress import ip_address
 from typing import ClassVar, Optional
 from uuid import UUID, uuid4
 
-from pydantic import IPvAnyAddress, ValidationInfo, field_validator
+from pydantic import IPvAnyAddress, ValidationInfo, field_validator, field_serializer
 
 from ..node import OntolocyNode
 from ..relationship import OntolocyRelationship
@@ -71,7 +71,7 @@ class IPAddressNode(OntolocyNode):
             return v
 
     @field_validator("unique_id")
-    def generate_instance_id(cls, v: Optional[UUID], info: ValidationInfo) -> str:
+    def generate_instance_id(cls, v: Optional[str], info: ValidationInfo) -> str:
         values = info.data
         if v is None and values["private"] and values.get("namespace"):
             key_values = [values["ip_address"], values["namespace"]]
@@ -82,6 +82,10 @@ class IPAddressNode(OntolocyNode):
             v = str(values["ip_address"])
 
         return v
+
+    @field_serializer("ip_address")
+    def serialize_ip(self, input: IPvAnyAddress, _info):
+        return str(input)
 
 
 class IPAddressHasOpenPort(OntolocyRelationship):

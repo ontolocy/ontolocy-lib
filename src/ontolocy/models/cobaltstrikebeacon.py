@@ -1,7 +1,7 @@
 from typing import ClassVar, Optional
-from uuid import UUID
 
-from pydantic import ValidationInfo, field_validator
+
+from pydantic import ValidationInfo, field_validator, field_serializer
 
 from ..node import OntolocyNode
 from ..relationship import OntolocyRelationship
@@ -20,14 +20,14 @@ class CobaltStrikeBeacon(OntolocyNode):
     maxgetsize: int
     jitter: int
     c2server: str
-    useragent: str
-    submituri: str
+    useragent: Optional[str] = None
+    submituri: Optional[str] = None
     watermark: Optional[int] = None
 
-    unique_id: Optional[UUID] = None
+    unique_id: Optional[str] = None
 
     @field_validator("unique_id")
-    def generate_dnsrecord_uuid(cls, v: Optional[UUID], info: ValidationInfo) -> UUID:
+    def generate_uuid(cls, v: Optional[str], info: ValidationInfo) -> str:
         values = info.data
         if v is None:
             key_values = [
@@ -37,7 +37,7 @@ class CobaltStrikeBeacon(OntolocyNode):
                 values["watermark"],
             ]
 
-            v = generate_deterministic_uuid(key_values)
+            v = str(generate_deterministic_uuid(key_values))
 
         return v
 

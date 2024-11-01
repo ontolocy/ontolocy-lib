@@ -1,7 +1,7 @@
 from datetime import datetime
 from typing import ClassVar, Optional
 
-from pydantic import HttpUrl, StringConstraints
+from pydantic import HttpUrl, StringConstraints, field_serializer
 from typing_extensions import Annotated
 
 from ..node import OntolocyNode
@@ -31,6 +31,10 @@ class MitreAttackTactic(OntolocyNode):
     ref_url: HttpUrl
     name: str
     description: str
+
+    @field_serializer("ref_url")
+    def serialize_ref_url(self, ref_url: HttpUrl, _info):
+        return str(ref_url)
 
 
 #

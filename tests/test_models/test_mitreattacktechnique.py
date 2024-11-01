@@ -79,10 +79,7 @@ def test_technique():
         description=stix_dict["description"],
     )
 
-    assert (
-        technique.get_primary_property_value()
-        == "attack-pattern--2d3f5b3c-54ca-4f4d-bb1f-849346d31230"
-    )
+    assert technique.get_pp() == "attack-pattern--2d3f5b3c-54ca-4f4d-bb1f-849346d31230"
 
 
 def test_technique_bad():

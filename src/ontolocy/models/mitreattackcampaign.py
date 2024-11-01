@@ -1,7 +1,7 @@
 from datetime import datetime
 from typing import ClassVar, Optional
 
-from pydantic import HttpUrl
+from pydantic import HttpUrl, field_serializer
 
 from ..node import OntolocyNode
 from ..relationship import OntolocyRelationship
@@ -34,6 +34,10 @@ class MitreAttackCampaign(OntolocyNode):
     ref_url: HttpUrl
     name: str
     description: str
+
+    @field_serializer("ref_url")
+    def serialize_ref_url(self, ref_url: HttpUrl, _info):
+        return str(ref_url)
 
 
 #

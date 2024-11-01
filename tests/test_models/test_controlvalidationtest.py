@@ -20,7 +20,4 @@ def test_control_validation_test_compare():
         test_id="CON-1", name="Control Test 1", framework="Test Control Framework"
     )
 
-    assert (
-        control_test1.get_primary_property_value()
-        == control_test2.get_primary_property_value()
-    )
+    assert control_test1.get_pp() == control_test2.get_pp()

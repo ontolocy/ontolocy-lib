@@ -1,4 +1,4 @@
-from typing import Optional
+from typing import Optional, Any
 from uuid import UUID, uuid5
 
 import pandas as pd

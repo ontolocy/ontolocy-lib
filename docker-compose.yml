@@ -29,3 +29,18 @@ services:
       retries: 5
       start_period: 20s
       timeout: 10s
+  testmemgraph:
+    image: memgraph/memgraph:latest
+    ports:
+      - 9687:7687
+      - 7444:7444
+    command: ["--log-level=TRACE"]
+    healthcheck:
+      test: ["CMD-SHELL", "echo 'RETURN 0;' | mgconsole || exit 1"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+      start_period: 0s
+    environment:
+      - MEMGRAPH_USER=${TEST_MEMGRAPH_USER}
+      - MEMGRAPH_PASSWORD=${TEST_MEMGRAPH_PASSWORD}

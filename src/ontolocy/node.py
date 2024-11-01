@@ -16,7 +16,7 @@ class OntolocyNode(BaseNode, validate_default=True):
         df: pd.DataFrame,
         data_origin: Optional[DataOrigin] = None,
         deduplicate=True,
-    ) -> list:
+    ) -> pd.Series:
         nodes = cls.merge_df(df, deduplicate=deduplicate)
 
         if data_origin is not None:
@@ -24,7 +24,7 @@ class OntolocyNode(BaseNode, validate_default=True):
 
             rels = [OriginGenerated(source=data_origin, target=x) for x in nodes]
 
-            OriginGenerated.merge_relationships(rels, target_type=cls)
+            OriginGenerated.merge_relationships(rels)
 
         return nodes
 
@@ -45,7 +45,7 @@ class OntolocyNode(BaseNode, validate_default=True):
 
     def get_identifier(self) -> str:
         warn("'get_identifier' method is deprecated", DeprecationWarning)
-        return str(self.get_primary_property_value())
+        return str(self.get_pp())
 
     def __str__(self) -> str:
-        return str(self.get_primary_property_value())
+        return str(self.get_pp())

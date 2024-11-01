@@ -3,7 +3,13 @@ from ipaddress import ip_address
 from typing import ClassVar, Optional
 from uuid import uuid4
 
-from pydantic import IPvAnyAddress, StringConstraints, ValidationInfo, field_validator
+from pydantic import (
+    IPvAnyAddress,
+    StringConstraints,
+    ValidationInfo,
+    field_validator,
+    field_serializer,
+)
 from typing_extensions import Annotated
 
 from ontolocy.models.port import Port
@@ -33,14 +39,18 @@ class ListeningSocket(OntolocyNode):
     ip_address: IPvAnyAddress
     private: Optional[bool] = None
     namespace: Optional[str] = None
-    ip_address_unique_id: Optional[
-        str
-    ] = None  # for private IPs, uniquely identify the IP to avoid collisions
+    ip_address_unique_id: Optional[str] = (
+        None  # for private IPs, uniquely identify the IP to avoid collisions
+    )
 
     unique_id: Optional[str] = None
 
     def __str__(self) -> str:
         return f"{self.ip_address}:{self.port_number} ({self.protocol.value})"
+
+    @field_serializer("ip_address")
+    def serialize_ip(self, input: IPvAnyAddress, _info):
+        return str(input)
 
     @field_validator("unique_id")
     def generate_socket_uuid(cls, v: Optional[str], info: ValidationInfo) -> str:

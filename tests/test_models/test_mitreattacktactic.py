@@ -44,10 +44,7 @@ def test_tactic():
         description=stix_dict["description"],
     )
 
-    assert (
-        tactic.get_primary_property_value()
-        == "x-mitre-tactic--2558fd61-8c75-4730-94c4-11926db2a263"
-    )
+    assert tactic.get_pp() == "x-mitre-tactic--2558fd61-8c75-4730-94c4-11926db2a263"
 
 
 def test_tactic_bad():

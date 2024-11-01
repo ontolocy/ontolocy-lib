@@ -12,7 +12,7 @@ def test_cwe():
         status="active",
     )
 
-    assert cwe.get_primary_property_value() == 1001
+    assert cwe.get_pp() == 1001
 
 
 def test_cwe_letters():
@@ -26,4 +26,4 @@ def test_cwe_letters():
         status="active",
     )
 
-    assert cwe.get_primary_property_value() == 1001
+    assert cwe.get_pp() == 1001
