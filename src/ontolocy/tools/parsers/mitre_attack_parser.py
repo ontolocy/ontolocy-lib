@@ -106,7 +106,6 @@ class MitreAttackParser(OntolocyParser):
 
         # pull out associated MITRE ATT&CK tactics the MITRE ATT&CK reference (web address)
         for attack_obj in attack_objs:
-
             if attack_obj.get("kill_chain_phases"):
                 attack_obj["kill_chain_phase_list"] = []
 
@@ -209,10 +208,9 @@ class MitreAttackParser(OntolocyParser):
         )
 
         if datacomponents_df.empty is False:
-
-            node_dfs[
-                MitreAttackDataComponent.__primarylabel__
-            ] = datacomponents_df.drop(columns=["x_mitre_data_source_ref"]).copy()
+            node_dfs[MitreAttackDataComponent.__primarylabel__] = (
+                datacomponents_df.drop(columns=["x_mitre_data_source_ref"]).copy()
+            )
 
         else:
             node_dfs[MitreAttackDataComponent.__primarylabel__] = pd.DataFrame()
@@ -371,7 +369,6 @@ class MitreAttackParser(OntolocyParser):
         # Data Source to Data Component
 
         if datacomponents_df.empty is False:
-
             data_source_to_component_df = pd.DataFrame()
 
             data_source_to_component_df["source"] = datacomponents_df[

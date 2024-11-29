@@ -1,6 +1,7 @@
 from datetime import datetime
 from typing import ClassVar, Optional
 
+from neontology import related_nodes, related_property
 from pydantic import HttpUrl, StringConstraints, field_serializer
 from typing_extensions import Annotated
 
@@ -37,6 +38,16 @@ class MitreAttackTechnique(OntolocyNode):
 
     def __str__(self) -> str:
         return f"{self.attack_id}: {self.name}"
+
+    @property
+    @related_property
+    def tactic_names(self):
+        return "MATCH (#ThisNode)<-[:MITRE_TACTIC_INCLUDES_TECHNIQUE]-(t) RETURN COLLECT(t.name)"
+
+    @property
+    @related_nodes
+    def tactic_nodes(self):
+        return "MATCH (#ThisNode)<-[:MITRE_TACTIC_INCLUDES_TECHNIQUE]-(t) RETURN t"
 
 
 #

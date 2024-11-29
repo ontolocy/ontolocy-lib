@@ -1,16 +1,15 @@
 from datetime import datetime
 from typing import ClassVar, Optional
 
-from pydantic import HttpUrl, AnyHttpUrl, field_serializer
+from pydantic import AnyHttpUrl, HttpUrl, field_serializer
 
 from ..node import OntolocyNode
 from ..relationship import OntolocyRelationship
-from .mitreattacktechnique import MitreAttackTechnique
 from .control import Control
+from .mitreattacktechnique import MitreAttackTechnique
 
 
 class MitreAttackMitigation(OntolocyNode):
-
     __primaryproperty__: ClassVar[str] = "stix_id"
     __primarylabel__: ClassVar[str] = "MitreAttackMitigation"
 

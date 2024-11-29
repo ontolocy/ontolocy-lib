@@ -2,7 +2,6 @@ from ontolocy import CWE
 
 
 def test_cwe():
-
     cwe = CWE(
         cwe_id=1001,
         description="hello world",
@@ -16,7 +15,6 @@ def test_cwe():
 
 
 def test_cwe_letters():
-
     cwe = CWE(
         cwe_id="1001",
         description="hello world",

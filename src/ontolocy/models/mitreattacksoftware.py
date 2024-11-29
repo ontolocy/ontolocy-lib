@@ -9,7 +9,6 @@ from .mitreattacktechnique import MitreAttackTechnique
 
 
 class MitreAttackSoftware(OntolocyNode):
-
     __primaryproperty__: ClassVar[str] = "stix_id"
     __primarylabel__: ClassVar[str] = "MitreAttackSoftware"
 

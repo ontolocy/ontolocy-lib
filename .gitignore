@@ -7,7 +7,7 @@ sample-data/
 *.deprecated
 *.old
 .env.docker
-examples
+
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

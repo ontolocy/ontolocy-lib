@@ -9,7 +9,6 @@ from .mitreattackdatacomponent import MitreAttackDataComponent
 
 
 class MitreAttackDataSource(OntolocyNode):
-
     __primaryproperty__: ClassVar[str] = "stix_id"
     __primarylabel__: ClassVar[str] = "MitreAttackDataSource"
 

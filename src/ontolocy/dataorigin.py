@@ -2,7 +2,7 @@ from typing import ClassVar, Optional
 from uuid import UUID
 
 from neontology import BaseNode, BaseRelationship
-from pydantic import ValidationInfo, field_validator, field_serializer
+from pydantic import ValidationInfo, field_serializer, field_validator
 
 from .utils import generate_deterministic_uuid
 

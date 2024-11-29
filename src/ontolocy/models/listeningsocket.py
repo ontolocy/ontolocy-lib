@@ -7,8 +7,8 @@ from pydantic import (
     IPvAnyAddress,
     StringConstraints,
     ValidationInfo,
-    field_validator,
     field_serializer,
+    field_validator,
 )
 from typing_extensions import Annotated
 

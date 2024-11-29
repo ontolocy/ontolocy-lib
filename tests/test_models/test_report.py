@@ -41,7 +41,7 @@ def test_report_mentions_cve(use_graph):
     rel = ReportMentionsCVE(source=report, target=cve)
     rel.merge()
 
-    cypher = f"""
+    cypher = """
     MATCH (report:Report)-[r:REPORT_MENTIONS_CVE]->(cve:CVE)
     WHERE report.unique_id = $unique_id
     RETURN COUNT(DISTINCT r)

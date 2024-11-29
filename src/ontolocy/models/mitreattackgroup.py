@@ -10,7 +10,6 @@ from .mitreattacktechnique import MitreAttackTechnique
 
 
 class MitreAttackGroup(OntolocyNode):
-
     __primaryproperty__: ClassVar[str] = "stix_id"
     __primarylabel__: ClassVar[str] = "MitreAttackGroup"
 

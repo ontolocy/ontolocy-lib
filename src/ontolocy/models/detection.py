@@ -1,4 +1,4 @@
-from typing import ClassVar, Optional, List
+from typing import ClassVar, List, Optional
 
 from pydantic import AnyHttpUrl, ValidationInfo, field_validator
 

@@ -111,7 +111,7 @@ def test_capec_maps_to_attack(use_graph):
 
     CAPECPatternMapsToAttackTechnique.ingest_df(df, target_prop="attack_id")
 
-    cypher = f"""
+    cypher = """
     MATCH (capec:CAPECPattern)-[r:CAPEC_PATTERN_MAPS_TO_ATTACK_TECHNIQUE]->(:MitreAttackTechnique)
     WHERE capec.capec_id = $capec_id
     RETURN COUNT(DISTINCT r)

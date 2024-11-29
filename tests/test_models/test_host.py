@@ -1,5 +1,3 @@
-import pytest
-
 from ontolocy import Host
 
 

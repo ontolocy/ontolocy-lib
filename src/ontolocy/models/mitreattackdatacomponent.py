@@ -7,7 +7,6 @@ from .mitreattacktechnique import MitreAttackTechnique
 
 
 class MitreAttackDataComponent(OntolocyNode):
-
     __primaryproperty__: ClassVar[str] = "stix_id"
     __primarylabel__: ClassVar[str] = "MitreAttackDataComponent"
 
@@ -35,6 +34,6 @@ class MitreAttackDataComponentDetectsTechnique(OntolocyRelationship):
     source: MitreAttackDataComponent
     target: MitreAttackTechnique
 
-    __relationshiptype__: ClassVar[
-        str
-    ] = "MITRE_ATTACK_DATA_COMPONENT_DETECTS_TECHNIQUE"
+    __relationshiptype__: ClassVar[str] = (
+        "MITRE_ATTACK_DATA_COMPONENT_DETECTS_TECHNIQUE"
+    )

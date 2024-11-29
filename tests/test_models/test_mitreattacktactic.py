@@ -29,7 +29,6 @@ stix_dict = {
 
 
 def test_tactic():
-
     tactic = MitreAttackTactic(
         stix_id=stix_dict["id"],
         stix_type=stix_dict["type"],
@@ -48,7 +47,6 @@ def test_tactic():
 
 
 def test_tactic_bad():
-
     with pytest.raises(ValidationError):
         MitreAttackTactic(
             stix_id=stix_dict["id"],

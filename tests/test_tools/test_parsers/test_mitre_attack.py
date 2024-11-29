@@ -86,6 +86,7 @@ def test_node_parse(test_data):
 
 @pytest.mark.slow
 @pytest.mark.webtest
+@pytest.mark.parametrize("test_data", test_cases)
 def test_node_populate_simple(use_graph, test_data):
     parser = MitreAttackParser()
 

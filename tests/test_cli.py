@@ -7,7 +7,6 @@ import pytest
 @pytest.mark.parametrize("prompt_input", ["\n", "no\n"])
 @pytest.mark.webtest
 def test_mitre_attack_no_populate(prompt_input):
-
     runner = CliRunner()
 
     result = runner.invoke(cli, ["parse", "mitre-attack"], input=prompt_input)
@@ -26,7 +25,6 @@ def test_mitre_attack_no_populate(prompt_input):
 
 @pytest.mark.webtest
 def test_mitre_attack_bad_prompt():
-
     runner = CliRunner()
 
     result = runner.invoke(cli, ["parse", "mitre-attack"], input="bad command\n")
@@ -37,7 +35,6 @@ def test_mitre_attack_bad_prompt():
 @pytest.mark.slow
 @pytest.mark.webtest
 def test_mitre_attack_populate_url(use_graph):
-
     runner = CliRunner()
 
     result = runner.invoke(

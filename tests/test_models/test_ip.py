@@ -1,4 +1,3 @@
-from uuid import UUID
 from ipaddress import IPv4Address
 import pandas as pd
 import pytest

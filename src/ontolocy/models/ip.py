@@ -1,9 +1,9 @@
 from enum import Enum
 from ipaddress import ip_address
 from typing import ClassVar, Optional
-from uuid import UUID, uuid4
+from uuid import uuid4
 
-from pydantic import IPvAnyAddress, ValidationInfo, field_validator, field_serializer
+from pydantic import IPvAnyAddress, ValidationInfo, field_serializer, field_validator
 
 from ..node import OntolocyNode
 from ..relationship import OntolocyRelationship

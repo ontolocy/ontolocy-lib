@@ -1,7 +1,7 @@
+import time
 from abc import ABC, abstractmethod
 from collections import defaultdict
 from typing import Dict, List, Optional
-import time
 
 import pandas as pd
 
@@ -95,7 +95,7 @@ class IngesterBase(ABC):
     def _merge_nodes(self) -> None:
         for node_type in self.node_types:
             print(f"Merging: {node_type.__primarylabel__}")
-            t0 = time.perf_counter()
+
             df = self.node_oriented_dfs[node_type.__primarylabel__]
 
             if "ontolocy_parser_node_pp" in df.columns:
@@ -109,14 +109,8 @@ class IngesterBase(ABC):
                     df,
                     self.data_origin,
                 )
-            t1 = time.perf_counter()
-            print(
-                f"Ingested {len(df.index)}x Nodes {node_type.__primarylabel__} Real Time: {t1 - t0:.2f} seconds"
-            )
 
             df["ontolocy_parser_node_pp"] = [x.get_pp() for x in nodes]
-            t2 = time.perf_counter()
-            print(f"And got the pps for Nodes Real Time: {t2 - t1:.2f} seconds")
 
     def _generate_relationships(self) -> None:
         for rel_type in self.rel_types:
@@ -197,7 +191,6 @@ class IngesterBase(ABC):
 
     def _merge_relationships(self) -> None:
         for rel_type_class in self.rel_types:
-
             rel_type = rel_type_class.__relationshiptype__
 
             df = self.rel_oriented_dfs[rel_type]
@@ -213,7 +206,6 @@ class IngesterBase(ABC):
     def populate(
         self,
     ) -> None:
-
         print("POPULATING")
         t1 = time.perf_counter()
         self._merge_nodes()

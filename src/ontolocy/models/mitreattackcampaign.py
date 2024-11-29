@@ -11,7 +11,6 @@ from .mitreattacktechnique import MitreAttackTechnique
 
 
 class MitreAttackCampaign(OntolocyNode):
-
     __primaryproperty__: ClassVar[str] = "stix_id"
     __primarylabel__: ClassVar[str] = "MitreAttackCampaign"
 

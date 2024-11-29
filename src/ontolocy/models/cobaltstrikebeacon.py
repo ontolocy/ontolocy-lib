@@ -1,7 +1,6 @@
 from typing import ClassVar, Optional
 
-
-from pydantic import ValidationInfo, field_validator, field_serializer
+from pydantic import ValidationInfo, field_validator
 
 from ..node import OntolocyNode
 from ..relationship import OntolocyRelationship

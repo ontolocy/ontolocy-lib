@@ -1,5 +1,6 @@
 from typing import ClassVar, List, Optional
 
+from neontology import related_property
 from pydantic import HttpUrl
 
 from ..node import OntolocyNode
@@ -24,6 +25,11 @@ class IntrusionSet(OntolocyNode):
 
     def __str__(self):
         return self.name
+
+    @property
+    @related_property
+    def actor_types(self):
+        return "MATCH (#ThisNode)-[:INTRUSION_SET_IS_OF_TYPE]->(at) RETURN COLLECT(at.name)"
 
 
 #

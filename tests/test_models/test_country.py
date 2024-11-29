@@ -5,7 +5,6 @@ import pytest
 
 
 def test_define_country():
-
     my_country = Country(country_code="DE")
 
     assert my_country.country_code == "DE"
@@ -13,6 +12,5 @@ def test_define_country():
 
 
 def test_define_country_bad_code():
-
     with pytest.raises(ValidationError):
         Country(country_code="XX")

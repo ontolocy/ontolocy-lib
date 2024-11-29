@@ -85,7 +85,7 @@ def test_listening_socket_uses_port(use_graph):
     rel = ListeningSocketUsesPort(source=socket, target=port)
     rel.merge()
 
-    cypher = f"""
+    cypher = """
     MATCH (sock:ListeningSocket)-[r:LISTENING_SOCKET_USES_PORT]->(port:Port)
     WHERE sock.unique_id = $socket_id
     RETURN COUNT(DISTINCT r)
@@ -108,7 +108,7 @@ def test_listening_socket_has_url(use_graph):
     rel = ServiceHostsURL(source=socket, target=url)
     rel.merge()
 
-    cypher = f"""
+    cypher = """
     MATCH (sock:ListeningSocket)-[r:SERVICE_HOSTS_URL]->(url:URL)
     WHERE sock.unique_id = $socket_id
     RETURN COUNT(DISTINCT r)

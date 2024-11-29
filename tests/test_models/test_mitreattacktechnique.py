@@ -64,7 +64,6 @@ stix_dict = {
 
 
 def test_technique():
-
     technique = MitreAttackTechnique(
         stix_id=stix_dict["id"],
         stix_type=stix_dict["type"],
@@ -83,7 +82,6 @@ def test_technique():
 
 
 def test_technique_bad():
-
     with pytest.raises(ValidationError):
         MitreAttackTechnique(
             stix_id=stix_dict["id"],
