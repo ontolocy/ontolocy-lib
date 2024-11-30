@@ -6,9 +6,7 @@ dependencies:
   - numpy
   - pip
   - pip:
-      - neontology
-      - ontolocy
-      - pandas
+      - ontolocy>=0.8
       - networkx
       - ipydatagrid
       - ipysigma
