@@ -1,4 +1,3 @@
-
 # URL
 
 ## Node Properties
@@ -6,22 +5,18 @@
 | Property Name | Type | Required |
 | ------------- | ---- | -------- |
 | url | Url | True |
+| merged | datetime | False |
+| created | Optional[datetime] | False |
 
-
-
-## Outgoing Relationships
+## Relationships
 
 ### URL_REDIRECTS_TO_URL
 
-Target Label: URL
-
-#### Relationship Properties
+Target Label(s): URL
 
 | Property Name | Type | Required |
 | ------------- | ---- | -------- |
-| target | URLNode | True |
-| source | URLNode | True |
-
-
-
-
+| data_origin_name | Optional[str] | False |
+| data_origin_reference | Optional[str] | False |
+| data_origin_license | Optional[str] | False |
+| data_origin_sharing | Optional[str] | False |

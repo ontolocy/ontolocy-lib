@@ -1,4 +1,3 @@
-
 # Banner
 
 ## Node Properties
@@ -6,7 +5,6 @@
 | Property Name | Type | Required |
 | ------------- | ---- | -------- |
 | banner | str | True |
-| sha1 | Optional | False |
-
-
-
+| merged | datetime | False |
+| created | Optional[datetime] | False |
+| sha1 | Optional[str] | False |

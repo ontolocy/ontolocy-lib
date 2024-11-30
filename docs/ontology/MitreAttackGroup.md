@@ -1,4 +1,3 @@
-
 # MitreAttackGroup
 
 ## Node Properties
@@ -14,38 +13,35 @@
 | stix_created | datetime | True |
 | stix_type | str | True |
 | stix_id | str | True |
+| merged | datetime | False |
+| created | Optional[datetime] | False |
 | stix_spec_version | str | False |
-| stix_revoked | Optional | False |
-| attack_deprecated | Optional | False |
-| description | Optional | False |
+| stix_revoked | Optional[bool] | False |
+| attack_deprecated | Optional[bool] | False |
+| description | Optional[str] | False |
 
-
-
-## Outgoing Relationships
+## Relationships
 
 ### MITRE_ATTACK_GROUP_USES_TECHNIQUE
 
-Target Label: MitreAttackTechnique
-
-#### Relationship Properties
+Target Label(s): MitreAttackTechnique
 
 | Property Name | Type | Required |
 | ------------- | ---- | -------- |
-| target | MitreAttackTechnique | True |
-| source | MitreAttackGroup | True |
+| data_origin_name | Optional[str] | False |
+| data_origin_reference | Optional[str] | False |
+| data_origin_license | Optional[str] | False |
+| data_origin_sharing | Optional[str] | False |
+
 
 
 ### MITRE_ATTACK_GROUP_USES_SOFTWARE
 
-Target Label: MitreAttackSoftware
-
-#### Relationship Properties
+Target Label(s): MitreAttackSoftware
 
 | Property Name | Type | Required |
 | ------------- | ---- | -------- |
-| target | MitreAttackSoftware | True |
-| source | MitreAttackGroup | True |
-
-
-
-
+| data_origin_name | Optional[str] | False |
+| data_origin_reference | Optional[str] | False |
+| data_origin_license | Optional[str] | False |
+| data_origin_sharing | Optional[str] | False |

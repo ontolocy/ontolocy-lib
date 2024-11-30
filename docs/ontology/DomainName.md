@@ -1,4 +1,3 @@
-
 # DomainName
 
 ## Node Properties
@@ -6,23 +5,19 @@
 | Property Name | Type | Required |
 | ------------- | ---- | -------- |
 | name | str | True |
+| merged | datetime | False |
+| created | Optional[datetime] | False |
 
-
-
-## Outgoing Relationships
+## Relationships
 
 ### DOMAIN_NAME_HAS_DNS_RECORD
 
-Target Label: DNSRecord
-
-#### Relationship Properties
+Target Label(s): DNSRecord
 
 | Property Name | Type | Required |
 | ------------- | ---- | -------- |
 | observation_date | datetime | True |
-| target | DNSRecord | True |
-| source | DomainName | True |
-
-
-
-
+| data_origin_name | Optional[str] | False |
+| data_origin_reference | Optional[str] | False |
+| data_origin_license | Optional[str] | False |
+| data_origin_sharing | Optional[str] | False |

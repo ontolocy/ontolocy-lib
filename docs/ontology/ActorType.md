@@ -1,13 +1,11 @@
-
 # ActorType
 
 ## Node Properties
 
 | Property Name | Type | Required |
 | ------------- | ---- | -------- |
-| unique_id | ActorTypeEnum | True |
-| name | Optional | False |
-| description | Optional | False |
-
-
-
+| unique_id | Enum | True |
+| merged | datetime | False |
+| created | Optional[datetime] | False |
+| name | Optional[str] | False |
+| description | Optional[str] | False |
