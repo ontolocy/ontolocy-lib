@@ -24,7 +24,4 @@ def test_detection_compare():
         framework="Test Control Framework",
     )
 
-    assert (
-        detection1.get_primary_property_value()
-        == detection2.get_primary_property_value()
-    )
+    assert detection1.get_pp() == detection2.get_pp()

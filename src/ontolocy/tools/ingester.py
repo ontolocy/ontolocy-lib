@@ -1,3 +1,4 @@
+import time
 from abc import ABC, abstractmethod
 from collections import defaultdict
 from typing import Dict, List, Optional
@@ -93,6 +94,8 @@ class IngesterBase(ABC):
 
     def _merge_nodes(self) -> None:
         for node_type in self.node_types:
+            print(f"Merging: {node_type.__primarylabel__}")
+
             df = self.node_oriented_dfs[node_type.__primarylabel__]
 
             if "ontolocy_parser_node_pp" in df.columns:
@@ -107,9 +110,7 @@ class IngesterBase(ABC):
                     self.data_origin,
                 )
 
-            df["ontolocy_parser_node_pp"] = [
-                x.get_primary_property_value() for x in nodes
-            ]
+            df["ontolocy_parser_node_pp"] = [x.get_pp() for x in nodes]
 
     def _generate_relationships(self) -> None:
         for rel_type in self.rel_types:
@@ -190,22 +191,34 @@ class IngesterBase(ABC):
 
     def _merge_relationships(self) -> None:
         for rel_type_class in self.rel_types:
-
             rel_type = rel_type_class.__relationshiptype__
 
             df = self.rel_oriented_dfs[rel_type]
 
             kwargs = self.relationship_kwargs.get(rel_type, {})
-
+            tr1 = time.perf_counter()
             rel_type_class.ingest_df(df, self.data_origin, **kwargs)
+            tr2 = time.perf_counter()
+            print(
+                f"Merge {len(df.index)}x Rels {rel_type} Real Time: {tr2 - tr1:.2f} seconds"
+            )
 
     def populate(
         self,
     ) -> None:
-
+        print("POPULATING")
+        t1 = time.perf_counter()
         self._merge_nodes()
+        t2 = time.perf_counter()
+        print(f"Merge Nodes Real Time: {t2 - t1:.2f} seconds")
+
         self._generate_relationships()
+        t3 = time.perf_counter()
+        print(f"Generate Rels Real Time: {t3 - t2:.2f} seconds")
+
         self._merge_relationships()
+        t4 = time.perf_counter()
+        print(f"Merge Rels Real Time: {t4 - t3:.2f} seconds")
 
     @abstractmethod
     def _parse(self, input_data, private_namespace=None) -> tuple:

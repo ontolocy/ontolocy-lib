@@ -1,4 +1,4 @@
-*.ipynb
+jupyter/
 .vscode
 .pyre_configuration
 .watchmanconfig

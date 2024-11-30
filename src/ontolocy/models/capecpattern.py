@@ -7,7 +7,6 @@ from .mitreattacktechnique import MitreAttackTechnique
 
 
 class CAPECPattern(OntolocyNode):
-
     __primaryproperty__: ClassVar[str] = "capec_id"
     __primarylabel__: ClassVar[Optional[str]] = "CAPECPattern"
 

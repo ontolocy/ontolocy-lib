@@ -1,4 +1,3 @@
-
 # Control
 
 ## Node Properties
@@ -8,57 +7,55 @@
 | framework | str | True |
 | name | str | True |
 | control_id | str | True |
-| version | Optional | False |
-| framework_version | Optional | False |
-| description | Optional | False |
-| context | Optional | False |
-| unique_id | Optional | False |
-| url_reference | Optional | False |
+| merged | datetime | False |
+| created | Optional[datetime] | False |
+| version | Optional[str] | False |
+| framework_version | Optional[str] | False |
+| description | Optional[str] | False |
+| context | Optional[str] | False |
+| unique_id | Optional[str] | False |
+| url_reference | Optional[Annotated] | False |
 
+## Relationships
 
+### CONTROL_HAS_PARENT_CONTROL
 
-## Outgoing Relationships
-
-### CONTROL_MITIGATES_ATTACK_TECHNIQUE
-
-Target Label: MitreAttackTechnique
-
-#### Relationship Properties
+Target Label(s): Control
 
 | Property Name | Type | Required |
 | ------------- | ---- | -------- |
-| target | MitreAttackTechnique | True |
-| source | Control | True |
-| url_reference | Optional | False |
+| data_origin_name | Optional[str] | False |
+| data_origin_reference | Optional[str] | False |
+| data_origin_license | Optional[str] | False |
+| data_origin_sharing | Optional[str] | False |
+| context | Optional[str] | False |
+| url_reference | Optional[Annotated] | False |
+
 
 
 ### CONTROL_RELATED_TO_CONTROL
 
-Target Label: Control
-
-#### Relationship Properties
+Target Label(s): Control
 
 | Property Name | Type | Required |
 | ------------- | ---- | -------- |
-| target | Control | True |
-| source | Control | True |
-| context | Optional | False |
-| url_reference | Optional | False |
+| data_origin_name | Optional[str] | False |
+| data_origin_reference | Optional[str] | False |
+| data_origin_license | Optional[str] | False |
+| data_origin_sharing | Optional[str] | False |
+| context | Optional[str] | False |
+| url_reference | Optional[Annotated] | False |
 
 
-### CONTROL_HAS_PARENT_CONTROL
 
-Target Label: Control
+### CONTROL_MITIGATES_ATTACK_TECHNIQUE
 
-#### Relationship Properties
+Target Label(s): MitreAttackTechnique
 
 | Property Name | Type | Required |
 | ------------- | ---- | -------- |
-| target | Control | True |
-| source | Control | True |
-| context | Optional | False |
-| url_reference | Optional | False |
-
-
-
-
+| data_origin_name | Optional[str] | False |
+| data_origin_reference | Optional[str] | False |
+| data_origin_license | Optional[str] | False |
+| data_origin_sharing | Optional[str] | False |
+| url_reference | Optional[Annotated] | False |

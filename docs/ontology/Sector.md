@@ -1,4 +1,3 @@
-
 # Sector
 
 ## Node Properties
@@ -7,7 +6,6 @@
 | ------------- | ---- | -------- |
 | unique_id | str | True |
 | name | str | True |
-| keywords | Optional | False |
-
-
-
+| merged | datetime | False |
+| created | Optional[datetime] | False |
+| keywords | Optional[List[str]] | False |

@@ -4,7 +4,6 @@ from ..node import OntolocyNode
 
 
 class CWE(OntolocyNode):
-
     __primaryproperty__: ClassVar[str] = "cwe_id"
     __primarylabel__: ClassVar[Optional[str]] = "CWE"
 

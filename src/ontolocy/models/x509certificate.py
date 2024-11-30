@@ -4,7 +4,6 @@ from ..node import OntolocyNode
 
 
 class X509Certificate(OntolocyNode):
-
     __primaryproperty__: ClassVar[str] = "sha1"
     __primarylabel__: ClassVar[str] = "X509Certificate"
 

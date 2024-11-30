@@ -1,4 +1,3 @@
-
 # NetworkService
 
 ## Node Properties
@@ -6,23 +5,19 @@
 | Property Name | Type | Required |
 | ------------- | ---- | -------- |
 | name | str | True |
-| description | Optional | False |
+| merged | datetime | False |
+| created | Optional[datetime] | False |
+| description | Optional[str] | False |
 
-
-
-## Outgoing Relationships
+## Relationships
 
 ### NETWORK_SERVICE_RUNS_ON_PORT
 
-Target Label: Port
-
-#### Relationship Properties
+Target Label(s): Port
 
 | Property Name | Type | Required |
 | ------------- | ---- | -------- |
-| target | Port | True |
-| source | NetworkService | True |
-
-
-
-
+| data_origin_name | Optional[str] | False |
+| data_origin_reference | Optional[str] | False |
+| data_origin_license | Optional[str] | False |
+| data_origin_sharing | Optional[str] | False |

@@ -1,7 +1,7 @@
 from datetime import date
 from typing import ClassVar, List, Optional
 
-from pydantic import HttpUrl, ValidationInfo, field_validator
+from pydantic import HttpUrl, ValidationInfo, field_serializer, field_validator
 
 from ..node import OntolocyNode
 from ..relationship import OntolocyRelationship
@@ -44,6 +44,10 @@ class Report(OntolocyNode):
             v = str(generate_deterministic_uuid(key_values))
 
         return v
+
+    @field_serializer("url_reference")
+    def serialize_to_str(self, input: HttpUrl, _info):
+        return str(input)
 
 
 #

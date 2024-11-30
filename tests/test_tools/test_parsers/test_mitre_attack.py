@@ -87,6 +87,27 @@ def test_node_parse(test_data):
 @pytest.mark.slow
 @pytest.mark.webtest
 @pytest.mark.parametrize("test_data", test_cases)
+def test_node_populate_simple(use_graph, test_data):
+    parser = MitreAttackParser()
+
+    parser.parse_url(test_data["url"], populate=True)
+
+    campaign_cypher = """
+    MATCH (n:MitreAttackCampaign)
+        WHERE  (n.stix_revoked = false OR n.stix_revoked is NULL)
+        AND (n.attack_deprecated = false or n.attack_deprecated is NULL)
+    RETURN COUNT(DISTINCT n)
+    """
+
+    assert (
+        use_graph.evaluate_query_single(campaign_cypher)
+        == test_data["campaign_count_valid"]
+    )
+
+
+@pytest.mark.slow
+@pytest.mark.webtest
+@pytest.mark.parametrize("test_data", test_cases)
 def test_node_populate(use_graph, test_data):
     parser = MitreAttackParser()
 

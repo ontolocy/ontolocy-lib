@@ -64,7 +64,6 @@ stix_dict = {
 
 
 def test_technique():
-
     technique = MitreAttackTechnique(
         stix_id=stix_dict["id"],
         stix_type=stix_dict["type"],
@@ -79,14 +78,10 @@ def test_technique():
         description=stix_dict["description"],
     )
 
-    assert (
-        technique.get_primary_property_value()
-        == "attack-pattern--2d3f5b3c-54ca-4f4d-bb1f-849346d31230"
-    )
+    assert technique.get_pp() == "attack-pattern--2d3f5b3c-54ca-4f4d-bb1f-849346d31230"
 
 
 def test_technique_bad():
-
     with pytest.raises(ValidationError):
         MitreAttackTechnique(
             stix_id=stix_dict["id"],

@@ -1,4 +1,3 @@
-
 # UserAccount
 
 ## Node Properties
@@ -6,25 +5,21 @@
 | Property Name | Type | Required |
 | ------------- | ---- | -------- |
 | username | str | True |
-| local_hostname | Optional | False |
-| namespace | Optional | False |
-| unique_id | Optional | False |
+| merged | datetime | False |
+| created | Optional[datetime] | False |
+| local_hostname | Optional[str] | False |
+| namespace | Optional[str] | False |
+| unique_id | Optional[UUID] | False |
 
-
-
-## Outgoing Relationships
+## Relationships
 
 ### USER_ACCOUNT_AUTHORIZED_ON_HOST
 
-Target Label: Host
-
-#### Relationship Properties
+Target Label(s): Host
 
 | Property Name | Type | Required |
 | ------------- | ---- | -------- |
-| target | Host | True |
-| source | UserAccount | True |
-
-
-
-
+| data_origin_name | Optional[str] | False |
+| data_origin_reference | Optional[str] | False |
+| data_origin_license | Optional[str] | False |
+| data_origin_sharing | Optional[str] | False |

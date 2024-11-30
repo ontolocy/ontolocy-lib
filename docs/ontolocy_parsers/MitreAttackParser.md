@@ -42,22 +42,22 @@ ontolocy parse mitre-attack -u https://github.com/mitre-attack/attack-stix-data/
 If you're writing a Python script, or working in a Jupyter Notebook, you can import the MitreAttackParser class.
 
 ```python
-from ontolocy import init_ontolocy
+from neontology import init_neontology, Neo4jConfig
 from ontolocy.tools import MitreAttackParser
 
 
 # By default, Ontolocy expects environment variables to be set as above.
 #   (e.g. in a .env file).
 
-init_ontolocy()
+init_neontology()
 
 # If preferred, you can provide Neo4j connection details explicitly:
-#
-#     init_ontolocy(
-#       neo4j_uri="neo4j://localhost:7687",
-#       neo4j_username="neo4j",
-#       neo4j_password="MyNeo4jPassword"
+#     graph_config = Neo4jConfig(
+#         uri="neo4j+s://mydatabaseid.databases.neo4j.io",
+#         username="neo4j",
+#         password="<PASSWORD>"
 #     )
+#     init_neontology(graph_config)
 #
 
 parser = MitreAttackParser()

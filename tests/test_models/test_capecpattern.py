@@ -75,7 +75,7 @@ def test_capec():
         typical_severity="Low",
     )
 
-    assert capec.get_primary_property_value() == 1001
+    assert capec.get_pp() == 1001
 
 
 def test_capec_maps_to_attack(use_graph):
@@ -106,18 +106,18 @@ def test_capec_maps_to_attack(use_graph):
     technique.merge()
 
     df = pd.DataFrame.from_records(
-        [{"source": capec.get_primary_property_value(), "target": technique.attack_id}]
+        [{"source": capec.get_pp(), "target": technique.attack_id}]
     )
 
     CAPECPatternMapsToAttackTechnique.ingest_df(df, target_prop="attack_id")
 
-    cypher = f"""
+    cypher = """
     MATCH (capec:CAPECPattern)-[r:CAPEC_PATTERN_MAPS_TO_ATTACK_TECHNIQUE]->(:MitreAttackTechnique)
     WHERE capec.capec_id = $capec_id
     RETURN COUNT(DISTINCT r)
     """
 
-    params = {"capec_id": capec.get_primary_property_value()}
+    params = {"capec_id": capec.get_pp()}
 
     result = use_graph.evaluate_query_single(cypher, params)
 

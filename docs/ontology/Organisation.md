@@ -1,4 +1,3 @@
-
 # Organisation
 
 ## Node Properties
@@ -6,48 +5,33 @@
 | Property Name | Type | Required |
 | ------------- | ---- | -------- |
 | name | str | True |
-| description | Optional | False |
-| address | Optional | False |
+| merged | datetime | False |
+| created | Optional[datetime] | False |
+| description | Optional[str] | False |
+| address | Optional[str] | False |
 
-
-
-## Outgoing Relationships
-
-### ORGANISATION_PUBLISHED_THREAT_REPORT
-
-Target Label: Report
-
-#### Relationship Properties
-
-| Property Name | Type | Required |
-| ------------- | ---- | -------- |
-| url_reference | Optional | True |
-| context | Optional | True |
-| target | Report | True |
-| source | Organisation | True |
-
+## Relationships
 
 ### ORGANISATION_REPORTED_EXPLOITATION_OF_CVE
 
-Target Label: CVE
-
-#### Relationship Properties
+Target Label(s): CVE
 
 | Property Name | Type | Required |
 | ------------- | ---- | -------- |
-| required_action | Optional | True |
-| description | Optional | True |
-| url_reference | Optional | True |
+| required_action | Optional[str] | True |
+| description | Optional[str] | True |
+| url_reference | Optional[Annotated] | True |
 | reported_date | date | True |
-| target | CVE | True |
-| source | Organisation | True |
+| data_origin_name | Optional[str] | False |
+| data_origin_reference | Optional[str] | False |
+| data_origin_license | Optional[str] | False |
+| data_origin_sharing | Optional[str] | False |
+
 
 
 ### ORGANISATION_ASSIGNED_CVSS_TO_CVE
 
-Target Label: CVE
-
-#### Relationship Properties
+Target Label(s): CVE
 
 | Property Name | Type | Required |
 | ------------- | ---- | -------- |
@@ -65,9 +49,22 @@ Target Label: CVE
 | attack_vector | str | True |
 | vector_string | str | True |
 | version | str | True |
-| target | CVE | True |
-| source | Organisation | True |
+| data_origin_name | Optional[str] | False |
+| data_origin_reference | Optional[str] | False |
+| data_origin_license | Optional[str] | False |
+| data_origin_sharing | Optional[str] | False |
 
 
 
+### ORGANISATION_PUBLISHED_THREAT_REPORT
 
+Target Label(s): Report
+
+| Property Name | Type | Required |
+| ------------- | ---- | -------- |
+| url_reference | Optional[Annotated] | True |
+| context | Optional[str] | True |
+| data_origin_name | Optional[str] | False |
+| data_origin_reference | Optional[str] | False |
+| data_origin_license | Optional[str] | False |
+| data_origin_sharing | Optional[str] | False |

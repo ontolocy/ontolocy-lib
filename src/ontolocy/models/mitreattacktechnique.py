@@ -1,7 +1,8 @@
 from datetime import datetime
 from typing import ClassVar, Optional
 
-from pydantic import HttpUrl, StringConstraints
+from neontology import related_nodes, related_property
+from pydantic import HttpUrl, StringConstraints, field_serializer
 from typing_extensions import Annotated
 
 from ..node import OntolocyNode
@@ -31,8 +32,22 @@ class MitreAttackTechnique(OntolocyNode):
     name: str
     description: str
 
+    @field_serializer("ref_url")
+    def serialize_ref_url(self, ref_url: HttpUrl, _info):
+        return str(ref_url)
+
     def __str__(self) -> str:
         return f"{self.attack_id}: {self.name}"
+
+    @property
+    @related_property
+    def tactic_names(self):
+        return "MATCH (#ThisNode)<-[:MITRE_TACTIC_INCLUDES_TECHNIQUE]-(t) RETURN COLLECT(t.name)"
+
+    @property
+    @related_nodes
+    def tactic_nodes(self):
+        return "MATCH (#ThisNode)<-[:MITRE_TACTIC_INCLUDES_TECHNIQUE]-(t) RETURN t"
 
 
 #

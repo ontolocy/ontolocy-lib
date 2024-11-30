@@ -1,4 +1,3 @@
-
 # ListeningSocket
 
 ## Node Properties
@@ -7,90 +6,91 @@
 | ------------- | ---- | -------- |
 | ip_address | IPvAnyAddress | True |
 | port_number | int | True |
-| protocol | ListeningSocketProtocolEnum | True |
-| private | Optional | False |
-| namespace | Optional | False |
-| ip_address_unique_id | Optional | False |
-| unique_id | Optional | False |
+| protocol | Enum | True |
+| merged | datetime | False |
+| created | Optional[datetime] | False |
+| private | Optional[bool] | False |
+| namespace | Optional[str] | False |
+| ip_address_unique_id | Optional[str] | False |
+| unique_id | Optional[str] | False |
 
+## Relationships
 
+### OPEN_PORT_HAS_JARM_HASH
 
-## Outgoing Relationships
-
-### SERVICE_HOSTS_URL
-
-Target Label: URL
-
-#### Relationship Properties
+Target Label(s): JarmHash
 
 | Property Name | Type | Required |
 | ------------- | ---- | -------- |
-| target | URLNode | True |
-| source | ListeningSocket | True |
-| status_code | Optional | False |
+| data_origin_name | Optional[str] | False |
+| data_origin_reference | Optional[str] | False |
+| data_origin_license | Optional[str] | False |
+| data_origin_sharing | Optional[str] | False |
+
 
 
 ### SERVICE_IDENTIFIED_AS_PLATFORM
 
-Target Label: CPE
-
-#### Relationship Properties
+Target Label(s): CPE
 
 | Property Name | Type | Required |
 | ------------- | ---- | -------- |
-| cpe | Optional | True |
-| target | CPE | True |
-| source | ListeningSocket | True |
-| status_code | Optional | False |
+| cpe | Optional[Annotated] | True |
+| data_origin_name | Optional[str] | False |
+| data_origin_reference | Optional[str] | False |
+| data_origin_license | Optional[str] | False |
+| data_origin_sharing | Optional[str] | False |
+| status_code | Optional[int] | False |
+
+
+
+### SERVICE_HOSTS_URL
+
+Target Label(s): URL
+
+| Property Name | Type | Required |
+| ------------- | ---- | -------- |
+| data_origin_name | Optional[str] | False |
+| data_origin_reference | Optional[str] | False |
+| data_origin_license | Optional[str] | False |
+| data_origin_sharing | Optional[str] | False |
+| status_code | Optional[int] | False |
+
 
 
 ### OPEN_PORT_PRESENTS_BANNER
 
-Target Label: Banner
-
-#### Relationship Properties
+Target Label(s): Banner
 
 | Property Name | Type | Required |
 | ------------- | ---- | -------- |
-| target | Banner | True |
-| source | ListeningSocket | True |
+| data_origin_name | Optional[str] | False |
+| data_origin_reference | Optional[str] | False |
+| data_origin_license | Optional[str] | False |
+| data_origin_sharing | Optional[str] | False |
 
-
-### LISTENING_SOCKET_USES_PORT
-
-Target Label: Port
-
-#### Relationship Properties
-
-| Property Name | Type | Required |
-| ------------- | ---- | -------- |
-| target | Port | True |
-| source | ListeningSocket | True |
-
-
-### OPEN_PORT_HAS_JARM_HASH
-
-Target Label: JarmHash
-
-#### Relationship Properties
-
-| Property Name | Type | Required |
-| ------------- | ---- | -------- |
-| target | JarmHash | True |
-| source | ListeningSocket | True |
 
 
 ### OPEN_PORT_PRESENTS_X509_CERTIFICATE
 
-Target Label: X509Certificate
-
-#### Relationship Properties
+Target Label(s): X509Certificate
 
 | Property Name | Type | Required |
 | ------------- | ---- | -------- |
-| target | X509Certificate | True |
-| source | ListeningSocket | True |
+| data_origin_name | Optional[str] | False |
+| data_origin_reference | Optional[str] | False |
+| data_origin_license | Optional[str] | False |
+| data_origin_sharing | Optional[str] | False |
 
 
 
+### LISTENING_SOCKET_USES_PORT
 
+Target Label(s): Port
+
+| Property Name | Type | Required |
+| ------------- | ---- | -------- |
+| data_origin_name | Optional[str] | False |
+| data_origin_reference | Optional[str] | False |
+| data_origin_license | Optional[str] | False |
+| data_origin_sharing | Optional[str] | False |

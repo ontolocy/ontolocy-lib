@@ -1,13 +1,11 @@
-
 # Port
 
 ## Node Properties
 
 | Property Name | Type | Required |
 | ------------- | ---- | -------- |
-| protocol | PortProtocolEnum | True |
+| protocol | Enum | True |
 | port_number | int | True |
-| unique_id | Optional | False |
-
-
-
+| merged | datetime | False |
+| created | Optional[datetime] | False |
+| unique_id | Optional[str] | False |

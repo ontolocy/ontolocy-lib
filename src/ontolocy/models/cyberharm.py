@@ -6,7 +6,6 @@ from ..node import OntolocyNode
 
 
 class CyberHarm(OntolocyNode):
-
     __primaryproperty__: ClassVar[str] = "unique_id"
     __primarylabel__: ClassVar[Optional[str]] = "CyberHarm"
 

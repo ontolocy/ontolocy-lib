@@ -1,4 +1,3 @@
-
 # Campaign
 
 ## Node Properties
@@ -6,92 +5,93 @@
 | Property Name | Type | Required |
 | ------------- | ---- | -------- |
 | unique_id | str | True |
-| summary | Optional | True |
+| summary | Optional[str] | True |
 | activity_datetime | datetime | True |
 | url_reference | Url | True |
 | title | str | True |
+| merged | datetime | False |
+| created | Optional[datetime] | False |
 
-
-
-## Outgoing Relationships
-
-### CAMPAIGN_USES_CVE
-
-Target Label: CVE
-
-#### Relationship Properties
-
-| Property Name | Type | Required |
-| ------------- | ---- | -------- |
-| url_reference | Optional | True |
-| target | CVE | True |
-| source | Campaign | True |
-
+## Relationships
 
 ### CAMPAIGN_TARGETS_SECTOR
 
-Target Label: Sector
-
-#### Relationship Properties
+Target Label(s): Sector
 
 | Property Name | Type | Required |
 | ------------- | ---- | -------- |
-| url_reference | Optional | True |
-| target | Sector | True |
-| source | Campaign | True |
+| url_reference | Optional[Annotated] | True |
+| data_origin_name | Optional[str] | False |
+| data_origin_reference | Optional[str] | False |
+| data_origin_license | Optional[str] | False |
+| data_origin_sharing | Optional[str] | False |
 
-
-### CAMPAIGN_USES_TECHNIQUE
-
-Target Label: MitreAttackTechnique
-
-#### Relationship Properties
-
-| Property Name | Type | Required |
-| ------------- | ---- | -------- |
-| url_reference | Optional | True |
-| target | MitreAttackTechnique | True |
-| source | Campaign | True |
-
-
-### CAMPAIGN_BY_INTRUSION_SET
-
-Target Label: IntrusionSet
-
-#### Relationship Properties
-
-| Property Name | Type | Required |
-| ------------- | ---- | -------- |
-| url_reference | Optional | True |
-| target | IntrusionSet | True |
-| source | Campaign | True |
-
-
-### CAMPAIGN_CAUSED_CYBER_HARM
-
-Target Label: CyberHarm
-
-#### Relationship Properties
-
-| Property Name | Type | Required |
-| ------------- | ---- | -------- |
-| url_reference | Optional | True |
-| target | CyberHarm | True |
-| source | Campaign | True |
 
 
 ### CAMPAIGN_TARGETS_COUNTRY
 
-Target Label: Country
-
-#### Relationship Properties
+Target Label(s): Country
 
 | Property Name | Type | Required |
 | ------------- | ---- | -------- |
-| url_reference | Optional | True |
-| target | Country | True |
-| source | Campaign | True |
+| url_reference | Optional[Annotated] | True |
+| data_origin_name | Optional[str] | False |
+| data_origin_reference | Optional[str] | False |
+| data_origin_license | Optional[str] | False |
+| data_origin_sharing | Optional[str] | False |
 
 
 
+### CAMPAIGN_USES_TECHNIQUE
 
+Target Label(s): MitreAttackTechnique
+
+| Property Name | Type | Required |
+| ------------- | ---- | -------- |
+| url_reference | Optional[Annotated] | True |
+| data_origin_name | Optional[str] | False |
+| data_origin_reference | Optional[str] | False |
+| data_origin_license | Optional[str] | False |
+| data_origin_sharing | Optional[str] | False |
+
+
+
+### CAMPAIGN_USES_CVE
+
+Target Label(s): CVE
+
+| Property Name | Type | Required |
+| ------------- | ---- | -------- |
+| url_reference | Optional[Annotated] | True |
+| data_origin_name | Optional[str] | False |
+| data_origin_reference | Optional[str] | False |
+| data_origin_license | Optional[str] | False |
+| data_origin_sharing | Optional[str] | False |
+
+
+
+### CAMPAIGN_BY_INTRUSION_SET
+
+Target Label(s): IntrusionSet
+
+| Property Name | Type | Required |
+| ------------- | ---- | -------- |
+| url_reference | Optional[Annotated] | True |
+| data_origin_name | Optional[str] | False |
+| data_origin_reference | Optional[str] | False |
+| data_origin_license | Optional[str] | False |
+| data_origin_sharing | Optional[str] | False |
+
+
+
+### CAMPAIGN_CAUSED_CYBER_HARM
+
+Target Label(s): CyberHarm
+
+| Property Name | Type | Required |
+| ------------- | ---- | -------- |
+| url_reference | Optional[Annotated] | True |
+| data_origin_name | Optional[str] | False |
+| data_origin_reference | Optional[str] | False |
+| data_origin_license | Optional[str] | False |
+| data_origin_sharing | Optional[str] | False |

@@ -1,4 +1,3 @@
-
 # MitreAttackTechnique
 
 ## Node Properties
@@ -15,26 +14,22 @@
 | stix_created | datetime | True |
 | stix_type | str | True |
 | stix_id | str | True |
+| merged | datetime | False |
+| created | Optional[datetime] | False |
 | stix_spec_version | str | False |
-| stix_revoked | Optional | False |
-| attack_subtechnique | Optional | False |
-| attack_deprecated | Optional | False |
+| stix_revoked | Optional[bool] | False |
+| attack_subtechnique | Optional[bool] | False |
+| attack_deprecated | Optional[bool] | False |
 
-
-
-## Outgoing Relationships
+## Relationships
 
 ### MITRE_SUBTECHNIQUE_OF
 
-Target Label: MitreAttackTechnique
-
-#### Relationship Properties
+Target Label(s): MitreAttackTechnique
 
 | Property Name | Type | Required |
 | ------------- | ---- | -------- |
-| target | MitreAttackTechnique | True |
-| source | MitreAttackTechnique | True |
-
-
-
-
+| data_origin_name | Optional[str] | False |
+| data_origin_reference | Optional[str] | False |
+| data_origin_license | Optional[str] | False |
+| data_origin_sharing | Optional[str] | False |

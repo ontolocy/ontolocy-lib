@@ -1,4 +1,3 @@
-
 # MitreAttackCampaign
 
 ## Node Properties
@@ -19,49 +18,47 @@
 | stix_created | datetime | True |
 | stix_type | str | True |
 | stix_id | str | True |
+| merged | datetime | False |
+| created | Optional[datetime] | False |
 | stix_spec_version | str | False |
-| stix_revoked | Optional | False |
-| attack_deprecated | Optional | False |
+| stix_revoked | Optional[bool] | False |
+| attack_deprecated | Optional[bool] | False |
 
-
-
-## Outgoing Relationships
-
-### MITRE_CAMPAIGN_USES_SOFTWARE
-
-Target Label: MitreAttackSoftware
-
-#### Relationship Properties
-
-| Property Name | Type | Required |
-| ------------- | ---- | -------- |
-| target | MitreAttackSoftware | True |
-| source | MitreAttackCampaign | True |
-
+## Relationships
 
 ### MITRE_CAMPAIGN_USES_TECHNIQUE
 
-Target Label: MitreAttackTechnique
-
-#### Relationship Properties
+Target Label(s): MitreAttackTechnique
 
 | Property Name | Type | Required |
 | ------------- | ---- | -------- |
-| target | MitreAttackTechnique | True |
-| source | MitreAttackCampaign | True |
+| data_origin_name | Optional[str] | False |
+| data_origin_reference | Optional[str] | False |
+| data_origin_license | Optional[str] | False |
+| data_origin_sharing | Optional[str] | False |
+
+
+
+### MITRE_CAMPAIGN_USES_SOFTWARE
+
+Target Label(s): MitreAttackSoftware
+
+| Property Name | Type | Required |
+| ------------- | ---- | -------- |
+| data_origin_name | Optional[str] | False |
+| data_origin_reference | Optional[str] | False |
+| data_origin_license | Optional[str] | False |
+| data_origin_sharing | Optional[str] | False |
+
 
 
 ### MITRE_CAMPAIGN_ATTRIBUTED_TO_INTRUSION_SET
 
-Target Label: IntrusionSet
-
-#### Relationship Properties
+Target Label(s): IntrusionSet
 
 | Property Name | Type | Required |
 | ------------- | ---- | -------- |
-| target | IntrusionSet | True |
-| source | MitreAttackCampaign | True |
-
-
-
-
+| data_origin_name | Optional[str] | False |
+| data_origin_reference | Optional[str] | False |
+| data_origin_license | Optional[str] | False |
+| data_origin_sharing | Optional[str] | False |
