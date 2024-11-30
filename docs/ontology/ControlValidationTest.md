@@ -1,28 +1,25 @@
-# MitreAttackSoftware
+# ControlValidationTest
 
 ## Node Properties
 
 | Property Name | Type | Required |
 | ------------- | ---- | -------- |
+| framework | str | True |
 | name | str | True |
-| ref_url | Url | True |
-| attack_id | str | True |
-| attack_version | str | True |
-| attack_spec_version | str | True |
-| stix_modified | datetime | True |
-| stix_created | datetime | True |
-| stix_type | str | True |
-| stix_id | str | True |
+| test_id | str | True |
 | merged | datetime | False |
 | created | Optional[datetime] | False |
-| stix_spec_version | str | False |
-| stix_revoked | Optional[bool] | False |
-| attack_deprecated | Optional[bool] | False |
+| version | Optional[str] | False |
+| framework_version | Optional[str] | False |
 | description | Optional[str] | False |
+| context | Optional[str] | False |
+| unique_id | Optional[str] | False |
+| url_reference | Optional[Annotated] | False |
+| platform_tags | Optional[List[str]] | False |
 
 ## Relationships
 
-### MITRE_SOFTWARE_USES_TECHNIQUE
+### CONTROL_VALIDATION_TEST_FOR_ATTACK_TECHNIQUE
 
 Target Label(s): MitreAttackTechnique
 

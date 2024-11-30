@@ -1,0 +1,15 @@
+name: ontolocy-examples-environment
+channels:
+  - conda-forge
+dependencies:
+  - python>=3.9
+  - numpy
+  - pip
+  - pip:
+      - neontology
+      - ontolocy
+      - pandas
+      - networkx
+      - ipydatagrid
+      - ipysigma
+      - yfiles_jupyter_graphs

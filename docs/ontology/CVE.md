@@ -1,4 +1,3 @@
-
 # CVE
 
 ## Node Properties
@@ -6,38 +5,35 @@
 | Property Name | Type | Required |
 | ------------- | ---- | -------- |
 | cve_id | str | True |
-| published_date | Optional | False |
-| assigner | Optional | False |
-| description | Optional | False |
+| merged | datetime | False |
+| created | Optional[datetime] | False |
+| published_date | Optional[datetime] | False |
+| assigner | Optional[str] | False |
+| description | Optional[str] | False |
 
-
-
-## Outgoing Relationships
+## Relationships
 
 ### CVE_RELATES_TO_CWE
 
-Target Label: CWE
-
-#### Relationship Properties
+Target Label(s): CWE
 
 | Property Name | Type | Required |
 | ------------- | ---- | -------- |
-| target | CWE | True |
-| source | CVE | True |
+| data_origin_name | Optional[str] | False |
+| data_origin_reference | Optional[str] | False |
+| data_origin_license | Optional[str] | False |
+| data_origin_sharing | Optional[str] | False |
+
 
 
 ### CVE_RELATES_TO_CPE
 
-Target Label: CPE
-
-#### Relationship Properties
+Target Label(s): CPE
 
 | Property Name | Type | Required |
 | ------------- | ---- | -------- |
-| target | CPE | True |
-| source | CVE | True |
-| cpe | Optional | False |
-
-
-
-
+| data_origin_name | Optional[str] | False |
+| data_origin_reference | Optional[str] | False |
+| data_origin_license | Optional[str] | False |
+| data_origin_sharing | Optional[str] | False |
+| cpe | Optional[Annotated] | False |

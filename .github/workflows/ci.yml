@@ -26,7 +26,7 @@ jobs:
       fail-fast: true
       max-parallel: 2
       matrix:
-        python-version: ["3.8", "3.9", "3.10", "3.11", "3.12"]
+        python-version: ["3.9", "3.10", "3.11", "3.12", "3.13"]
 
     steps:
       - uses: actions/checkout@v3
@@ -50,5 +50,8 @@ jobs:
           TEST_NEO4J_URI: bolt://localhost:7687
           TEST_NEO4J_USERNAME: neo4j
           TEST_NEO4J_PASSWORD: ${{secrets.TEST_NEO4J_PASSWORD}}
+          TEST_MEMGRAPH_URI: bolt://localhost:9687
+          TEST_MEMGRAPH_USER: ${{secrets.TEST_MEMGRAPH_USER}}
+          TEST_MEMGRAPH_PASSWORD: ${{secrets.TEST_MEMGRAPH_PASSWORD}}
         run: |
           pytest -x -m "not slow"

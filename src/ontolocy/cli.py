@@ -58,7 +58,6 @@ def parse(parser_, filepath, url, force):
             new_rels += len(rel_entry["src_df"].index)
 
     if force is False:
-
         msg = f"\nAction will create up to {new_nodes} new nodes and {new_rels} new relationships."
 
         if new_nodes > 1000 or new_rels > 1000:

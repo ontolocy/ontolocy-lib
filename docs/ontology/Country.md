@@ -1,4 +1,3 @@
-
 # Country
 
 ## Node Properties
@@ -6,7 +5,6 @@
 | Property Name | Type | Required |
 | ------------- | ---- | -------- |
 | country_code | str | True |
-| name | Optional | False |
-
-
-
+| merged | datetime | False |
+| created | Optional[datetime] | False |
+| name | Optional[str] | False |

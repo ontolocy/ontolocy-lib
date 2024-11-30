@@ -1,4 +1,3 @@
-
 # Report
 
 ## Node Properties
@@ -9,205 +8,216 @@
 | url_reference | Url | True |
 | author | str | True |
 | title | str | True |
-| summary | Optional | False |
-| additional_urls | Optional | False |
-| unique_id | Optional | False |
+| merged | datetime | False |
+| created | Optional[datetime] | False |
+| summary | Optional[str] | False |
+| additional_urls | Optional[List[typing] | False |
+| unique_id | Optional[str] | False |
 
-
-
-## Outgoing Relationships
-
-### REPORT_IDENTIFIES_INTRUSION_SET
-
-Target Label: IntrusionSet
-
-#### Relationship Properties
-
-| Property Name | Type | Required |
-| ------------- | ---- | -------- |
-| target | IntrusionSet | True |
-| source | Report | True |
-
-
-### REPORT_MENTIONS_COUNTRY
-
-Target Label: Country
-
-#### Relationship Properties
-
-| Property Name | Type | Required |
-| ------------- | ---- | -------- |
-| target | Country | True |
-| source | Report | True |
-
-
-### REPORT_IDENTIFIES_VICTIM_COUNTRY
-
-Target Label: Country
-
-#### Relationship Properties
-
-| Property Name | Type | Required |
-| ------------- | ---- | -------- |
-| target | Country | True |
-| source | Report | True |
-
-
-### REPORT_MENTIONS_SECTOR
-
-Target Label: Sector
-
-#### Relationship Properties
-
-| Property Name | Type | Required |
-| ------------- | ---- | -------- |
-| target | Sector | True |
-| source | Report | True |
-
-
-### REPORT_MENTIONS_IP
-
-Target Label: IPAddress
-
-#### Relationship Properties
-
-| Property Name | Type | Required |
-| ------------- | ---- | -------- |
-| target | IPAddressNode | True |
-| source | Report | True |
-
-
-### REPORT_IDENTIFIES_CAMPAIGN
-
-Target Label: Campaign
-
-#### Relationship Properties
-
-| Property Name | Type | Required |
-| ------------- | ---- | -------- |
-| target | Campaign | True |
-| source | Report | True |
-
-
-### REPORT_MENTIONS_INTRUSION_SET
-
-Target Label: IntrusionSet
-
-#### Relationship Properties
-
-| Property Name | Type | Required |
-| ------------- | ---- | -------- |
-| target | IntrusionSet | True |
-| source | Report | True |
-
+## Relationships
 
 ### REPORT_IDENTIFIES_SOFTWARE
 
-Target Label: MitreAttackSoftware
-
-#### Relationship Properties
+Target Label(s): MitreAttackSoftware
 
 | Property Name | Type | Required |
 | ------------- | ---- | -------- |
-| target | MitreAttackSoftware | True |
-| source | Report | True |
+| data_origin_name | Optional[str] | False |
+| data_origin_reference | Optional[str] | False |
+| data_origin_license | Optional[str] | False |
+| data_origin_sharing | Optional[str] | False |
 
-
-### REPORT_IDENTIFIES_TECHNIQUE
-
-Target Label: MitreAttackTechnique
-
-#### Relationship Properties
-
-| Property Name | Type | Required |
-| ------------- | ---- | -------- |
-| target | MitreAttackTechnique | True |
-| source | Report | True |
-
-
-### REPORT_MENTIONS_TECHNIQUE
-
-Target Label: MitreAttackTechnique
-
-#### Relationship Properties
-
-| Property Name | Type | Required |
-| ------------- | ---- | -------- |
-| target | MitreAttackTechnique | True |
-| source | Report | True |
-
-
-### REPORT_MENTIONS_CVE
-
-Target Label: CVE
-
-#### Relationship Properties
-
-| Property Name | Type | Required |
-| ------------- | ---- | -------- |
-| target | CVE | True |
-| source | Report | True |
-
-
-### REPORT_IDENTIFIES_VICTIM_SECTOR
-
-Target Label: Sector
-
-#### Relationship Properties
-
-| Property Name | Type | Required |
-| ------------- | ---- | -------- |
-| target | Sector | True |
-| source | Report | True |
-
-
-### REPORT_IDENTIFIES_CYBER_HARM
-
-Target Label: CyberHarm
-
-#### Relationship Properties
-
-| Property Name | Type | Required |
-| ------------- | ---- | -------- |
-| target | CyberHarm | True |
-| source | Report | True |
 
 
 ### REPORT_IDENTIFIES_SPONSOR_COUNTRY
 
-Target Label: Country
-
-#### Relationship Properties
+Target Label(s): Country
 
 | Property Name | Type | Required |
 | ------------- | ---- | -------- |
-| target | Country | True |
-| source | Report | True |
+| data_origin_name | Optional[str] | False |
+| data_origin_reference | Optional[str] | False |
+| data_origin_license | Optional[str] | False |
+| data_origin_sharing | Optional[str] | False |
+
+
+
+### REPORT_IDENTIFIES_TECHNIQUE
+
+Target Label(s): MitreAttackTechnique
+
+| Property Name | Type | Required |
+| ------------- | ---- | -------- |
+| data_origin_name | Optional[str] | False |
+| data_origin_reference | Optional[str] | False |
+| data_origin_license | Optional[str] | False |
+| data_origin_sharing | Optional[str] | False |
+
+
+
+### REPORT_MENTIONS_TECHNIQUE
+
+Target Label(s): MitreAttackTechnique
+
+| Property Name | Type | Required |
+| ------------- | ---- | -------- |
+| data_origin_name | Optional[str] | False |
+| data_origin_reference | Optional[str] | False |
+| data_origin_license | Optional[str] | False |
+| data_origin_sharing | Optional[str] | False |
+
 
 
 ### REPORT_IDENTIFIES_CVE
 
-Target Label: CVE
-
-#### Relationship Properties
+Target Label(s): CVE
 
 | Property Name | Type | Required |
 | ------------- | ---- | -------- |
-| target | CVE | True |
-| source | Report | True |
+| data_origin_name | Optional[str] | False |
+| data_origin_reference | Optional[str] | False |
+| data_origin_license | Optional[str] | False |
+| data_origin_sharing | Optional[str] | False |
+
+
+
+### REPORT_MENTIONS_SECTOR
+
+Target Label(s): Sector
+
+| Property Name | Type | Required |
+| ------------- | ---- | -------- |
+| data_origin_name | Optional[str] | False |
+| data_origin_reference | Optional[str] | False |
+| data_origin_license | Optional[str] | False |
+| data_origin_sharing | Optional[str] | False |
+
+
+
+### REPORT_MENTIONS_IP
+
+Target Label(s): IPAddress
+
+| Property Name | Type | Required |
+| ------------- | ---- | -------- |
+| data_origin_name | Optional[str] | False |
+| data_origin_reference | Optional[str] | False |
+| data_origin_license | Optional[str] | False |
+| data_origin_sharing | Optional[str] | False |
+
+
+
+### REPORT_MENTIONS_COUNTRY
+
+Target Label(s): Country
+
+| Property Name | Type | Required |
+| ------------- | ---- | -------- |
+| data_origin_name | Optional[str] | False |
+| data_origin_reference | Optional[str] | False |
+| data_origin_license | Optional[str] | False |
+| data_origin_sharing | Optional[str] | False |
+
+
+
+### REPORT_IDENTIFIES_VICTIM_COUNTRY
+
+Target Label(s): Country
+
+| Property Name | Type | Required |
+| ------------- | ---- | -------- |
+| data_origin_name | Optional[str] | False |
+| data_origin_reference | Optional[str] | False |
+| data_origin_license | Optional[str] | False |
+| data_origin_sharing | Optional[str] | False |
+
+
+
+### REPORT_MENTIONS_INTRUSION_SET
+
+Target Label(s): IntrusionSet
+
+| Property Name | Type | Required |
+| ------------- | ---- | -------- |
+| data_origin_name | Optional[str] | False |
+| data_origin_reference | Optional[str] | False |
+| data_origin_license | Optional[str] | False |
+| data_origin_sharing | Optional[str] | False |
+
 
 
 ### REPORT_IDENTIFIES_THREAT_ACTOR
 
-Target Label: ThreatActor
-
-#### Relationship Properties
+Target Label(s): ThreatActor
 
 | Property Name | Type | Required |
 | ------------- | ---- | -------- |
-| target | ThreatActor | True |
-| source | Report | True |
+| data_origin_name | Optional[str] | False |
+| data_origin_reference | Optional[str] | False |
+| data_origin_license | Optional[str] | False |
+| data_origin_sharing | Optional[str] | False |
 
 
 
+### REPORT_IDENTIFIES_VICTIM_SECTOR
 
+Target Label(s): Sector
+
+| Property Name | Type | Required |
+| ------------- | ---- | -------- |
+| data_origin_name | Optional[str] | False |
+| data_origin_reference | Optional[str] | False |
+| data_origin_license | Optional[str] | False |
+| data_origin_sharing | Optional[str] | False |
+
+
+
+### REPORT_IDENTIFIES_CAMPAIGN
+
+Target Label(s): Campaign
+
+| Property Name | Type | Required |
+| ------------- | ---- | -------- |
+| data_origin_name | Optional[str] | False |
+| data_origin_reference | Optional[str] | False |
+| data_origin_license | Optional[str] | False |
+| data_origin_sharing | Optional[str] | False |
+
+
+
+### REPORT_IDENTIFIES_INTRUSION_SET
+
+Target Label(s): IntrusionSet
+
+| Property Name | Type | Required |
+| ------------- | ---- | -------- |
+| data_origin_name | Optional[str] | False |
+| data_origin_reference | Optional[str] | False |
+| data_origin_license | Optional[str] | False |
+| data_origin_sharing | Optional[str] | False |
+
+
+
+### REPORT_IDENTIFIES_CYBER_HARM
+
+Target Label(s): CyberHarm
+
+| Property Name | Type | Required |
+| ------------- | ---- | -------- |
+| data_origin_name | Optional[str] | False |
+| data_origin_reference | Optional[str] | False |
+| data_origin_license | Optional[str] | False |
+| data_origin_sharing | Optional[str] | False |
+
+
+
+### REPORT_MENTIONS_CVE
+
+Target Label(s): CVE
+
+| Property Name | Type | Required |
+| ------------- | ---- | -------- |
+| data_origin_name | Optional[str] | False |
+| data_origin_reference | Optional[str] | False |
+| data_origin_license | Optional[str] | False |
+| data_origin_sharing | Optional[str] | False |

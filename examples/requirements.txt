@@ -1,0 +1,8 @@
+ontolocy
+neontology>=2,<3
+jupyterlab>=3,<4
+pandas
+networkx
+ipydatagrid
+ipysigma
+yfiles_jupyter_graphs

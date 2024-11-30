@@ -27,6 +27,8 @@ NEO4J_PASSWORD=Neo4jPassword
 NEO4J_AUTH=neo4j/Neo4jPassword     # If running Neo4j with Docker
 ```
 
+See [Neontology](https://github.com/ontolocy/neontology) for full details.
+
 ### Import MITRE ATT&CK Data into Neo4j
 
 ```bash
@@ -34,3 +36,9 @@ ontolocy parse mitre-attack
 ```
 
 More on [MITRE ATT&CK to Neo4j](./ontolocy_parsers/MitreAttackParser.md).
+
+### Examples
+
+Notebooks on [github](https://github.com/ontolocy/ontolocy-lib/tree/main/examples)
+
+Explore a [cyber graph](https://explore.ontolocy.com/) created with Ontolocy

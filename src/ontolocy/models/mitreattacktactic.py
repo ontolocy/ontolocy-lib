@@ -1,7 +1,7 @@
 from datetime import datetime
 from typing import ClassVar, Optional
 
-from pydantic import HttpUrl, StringConstraints
+from pydantic import HttpUrl, StringConstraints, field_serializer
 from typing_extensions import Annotated
 
 from ..node import OntolocyNode
@@ -20,9 +20,7 @@ class MitreAttackTactic(OntolocyNode):
     stix_spec_version: str = "2.1"
     stix_revoked: Optional[bool] = False
 
-    attack_id: Annotated[
-        str, StringConstraints(to_upper=True, pattern=r"TA\d{4}")
-    ]  # noqa: F722
+    attack_id: Annotated[str, StringConstraints(to_upper=True, pattern=r"TA\d{4}")]  # noqa: F722
     attack_spec_version: str
     attack_version: str
     attack_shortname: str
@@ -31,6 +29,13 @@ class MitreAttackTactic(OntolocyNode):
     ref_url: HttpUrl
     name: str
     description: str
+
+    @field_serializer("ref_url")
+    def serialize_ref_url(self, ref_url: HttpUrl, _info):
+        return str(ref_url)
+
+    def __str__(self) -> str:
+        return f"{self.attack_id}: {self.name}"
 
 
 #

@@ -1,4 +1,3 @@
-
 # CWE
 
 ## Node Properties
@@ -11,6 +10,5 @@
 | name | str | True |
 | description | str | True |
 | cwe_id | int | True |
-
-
-
+| merged | datetime | False |
+| created | Optional[datetime] | False |

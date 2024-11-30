@@ -1,6 +1,6 @@
 from typing import ClassVar, Optional
 
-from pydantic import IPvAnyNetwork
+from pydantic import IPvAnyNetwork, field_serializer
 
 from ..node import OntolocyNode
 from ..relationship import OntolocyRelationship
@@ -16,6 +16,10 @@ class ASN(OntolocyNode):
     cidr: IPvAnyNetwork
     country_code: str
     registry: str
+
+    @field_serializer("cidr")
+    def serialize_cidr(self, input: IPvAnyNetwork, _info):
+        return str(input)
 
 
 #

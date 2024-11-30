@@ -198,6 +198,11 @@ sectors = {
         "name": "Retail",
         "keywords": ["retail"],
     },
+    "logistics": {
+        "sector_id": "logistics",
+        "name": "Shipping and Logistics",
+        "keywords": ["shipping", "logistics", "maritime"],
+    },
     "sports": {
         "sector_id": "sports",
         "name": "Sport",

@@ -1,8 +1,9 @@
+import warnings
 from typing import Optional
 from uuid import UUID, uuid5
 
 import pandas as pd
-from neontology import init_neontology
+from neontology import Neo4jConfig, init_neontology
 
 
 def init_ontolocy(
@@ -20,11 +21,19 @@ def init_ontolocy(
         neo4j_password (Optional[str], optional): Neo4j password. Defaults to None.
     """
 
-    init_neontology(neo4j_uri, neo4j_username, neo4j_password)
+    warnings.warn(
+        "init_ontolocy function is being deprecated, use init_neontology directly from the Neontology library instead",
+        DeprecationWarning,
+    )
+
+    neo4j_config = Neo4jConfig(
+        uri=neo4j_uri, username=neo4j_username, password=neo4j_password
+    )
+
+    init_neontology(neo4j_config)
 
 
 def generate_deterministic_uuid(values: list) -> UUID:
-
     # we use an arbitrary 'ontolocy' specific namespace
     namespace = UUID("8e43adb2-a389-4e4b-8012-3bc5702fb832")
 
@@ -37,7 +46,6 @@ def generate_deterministic_uuid(values: list) -> UUID:
 
 
 def explode_map_dfs(df, to_map):
-
     input_df = df.copy()
 
     to_map_df = pd.concat(to_map)

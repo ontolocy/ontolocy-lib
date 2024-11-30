@@ -1,5 +1,3 @@
-from uuid import UUID
-
 import pytest
 
 from ontolocy import Port

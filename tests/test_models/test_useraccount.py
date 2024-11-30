@@ -8,8 +8,8 @@ def test_control():
 
     user3 = UserAccount(username="Admin", local_hostname="MyPC")
 
-    assert user1.get_primary_property_value() == user2.get_primary_property_value()
+    assert user1.get_pp() == user2.get_pp()
 
-    assert user1.get_primary_property_value() != user3.get_primary_property_value()
+    assert user1.get_pp() != user3.get_pp()
 
     assert str(user1) == "Admin"

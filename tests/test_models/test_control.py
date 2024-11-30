@@ -9,6 +9,4 @@ def test_control():
         control_id="CON-1", name="Control 1", framework="Test Control Framework"
     )
 
-    assert (
-        control1.get_primary_property_value() == control2.get_primary_property_value()
-    )
+    assert control1.get_pp() == control2.get_pp()
