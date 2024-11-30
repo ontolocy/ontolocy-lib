@@ -6,7 +6,7 @@ dependencies:
   - numpy
   - pip
   - pip:
-      - ontolocy==0.8.*
+      - ontolocy
       - networkx
       - ipydatagrid
       - ipysigma
