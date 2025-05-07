@@ -1,5 +1,3 @@
-from typing import Optional
-
 import click
 from neontology import init_neontology
 from neontology.tools import import_json, import_md, import_yaml
@@ -163,7 +161,7 @@ def run_enrichment(enricher, seeds_str, refresh):
 @enrich.command("ip")
 @click.argument("enricher_", type=click.Choice(list(IP_ENRICHERS.keys())), nargs=1)
 @click.argument("seeds_", type=str, nargs=1)
-@click.option("--refresh", "-r", type=Optional[int], default=None, required=False)
+@click.option("--refresh", "-r", type=int, default=None, required=False)
 def enrich_ip(enricher_, seeds_, refresh):
     init_neontology()
 
@@ -189,7 +187,7 @@ def enrich_ip(enricher_, seeds_, refresh):
 @enrich.command("cve")
 @click.argument("enricher_", type=click.Choice(list(CVE_ENRICHERS.keys())), nargs=1)
 @click.argument("seeds_", type=str, nargs=1)
-@click.option("--refresh", "-r", type=Optional[int], default=None, required=False)
+@click.option("--refresh", "-r", type=int, default=None, required=False)
 def enrich_cve(enricher_, seeds_, refresh):
     init_neontology()
 
