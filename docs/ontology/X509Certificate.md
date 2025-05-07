@@ -5,8 +5,8 @@
 | Property Name | Type | Required |
 | ------------- | ---- | -------- |
 | sha1 | str | True |
-| merged | datetime | False |
-| created | Optional[datetime] | False |
+| ontolocy_merged | datetime | False |
+| ontolocy_created | Optional[datetime] | False |
 | sha256 | Optional[str] | False |
 | md5 | Optional[str] | False |
 | serial_number | Optional[str] | False |

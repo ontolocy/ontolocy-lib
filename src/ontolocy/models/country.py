@@ -1,5 +1,6 @@
 from typing import ClassVar, Optional
 
+import pandas as pd
 from pydantic import ValidationInfo, field_validator
 
 from ..node import OntolocyNode
@@ -286,3 +287,8 @@ class Country(OntolocyNode):
             return country_codes[values["country_code"]]
         else:
             return v
+
+
+def populate_countries():
+    country_df = pd.DataFrame(country_codes.items(), columns=["country_code", "name"])
+    Country.merge_df(country_df)

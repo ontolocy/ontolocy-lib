@@ -1,6 +1,7 @@
 from enum import Enum
 from typing import ClassVar, Optional
 
+import pandas as pd
 from pydantic import ValidationInfo, field_validator
 
 from ..node import OntolocyNode
@@ -65,3 +66,13 @@ class ActorType(OntolocyNode):
             return actor_type_taxonomy[values["unique_id"]]["description"]
         else:
             return v
+
+
+def populate_actor_types():
+    actor_type_df = pd.DataFrame()
+    actor_type_df["name"] = [x["name"] for x in actor_type_taxonomy.values()]
+    actor_type_df["unique_id"] = [x for x in actor_type_taxonomy.keys()]
+    actor_type_df["description"] = [
+        x["description"] for x in actor_type_taxonomy.values()
+    ]
+    ActorType.merge_df(actor_type_df)

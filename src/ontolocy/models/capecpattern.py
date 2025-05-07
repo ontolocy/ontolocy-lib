@@ -15,6 +15,7 @@ class CAPECPattern(OntolocyNode):
     name: str
     likelihood_of_attack: Optional[str] = None
     typical_severity: Optional[str] = None
+    status: Optional[str] = None
 
 
 #

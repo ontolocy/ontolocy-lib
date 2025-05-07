@@ -45,6 +45,21 @@ def generate_deterministic_uuid(values: list) -> UUID:
     return generated_id
 
 
+def generate_str_id(values: list) -> str:
+    # create a single long string from all the values provided
+    value_string = (
+        "-".join([str(x) for x in values if x is not None])
+        .replace(".", "-")
+        .replace(" ", "-")
+    )
+
+    cleaned_components = "".join(
+        c for c in value_string if c.isalnum() or c in ["-", "_"]
+    ).lower()
+
+    return cleaned_components
+
+
 def explode_map_dfs(df, to_map):
     input_df = df.copy()
 

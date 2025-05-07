@@ -5,9 +5,10 @@ import pandas as pd
 from neontology import BaseRelationship
 
 from .dataorigin import DataOrigin
+from .mixin import OntolocyMixin
 
 
-class OntolocyRelationship(BaseRelationship, ABC, validate_default=True):
+class OntolocyRelationship(BaseRelationship, OntolocyMixin, ABC, validate_default=True):
     data_origin_name: Optional[str] = None
     data_origin_reference: Optional[str] = None
     data_origin_license: Optional[str] = None

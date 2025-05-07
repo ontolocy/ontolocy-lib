@@ -1,6 +1,6 @@
 import pytest
 
-from ontolocy import MACAddress, Host, MACAddressAssignedToHost
+from ontolocy import Host, MACAddress, MACAddressAssignedToHost
 
 
 @pytest.mark.parametrize(

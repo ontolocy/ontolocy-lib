@@ -1,6 +1,6 @@
 from typing import ClassVar
 
-from ontolocy import OntolocyNode, DataOrigin
+from ontolocy import DataOrigin, OntolocyNode
 
 
 def test_define_node():

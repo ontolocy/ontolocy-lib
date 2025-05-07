@@ -5,8 +5,8 @@
 | Property Name | Type | Required |
 | ------------- | ---- | -------- |
 | cve_id | str | True |
-| merged | datetime | False |
-| created | Optional[datetime] | False |
+| ontolocy_merged | datetime | False |
+| ontolocy_created | Optional[datetime] | False |
 | published_date | Optional[datetime] | False |
 | assigner | Optional[str] | False |
 | description | Optional[str] | False |
@@ -19,6 +19,8 @@ Target Label(s): CWE
 
 | Property Name | Type | Required |
 | ------------- | ---- | -------- |
+| ontolocy_merged | datetime | False |
+| ontolocy_created | Optional[datetime] | False |
 | data_origin_name | Optional[str] | False |
 | data_origin_reference | Optional[str] | False |
 | data_origin_license | Optional[str] | False |
@@ -32,6 +34,8 @@ Target Label(s): CPE
 
 | Property Name | Type | Required |
 | ------------- | ---- | -------- |
+| ontolocy_merged | datetime | False |
+| ontolocy_created | Optional[datetime] | False |
 | data_origin_name | Optional[str] | False |
 | data_origin_reference | Optional[str] | False |
 | data_origin_license | Optional[str] | False |

@@ -1,5 +1,5 @@
 from ontolocy import ActorType
-from ontolocy.models.actortype import actor_type_taxonomy, ActorTypeEnum
+from ontolocy.models.actortype import ActorTypeEnum, actor_type_taxonomy
 
 
 def test_define_actortype():

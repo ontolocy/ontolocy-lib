@@ -1,7 +1,7 @@
-from ontolocy import MitreAttackTactic
-
-from pydantic import ValidationError
 import pytest
+from pydantic import ValidationError
+
+from ontolocy import MitreAttackTactic
 
 stix_dict = {
     "x_mitre_domains": ["enterprise-attack"],

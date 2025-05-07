@@ -10,8 +10,8 @@
 | sleeptime | int | True |
 | port | int | True |
 | beacontype | int | True |
-| merged | datetime | False |
-| created | Optional[datetime] | False |
+| ontolocy_merged | datetime | False |
+| ontolocy_created | Optional[datetime] | False |
 | useragent | Optional[str] | False |
 | submituri | Optional[str] | False |
 | watermark | Optional[int] | False |
@@ -25,6 +25,8 @@ Target Label(s): ListeningSocket
 
 | Property Name | Type | Required |
 | ------------- | ---- | -------- |
+| ontolocy_merged | datetime | False |
+| ontolocy_created | Optional[datetime] | False |
 | data_origin_name | Optional[str] | False |
 | data_origin_reference | Optional[str] | False |
 | data_origin_license | Optional[str] | False |
@@ -38,6 +40,8 @@ Target Label(s): CobaltStrikeWatermark
 
 | Property Name | Type | Required |
 | ------------- | ---- | -------- |
+| ontolocy_merged | datetime | False |
+| ontolocy_created | Optional[datetime] | False |
 | data_origin_name | Optional[str] | False |
 | data_origin_reference | Optional[str] | False |
 | data_origin_license | Optional[str] | False |

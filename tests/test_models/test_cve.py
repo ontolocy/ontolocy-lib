@@ -1,7 +1,7 @@
-from ontolocy import CVE
-
-from pydantic import ValidationError
 import pytest
+from pydantic import ValidationError
+
+from ontolocy import CVE
 
 
 def test_cve():

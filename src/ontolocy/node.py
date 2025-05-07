@@ -1,42 +1,15 @@
-from datetime import datetime
 from typing import ClassVar, Optional
 from warnings import warn
 
 import pandas as pd
 from neontology import BaseNode
-from pydantic import Field, ValidationInfo, field_validator
 
 from .dataorigin import DataOrigin, OriginGenerated
+from .mixin import OntolocyMixin
 
 
-class OntolocyNode(BaseNode, validate_default=True):
+class OntolocyNode(BaseNode, OntolocyMixin, validate_default=True):
     __primarylabel__: ClassVar[Optional[str]] = None
-
-    merged: datetime = Field(
-        default_factory=datetime.now,
-    )
-
-    # created property will only be set 'on create' - when the node is first created
-    created: Optional[datetime] = Field(
-        default=None, validate_default=True, json_schema_extra={"set_on_create": True}
-    )
-
-    # Use Pydantic's validator functionality to set created off the merged value
-    @field_validator("created")
-    def set_created_to_merged(
-        cls, value: Optional[datetime], values: ValidationInfo
-    ) -> datetime:
-        """When the node is first created, we want the created value to be set equal to merged.
-        Otherwise they will be a tiny amount of time different.
-        """
-
-        # set created = merged (which was set to datetime.now())
-        if value is None:
-            return values.data["merged"]
-
-        # if the created value has been manually set, don't override it
-        else:
-            return value
 
     @classmethod
     def ingest_df(

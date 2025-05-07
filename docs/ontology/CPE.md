@@ -5,8 +5,8 @@
 | Property Name | Type | Required |
 | ------------- | ---- | -------- |
 | cpe | str | True |
-| merged | datetime | False |
-| created | Optional[datetime] | False |
+| ontolocy_merged | datetime | False |
+| ontolocy_created | Optional[datetime] | False |
 | cpe_version | str | False |
 | part | Optional[str] | False |
 | vendor | Optional[str] | False |

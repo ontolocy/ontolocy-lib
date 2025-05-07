@@ -1,14 +1,10 @@
 from datetime import date
 from typing import ClassVar, Optional
 
-from pydantic import AnyHttpUrl
+from pydantic import AnyHttpUrl, field_serializer
 
 from ..node import OntolocyNode
 from ..relationship import OntolocyRelationship
-
-# from .cve import CVE
-
-# from .report import Report
 
 
 class Organisation(OntolocyNode):
@@ -58,6 +54,11 @@ class OrganisationReportedExploitationOfCVE(OntolocyRelationship):
 
     __relationshiptype__: ClassVar[str] = "ORGANISATION_REPORTED_EXPLOITATION_OF_CVE"
 
+    @field_serializer("url_reference")
+    def serialize_to_str(self, input: AnyHttpUrl, _info):
+        if input:
+            return str(input)
+
 
 class OrganisationPublishedThreatReport(OntolocyRelationship):
     __relationshiptype__: ClassVar[str] = "ORGANISATION_PUBLISHED_THREAT_REPORT"
@@ -67,6 +68,11 @@ class OrganisationPublishedThreatReport(OntolocyRelationship):
 
     context: Optional[str]
     url_reference: Optional[AnyHttpUrl]
+
+    @field_serializer("url_reference")
+    def serialize_to_str(self, input: AnyHttpUrl, _info):
+        if input:
+            return str(input)
 
 
 from .cve import CVE  # noqa: E402

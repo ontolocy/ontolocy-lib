@@ -9,18 +9,20 @@
 | activity_datetime | datetime | True |
 | url_reference | Url | True |
 | title | str | True |
-| merged | datetime | False |
-| created | Optional[datetime] | False |
+| ontolocy_merged | datetime | False |
+| ontolocy_created | Optional[datetime] | False |
 
 ## Relationships
 
-### CAMPAIGN_TARGETS_SECTOR
+### CAMPAIGN_BY_INTRUSION_SET
 
-Target Label(s): Sector
+Target Label(s): IntrusionSet
 
 | Property Name | Type | Required |
 | ------------- | ---- | -------- |
 | url_reference | Optional[Annotated] | True |
+| ontolocy_merged | datetime | False |
+| ontolocy_created | Optional[datetime] | False |
 | data_origin_name | Optional[str] | False |
 | data_origin_reference | Optional[str] | False |
 | data_origin_license | Optional[str] | False |
@@ -35,20 +37,8 @@ Target Label(s): Country
 | Property Name | Type | Required |
 | ------------- | ---- | -------- |
 | url_reference | Optional[Annotated] | True |
-| data_origin_name | Optional[str] | False |
-| data_origin_reference | Optional[str] | False |
-| data_origin_license | Optional[str] | False |
-| data_origin_sharing | Optional[str] | False |
-
-
-
-### CAMPAIGN_USES_TECHNIQUE
-
-Target Label(s): MitreAttackTechnique
-
-| Property Name | Type | Required |
-| ------------- | ---- | -------- |
-| url_reference | Optional[Annotated] | True |
+| ontolocy_merged | datetime | False |
+| ontolocy_created | Optional[datetime] | False |
 | data_origin_name | Optional[str] | False |
 | data_origin_reference | Optional[str] | False |
 | data_origin_license | Optional[str] | False |
@@ -63,6 +53,8 @@ Target Label(s): CVE
 | Property Name | Type | Required |
 | ------------- | ---- | -------- |
 | url_reference | Optional[Annotated] | True |
+| ontolocy_merged | datetime | False |
+| ontolocy_created | Optional[datetime] | False |
 | data_origin_name | Optional[str] | False |
 | data_origin_reference | Optional[str] | False |
 | data_origin_license | Optional[str] | False |
@@ -70,13 +62,31 @@ Target Label(s): CVE
 
 
 
-### CAMPAIGN_BY_INTRUSION_SET
+### CAMPAIGN_TARGETS_SECTOR
 
-Target Label(s): IntrusionSet
+Target Label(s): Sector
 
 | Property Name | Type | Required |
 | ------------- | ---- | -------- |
 | url_reference | Optional[Annotated] | True |
+| ontolocy_merged | datetime | False |
+| ontolocy_created | Optional[datetime] | False |
+| data_origin_name | Optional[str] | False |
+| data_origin_reference | Optional[str] | False |
+| data_origin_license | Optional[str] | False |
+| data_origin_sharing | Optional[str] | False |
+
+
+
+### CAMPAIGN_USES_TECHNIQUE
+
+Target Label(s): MitreAttackTechnique
+
+| Property Name | Type | Required |
+| ------------- | ---- | -------- |
+| url_reference | Optional[Annotated] | True |
+| ontolocy_merged | datetime | False |
+| ontolocy_created | Optional[datetime] | False |
 | data_origin_name | Optional[str] | False |
 | data_origin_reference | Optional[str] | False |
 | data_origin_license | Optional[str] | False |
@@ -91,6 +101,8 @@ Target Label(s): CyberHarm
 | Property Name | Type | Required |
 | ------------- | ---- | -------- |
 | url_reference | Optional[Annotated] | True |
+| ontolocy_merged | datetime | False |
+| ontolocy_created | Optional[datetime] | False |
 | data_origin_name | Optional[str] | False |
 | data_origin_reference | Optional[str] | False |
 | data_origin_license | Optional[str] | False |
