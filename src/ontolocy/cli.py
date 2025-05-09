@@ -199,7 +199,7 @@ def enrich_cve(enricher_, seeds_, refresh):
 
 @click.group()
 def query():
-    """Query an external source for additional data to populate the graph."""
+    """Query an external source to populate the graph."""
     pass
 
 
