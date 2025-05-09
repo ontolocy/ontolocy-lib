@@ -3,6 +3,7 @@
 import logging
 import os
 
+from click.testing import CliRunner
 import pytest
 from dotenv import load_dotenv
 from neontology import GraphConnection, init_neontology
@@ -66,14 +67,6 @@ def get_graph_config(request, tmp_path_factory) -> tuple:
 def neo4j_db(get_graph_config):
     load_dotenv()
 
-    neo4j_uri = os.getenv("TEST_NEO4J_URI")
-    neo4j_username = os.getenv("TEST_NEO4J_USERNAME")
-    neo4j_password = os.getenv("TEST_NEO4J_PASSWORD")
-
-    assert neo4j_uri is not None
-    assert neo4j_username is not None
-    assert neo4j_password is not None
-
     init_neontology(get_graph_config)
 
     gc = GraphConnection()
@@ -112,3 +105,26 @@ def use_graph(neo4j_db):
     """
 
     neo4j_db.evaluate_query_single(cypher)
+
+
+@pytest.fixture
+def cli_runner(get_graph_config):
+
+    graph_engine_vars = {
+        "Neo4jConfig": "NEO4J",
+        "MemgraphConfig": "MEMGRAPH",
+    }
+
+    runner = CliRunner(
+        env={
+            "NEO4J_URI": get_graph_config.uri,
+            "NEO4J_USERNAME": get_graph_config.username,
+            "NEO4J_PASSWORD": get_graph_config.password,
+            "MEMGRAPH_URI": get_graph_config.uri,
+            "MEMGRAPH_USERNAME": get_graph_config.username,
+            "MEMGRAPH_PASSWORD": get_graph_config.password,
+            "NEONTOLOGY_ENGINE": graph_engine_vars[get_graph_config.__class__.__name__],
+        }
+    )
+
+    return runner

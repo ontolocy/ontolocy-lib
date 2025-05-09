@@ -1,5 +1,4 @@
 import pytest
-from click.testing import CliRunner
 
 from ontolocy.cli import cli
 from ontolocy.models.actortype import actor_type_taxonomy
@@ -9,10 +8,9 @@ from ontolocy.models.sector import sectors
 
 @pytest.mark.parametrize("prompt_input", ["\n", "no\n"])
 @pytest.mark.webtest
-def test_mitre_attack_no_populate(prompt_input, use_graph):
-    runner = CliRunner()
+def test_mitre_attack_no_populate(prompt_input, use_graph, cli_runner):
 
-    result = runner.invoke(
+    result = cli_runner.invoke(
         cli,
         [
             "parse",
@@ -41,20 +39,18 @@ def test_mitre_attack_no_populate(prompt_input, use_graph):
 
 
 @pytest.mark.webtest
-def test_mitre_attack_bad_prompt():
-    runner = CliRunner()
+def test_mitre_attack_bad_prompt(cli_runner):
 
-    result = runner.invoke(cli, ["parse", "mitre-attack"], input="bad command\n")
+    result = cli_runner.invoke(cli, ["parse", "mitre-attack"], input="bad command\n")
 
     assert "Error: invalid input" in result.output
 
 
 @pytest.mark.slow
 @pytest.mark.webtest
-def test_mitre_attack_populate_url(use_graph):
-    runner = CliRunner()
+def test_mitre_attack_populate_url(use_graph, cli_runner):
 
-    result = runner.invoke(
+    result = cli_runner.invoke(
         cli,
         [
             "parse",
@@ -78,10 +74,9 @@ def test_mitre_attack_populate_url(use_graph):
     assert use_graph.evaluate_query_single(technique_cypher) == 625
 
 
-def test_populate_all(use_graph):
-    runner = CliRunner()
+def test_populate_all(use_graph, cli_runner):
 
-    result = runner.invoke(cli, ["populate", "all"])
+    result = cli_runner.invoke(cli, ["populate", "all"])
 
     assert result.exit_code == 0
     assert "Populating all..." in result.output
@@ -101,7 +96,7 @@ def test_populate_all(use_graph):
     )
 
 
-def test_ingest_file(use_graph, tmp_path):
+def test_ingest_file(use_graph, tmp_path, cli_runner):
     tmp_file = tmp_path / "test.report.md"
 
     report_content = """---
@@ -120,8 +115,7 @@ Example report content.
     with open(tmp_file, "w") as file:
         file.write(report_content)
 
-    runner = CliRunner()
-    result = runner.invoke(
+    result = cli_runner.invoke(
         cli,
         [
             "import",

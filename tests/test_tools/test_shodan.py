@@ -1,5 +1,3 @@
-from click.testing import CliRunner
-
 from ontolocy import (
     IPAddressHasOpenPort,
     ListeningSocketHasBanner,
@@ -327,15 +325,13 @@ def test_enrich_ip(use_graph, monkeypatch):
     assert use_graph.evaluate_query_single(banner_cypher) == 2
 
 
-def test_cli_enrichment(use_graph, monkeypatch):
+def test_cli_enrichment(use_graph, monkeypatch, cli_runner):
     def mockreturn(self, query):
         return test_data
 
     monkeypatch.setattr(ShodanOntolocyClient, "_query", mockreturn)
 
-    runner = CliRunner()
-
-    result = runner.invoke(cli, ["enrich", "ip", "shodan", "8.8.8.8"])
+    result = cli_runner.invoke(cli, ["enrich", "ip", "shodan", "8.8.8.8"])
 
     assert result.exit_code == 0
     assert "Enriching 8.8.8.8" in result.output
@@ -347,16 +343,14 @@ def test_cli_enrichment(use_graph, monkeypatch):
     assert rel_count == 2
 
 
-def test_cli_query(use_graph, monkeypatch):
+def test_cli_query(use_graph, monkeypatch, cli_runner):
     def mockreturn(self, query):
         return test_data
 
     monkeypatch.setattr(ShodanOntolocyClient, "_query", mockreturn)
 
-    runner = CliRunner()
-
     # note, the query doesn't actually get run!
-    result = runner.invoke(cli, ["query", "shodan", "ip:8.8.8.8", "port:53,443"])
+    result = cli_runner.invoke(cli, ["query", "shodan", "ip:8.8.8.8", "port:53,443"])
 
     assert result.exit_code == 0
     assert "Running query" in result.output

@@ -1,5 +1,3 @@
-from click.testing import CliRunner
-
 from ontolocy.cli import cli
 from ontolocy.tools import NVDCVEEnricher, NVDCVEParser
 from ontolocy.tools.nvd import NVDCVEOntolocyClient
@@ -188,14 +186,13 @@ def test_enrich_cve(monkeypatch, use_graph):
     assert use_graph.evaluate_query_single(cypher) == 1
 
 
-def test_cli_enrichment(use_graph, monkeypatch):
+def test_cli_enrichment(use_graph, monkeypatch, cli_runner):
     def mockreturn(self, query):
         return test_data
 
     monkeypatch.setattr(NVDCVEOntolocyClient, "_query", mockreturn)
 
-    runner = CliRunner()
-    result = runner.invoke(cli, ["enrich", "cve", "nvd", "CVE-2019-1010218"])
+    result = cli_runner.invoke(cli, ["enrich", "cve", "nvd", "CVE-2019-1010218"])
 
     assert result.exit_code == 0
     assert "Enriching CVE-2019-1010218" in result.output
