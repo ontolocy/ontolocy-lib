@@ -1,5 +1,7 @@
 from typing import ClassVar, List, Optional
 
+import pandas as pd
+
 from ..node import OntolocyNode
 
 sectors = {
@@ -238,3 +240,11 @@ class Sector(OntolocyNode):
     name: str
     unique_id: str
     keywords: Optional[List[str]] = None
+
+
+def populate_sectors():
+    sector_df = pd.DataFrame()
+    sector_df["name"] = [sector["name"] for sector in sectors.values()]
+    sector_df["unique_id"] = [sector["sector_id"] for sector in sectors.values()]
+    sector_df["keywords"] = [sector["keywords"] for sector in sectors.values()]
+    Sector.merge_df(sector_df)

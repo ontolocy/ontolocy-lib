@@ -7,8 +7,9 @@
 | framework | str | True |
 | name | str | True |
 | control_id | str | True |
-| merged | datetime | False |
-| created | Optional[datetime] | False |
+| ontolocy_merged | datetime | False |
+| ontolocy_created | Optional[datetime] | False |
+| framework_level | Optional[str] | False |
 | version | Optional[str] | False |
 | framework_version | Optional[str] | False |
 | description | Optional[str] | False |
@@ -18,17 +19,18 @@
 
 ## Relationships
 
-### CONTROL_HAS_PARENT_CONTROL
+### CONTROL_MITIGATES_ATTACK_TECHNIQUE
 
-Target Label(s): Control
+Target Label(s): MitreAttackTechnique
 
 | Property Name | Type | Required |
 | ------------- | ---- | -------- |
+| ontolocy_merged | datetime | False |
+| ontolocy_created | Optional[datetime] | False |
 | data_origin_name | Optional[str] | False |
 | data_origin_reference | Optional[str] | False |
 | data_origin_license | Optional[str] | False |
 | data_origin_sharing | Optional[str] | False |
-| context | Optional[str] | False |
 | url_reference | Optional[Annotated] | False |
 
 
@@ -39,6 +41,8 @@ Target Label(s): Control
 
 | Property Name | Type | Required |
 | ------------- | ---- | -------- |
+| ontolocy_merged | datetime | False |
+| ontolocy_created | Optional[datetime] | False |
 | data_origin_name | Optional[str] | False |
 | data_origin_reference | Optional[str] | False |
 | data_origin_license | Optional[str] | False |
@@ -48,14 +52,17 @@ Target Label(s): Control
 
 
 
-### CONTROL_MITIGATES_ATTACK_TECHNIQUE
+### CONTROL_HAS_PARENT_CONTROL
 
-Target Label(s): MitreAttackTechnique
+Target Label(s): Control
 
 | Property Name | Type | Required |
 | ------------- | ---- | -------- |
+| ontolocy_merged | datetime | False |
+| ontolocy_created | Optional[datetime] | False |
 | data_origin_name | Optional[str] | False |
 | data_origin_reference | Optional[str] | False |
 | data_origin_license | Optional[str] | False |
 | data_origin_sharing | Optional[str] | False |
+| context | Optional[str] | False |
 | url_reference | Optional[Annotated] | False |

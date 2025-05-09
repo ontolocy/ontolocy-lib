@@ -9,5 +9,5 @@
 | harm_type | str | True |
 | unique_id | str | True |
 | name | str | True |
-| merged | datetime | False |
-| created | Optional[datetime] | False |
+| ontolocy_merged | datetime | False |
+| ontolocy_created | Optional[datetime] | False |

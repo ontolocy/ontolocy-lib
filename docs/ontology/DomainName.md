@@ -5,8 +5,8 @@
 | Property Name | Type | Required |
 | ------------- | ---- | -------- |
 | name | str | True |
-| merged | datetime | False |
-| created | Optional[datetime] | False |
+| ontolocy_merged | datetime | False |
+| ontolocy_created | Optional[datetime] | False |
 
 ## Relationships
 
@@ -17,6 +17,8 @@ Target Label(s): DNSRecord
 | Property Name | Type | Required |
 | ------------- | ---- | -------- |
 | observation_date | datetime | True |
+| ontolocy_merged | datetime | False |
+| ontolocy_created | Optional[datetime] | False |
 | data_origin_name | Optional[str] | False |
 | data_origin_reference | Optional[str] | False |
 | data_origin_license | Optional[str] | False |

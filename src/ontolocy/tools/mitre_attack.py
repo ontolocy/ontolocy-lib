@@ -11,6 +11,7 @@ from ontolocy import (
     MitreAttackGroup,
     MitreAttackGroupUsesSoftware,
     MitreAttackGroupUsesTechnique,
+    MitreAttackMatrix,
     MitreAttackMitigation,
     MitreAttackMitigationDefendsAgainstTechnique,
     MitreAttackSoftware,
@@ -19,6 +20,7 @@ from ontolocy import (
     MitreCampaignAttributedTo,
     MitreCampaignUsesSoftware,
     MitreCampaignUsesTechnique,
+    MitreMatrixIncludesTactic,
     MitreSoftwareUsesTechnique,
     MitreSubtechniqueOf,
     MitreTacticIncludesTechnique,
@@ -37,6 +39,7 @@ class MitreAttackParser(OntolocyParser):
         MitreAttackDataComponent,
         MitreAttackMitigation,
         MitreAttackGroup,
+        MitreAttackMatrix,
     ]
     rel_types = [
         MitreTacticIncludesTechnique,
@@ -50,6 +53,7 @@ class MitreAttackParser(OntolocyParser):
         MitreAttackMitigationDefendsAgainstTechnique,
         MitreAttackDataComponentDetectsTechnique,
         MitreAttackDataSourceHasComponent,
+        MitreMatrixIncludesTactic,
     ]
 
     def _detect(self, input_data) -> bool:
@@ -100,8 +104,8 @@ class MitreAttackParser(OntolocyParser):
             x
             for x in stix_data["objects"]
             if x["type"] in stix_types
-            # and not x.get("x_mitre_deprecated")
-            # and not x.get("revoked")
+            and not x.get("x_mitre_deprecated")
+            and not x.get("revoked")
         ]
 
         # pull out associated MITRE ATT&CK tactics the MITRE ATT&CK reference (web address)
@@ -110,7 +114,11 @@ class MitreAttackParser(OntolocyParser):
                 attack_obj["kill_chain_phase_list"] = []
 
                 for phase in attack_obj.get("kill_chain_phases", []):
-                    if phase["kill_chain_name"] == "mitre-attack":
+                    if phase["kill_chain_name"] in [
+                        "mitre-attack",
+                        "mitre-ics-attack",
+                        "mitre-mobile-attack",
+                    ]:
                         attack_obj["kill_chain_phase_list"].append(phase["phase_name"])
 
             for ref in attack_obj.get("external_references", []):
@@ -162,6 +170,10 @@ class MitreAttackParser(OntolocyParser):
         #
 
         node_dfs = {}
+
+        matrix_df = self._stix_objects_to_df(stix_json, ["x-mitre-matrix"])
+
+        node_dfs[MitreAttackMatrix.__primarylabel__] = matrix_df.copy()
 
         tactics_df = self._stix_objects_to_df(stix_json, ["x-mitre-tactic"])
 
@@ -224,6 +236,17 @@ class MitreAttackParser(OntolocyParser):
         all_relationships_df = self._stix_rels_to_df(stix_json).rename(
             columns={"source_ref": "source", "target_ref": "target"}
         )
+
+        # Matrix to Techniques
+
+        matrix_tactic_df = pd.DataFrame()
+        matrix_tactic_df["target"] = tactics_df["stix_id"]
+        matrix_tactic_df["source"] = matrix_df["stix_id"].values[0]
+
+        rel_dfs[MitreMatrixIncludesTactic.__relationshiptype__] = {
+            "src_df": matrix_tactic_df[["source"]].copy(),
+            "tgt_df": matrix_tactic_df[["target"]].copy(),
+        }
 
         # Techniques to Tactics
 

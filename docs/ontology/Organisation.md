@@ -5,29 +5,12 @@
 | Property Name | Type | Required |
 | ------------- | ---- | -------- |
 | name | str | True |
-| merged | datetime | False |
-| created | Optional[datetime] | False |
+| ontolocy_merged | datetime | False |
+| ontolocy_created | Optional[datetime] | False |
 | description | Optional[str] | False |
 | address | Optional[str] | False |
 
 ## Relationships
-
-### ORGANISATION_REPORTED_EXPLOITATION_OF_CVE
-
-Target Label(s): CVE
-
-| Property Name | Type | Required |
-| ------------- | ---- | -------- |
-| required_action | Optional[str] | True |
-| description | Optional[str] | True |
-| url_reference | Optional[Annotated] | True |
-| reported_date | date | True |
-| data_origin_name | Optional[str] | False |
-| data_origin_reference | Optional[str] | False |
-| data_origin_license | Optional[str] | False |
-| data_origin_sharing | Optional[str] | False |
-
-
 
 ### ORGANISATION_ASSIGNED_CVSS_TO_CVE
 
@@ -49,6 +32,27 @@ Target Label(s): CVE
 | attack_vector | str | True |
 | vector_string | str | True |
 | version | str | True |
+| ontolocy_merged | datetime | False |
+| ontolocy_created | Optional[datetime] | False |
+| data_origin_name | Optional[str] | False |
+| data_origin_reference | Optional[str] | False |
+| data_origin_license | Optional[str] | False |
+| data_origin_sharing | Optional[str] | False |
+
+
+
+### ORGANISATION_REPORTED_EXPLOITATION_OF_CVE
+
+Target Label(s): CVE
+
+| Property Name | Type | Required |
+| ------------- | ---- | -------- |
+| required_action | Optional[str] | True |
+| description | Optional[str] | True |
+| url_reference | Optional[Annotated] | True |
+| reported_date | date | True |
+| ontolocy_merged | datetime | False |
+| ontolocy_created | Optional[datetime] | False |
 | data_origin_name | Optional[str] | False |
 | data_origin_reference | Optional[str] | False |
 | data_origin_license | Optional[str] | False |
@@ -64,6 +68,8 @@ Target Label(s): Report
 | ------------- | ---- | -------- |
 | url_reference | Optional[Annotated] | True |
 | context | Optional[str] | True |
+| ontolocy_merged | datetime | False |
+| ontolocy_created | Optional[datetime] | False |
 | data_origin_name | Optional[str] | False |
 | data_origin_reference | Optional[str] | False |
 | data_origin_license | Optional[str] | False |

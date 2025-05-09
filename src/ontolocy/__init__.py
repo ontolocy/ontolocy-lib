@@ -47,6 +47,17 @@ from ontolocy.models.dnsrecord import (
 from ontolocy.models.domainname import DomainName, DomainNameHasDNSRecord
 from ontolocy.models.exploit import Exploit, ExploitExploitsVulnerability
 from ontolocy.models.host import Host
+from ontolocy.models.implementationguidance import (
+    ImplementationGuidance,
+    ImplementationGuidanceForControl,
+    ImplementationGuidanceForImplementationGuidance,
+)
+from ontolocy.models.incident import (
+    Incident,
+    IncidentAffectedSector,
+    IncidentLinkedToIntrusionSet,
+    IncidentLinkedToThreatActor,
+)
 from ontolocy.models.intrusionset import (
     IntrusionSet,
     IntrusionSetAttributedToNation,
@@ -69,12 +80,12 @@ from ontolocy.models.ip import (
 from ontolocy.models.jarmhash import JarmHash
 from ontolocy.models.listeningsocket import (
     ListeningSocket,
+    ListeningSocketHasBanner,
+    ListeningSocketHasJarmHash,
+    ListeningSocketHasX509Certificate,
+    ListeningSocketHostsURL,
+    ListeningSocketIdentifiedAsPlatform,
     ListeningSocketUsesPort,
-    OpenPortHasJarmHash,
-    OpenPortPresentsBanner,
-    OpenPortPresentsX509Certificate,
-    ServiceHostsURL,
-    ServiceIdentifiedAsPlatform,
 )
 from ontolocy.models.macaddress import MACAddress, MACAddressAssignedToHost
 from ontolocy.models.mitreattackcampaign import (
@@ -95,6 +106,10 @@ from ontolocy.models.mitreattackgroup import (
     MitreAttackGroup,
     MitreAttackGroupUsesSoftware,
     MitreAttackGroupUsesTechnique,
+)
+from ontolocy.models.mitreattackmatrix import (
+    MitreAttackMatrix,
+    MitreMatrixIncludesTactic,
 )
 from ontolocy.models.mitreattackmitigation import (
     MitreAttackMitigation,
@@ -201,6 +216,13 @@ __all__ = [
     "Exploit",
     "ExploitExploitsVulnerability",
     "Host",
+    "ImplementationGuidance",
+    "ImplementationGuidanceForControl",
+    "ImplementationGuidanceForImplementationGuidance",
+    "Incident",
+    "IncidentAffectedSector",
+    "IncidentLinkedToIntrusionSet",
+    "IncidentLinkedToThreatActor",
     "IntrusionSet",
     "IntrusionSetAttributedToNation",
     "IntrusionSetLinkedToIntrusionSet",
@@ -219,7 +241,11 @@ __all__ = [
     "JarmHash",
     "ListeningSocket",
     "ListeningSocketUsesPort",
-    "ServiceIdentifiedAsPlatform",
+    "ListeningSocketHasJarmHash",
+    "ListeningSocketHasBanner",
+    "ListeningSocketHasX509Certificate",
+    "ListeningSocketHostsURL",
+    "ListeningSocketIdentifiedAsPlatform",
     "MACAddress",
     "MACAddressAssignedToHost",
     "MitreAttackTactic",
@@ -236,6 +262,8 @@ __all__ = [
     "MitreAttackDataComponentDetectsTechnique",
     "MitreAttackDataSource",
     "MitreAttackDataSourceHasComponent",
+    "MitreAttackMatrix",
+    "MitreMatrixIncludesTactic",
     "MitreAttackMitigation",
     "MitreAttackMitigationDefendsAgainstTechnique",
     "MitreAttackMitigationMapsToControl",
@@ -244,9 +272,7 @@ __all__ = [
     "MitreAttackGroupUsesTechnique",
     "NetworkService",
     "NetworkServiceRunsOnPort",
-    "OpenPortHasJarmHash",
-    "OpenPortPresentsBanner",
-    "OpenPortPresentsX509Certificate",
+    "ListeningSocketHasBanner",
     "Organisation",
     "OrganisationAssignedCVSSToCVE",
     "OrganisationPublishedThreatReport",
@@ -269,7 +295,6 @@ __all__ = [
     "ReportIdentifiesCampaign",
     "ReportIdentifiesSoftware",
     "Sector",
-    "ServiceHostsURL",
     "ThreatActor",
     "ThreatActorAttributedToNation",
     "ThreatActorIsOfType",

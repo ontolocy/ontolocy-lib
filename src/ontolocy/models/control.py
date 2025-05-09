@@ -1,10 +1,10 @@
 from typing import ClassVar, Optional
 
-from pydantic import AnyHttpUrl, ValidationInfo, field_validator
+from pydantic import AnyHttpUrl, ValidationInfo, field_serializer, field_validator
 
 from ..node import OntolocyNode
 from ..relationship import OntolocyRelationship
-from ..utils import generate_deterministic_uuid
+from ..utils import generate_str_id
 from .mitreattacktechnique import MitreAttackTechnique
 
 
@@ -15,6 +15,7 @@ class Control(OntolocyNode):
     control_id: str
     name: str
     framework: str
+    framework_level: Optional[str] = None
     version: Optional[str] = None
     framework_version: Optional[str] = None
     description: Optional[str] = None
@@ -26,20 +27,26 @@ class Control(OntolocyNode):
         return f"{self.control_id}: {self.name}"
 
     @field_validator("unique_id")
-    def generate_uuid(cls, v: Optional[str], info: ValidationInfo) -> str:
+    def generate_id(cls, v: Optional[str], info: ValidationInfo) -> str:
         values = info.data
         if v is None:
             key_values = [
+                values["framework"],
+                values["framework_level"],
+                values["framework_version"],
                 values["control_id"],
                 values["version"],
-                values["framework"],
-                values["framework_version"],
             ]
 
             # the unique id should be a string rather than a UUID
-            v = str(generate_deterministic_uuid(key_values))
+            v = generate_str_id(key_values)
 
         return v
+
+    @field_serializer("url_reference")
+    def serialize_to_str(self, input: AnyHttpUrl, _info):
+        if input:
+            return str(input)
 
 
 #
@@ -56,6 +63,11 @@ class ControlRelatedToControl(OntolocyRelationship):
 
     __relationshiptype__: ClassVar[str] = "CONTROL_RELATED_TO_CONTROL"
 
+    @field_serializer("url_reference")
+    def serialize_to_str(self, input: AnyHttpUrl, _info):
+        if input:
+            return str(input)
+
 
 class ControlHasParentControl(OntolocyRelationship):
     source: Control
@@ -66,6 +78,11 @@ class ControlHasParentControl(OntolocyRelationship):
 
     __relationshiptype__: ClassVar[str] = "CONTROL_HAS_PARENT_CONTROL"
 
+    @field_serializer("url_reference")
+    def serialize_to_str(self, input: AnyHttpUrl, _info):
+        if input:
+            return str(input)
+
 
 class ControlMitigatesAttackTechnique(OntolocyRelationship):
     source: Control
@@ -74,3 +91,8 @@ class ControlMitigatesAttackTechnique(OntolocyRelationship):
     url_reference: Optional[AnyHttpUrl] = None
 
     __relationshiptype__: ClassVar[str] = "CONTROL_MITIGATES_ATTACK_TECHNIQUE"
+
+    @field_serializer("url_reference")
+    def serialize_to_str(self, input: AnyHttpUrl, _info):
+        if input:
+            return str(input)

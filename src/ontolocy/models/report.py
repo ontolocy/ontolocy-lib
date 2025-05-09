@@ -49,6 +49,11 @@ class Report(OntolocyNode):
     def serialize_to_str(self, input: HttpUrl, _info):
         return str(input)
 
+    @field_serializer("additional_urls")
+    def serialize_list_to_str(self, input: Optional[List[HttpUrl]], _info):
+        if input:
+            return [str(url) for url in input]
+
 
 #
 # OUTGOING RELATIONSHIPS

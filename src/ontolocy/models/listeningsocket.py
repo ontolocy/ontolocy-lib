@@ -114,36 +114,36 @@ class ListeningSocketUsesPort(OntolocyRelationship):
     __relationshiptype__: ClassVar[str] = "LISTENING_SOCKET_USES_PORT"
 
 
-class OpenPortPresentsBanner(OntolocyRelationship):
+class ListeningSocketHasBanner(OntolocyRelationship):
     source: ListeningSocket
     target: Banner
 
-    __relationshiptype__: ClassVar[str] = "OPEN_PORT_PRESENTS_BANNER"
+    __relationshiptype__: ClassVar[str] = "LISTENING_SOCKET_HAS_BANNER"
 
 
-class OpenPortPresentsX509Certificate(OntolocyRelationship):
+class ListeningSocketHasX509Certificate(OntolocyRelationship):
     source: ListeningSocket
     target: X509Certificate
 
-    __relationshiptype__: ClassVar[str] = "OPEN_PORT_PRESENTS_X509_CERTIFICATE"
+    __relationshiptype__: ClassVar[str] = "LISTENING_SOCKET_HAS_X509_CERTIFICATE"
 
 
-class OpenPortHasJarmHash(OntolocyRelationship):
+class ListeningSocketHasJarmHash(OntolocyRelationship):
     source: ListeningSocket
     target: JarmHash
 
-    __relationshiptype__: ClassVar[str] = "OPEN_PORT_HAS_JARM_HASH"
+    __relationshiptype__: ClassVar[str] = "LISTENING_SOCKET_HAS_JARM_HASH"
 
 
-class ServiceHostsURL(OntolocyRelationship):
+class ListeningSocketHostsURL(OntolocyRelationship):
     source: ListeningSocket
     target: URLNode
     status_code: Optional[int] = None
 
-    __relationshiptype__: ClassVar[str] = "SERVICE_HOSTS_URL"
+    __relationshiptype__: ClassVar[str] = "LISTENING_SOCKET_HOSTS_URL"
 
 
-class ServiceIdentifiedAsPlatform(OntolocyRelationship):
+class ListeningSocketIdentifiedAsPlatform(OntolocyRelationship):
     source: ListeningSocket
     target: CPE
     status_code: Optional[int] = None
@@ -187,4 +187,4 @@ class ServiceIdentifiedAsPlatform(OntolocyRelationship):
 
         return v
 
-    __relationshiptype__: ClassVar[str] = "SERVICE_IDENTIFIED_AS_PLATFORM"
+    __relationshiptype__: ClassVar[str] = "LISTENING_SOCKET_IDENTIFIED_AS_PLATFORM"

@@ -7,8 +7,8 @@
 | framework | str | True |
 | name | str | True |
 | test_id | str | True |
-| merged | datetime | False |
-| created | Optional[datetime] | False |
+| ontolocy_merged | datetime | False |
+| ontolocy_created | Optional[datetime] | False |
 | version | Optional[str] | False |
 | framework_version | Optional[str] | False |
 | description | Optional[str] | False |
@@ -25,6 +25,8 @@ Target Label(s): MitreAttackTechnique
 
 | Property Name | Type | Required |
 | ------------- | ---- | -------- |
+| ontolocy_merged | datetime | False |
+| ontolocy_created | Optional[datetime] | False |
 | data_origin_name | Optional[str] | False |
 | data_origin_reference | Optional[str] | False |
 | data_origin_license | Optional[str] | False |

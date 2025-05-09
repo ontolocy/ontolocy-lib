@@ -1,12 +1,12 @@
 from uuid import UUID
 
 from ontolocy import (
-    ListeningSocket,
-    Port,
-    ListeningSocketUsesPort,
-    ServiceHostsURL,
-    URLNode,
     IPAddressNode,
+    ListeningSocket,
+    ListeningSocketHostsURL,
+    ListeningSocketUsesPort,
+    Port,
+    URLNode,
 )
 
 
@@ -105,11 +105,11 @@ def test_listening_socket_has_url(use_graph):
     url = URLNode(url="http://example.com/foo")
     url.merge()
 
-    rel = ServiceHostsURL(source=socket, target=url)
+    rel = ListeningSocketHostsURL(source=socket, target=url)
     rel.merge()
 
     cypher = """
-    MATCH (sock:ListeningSocket)-[r:SERVICE_HOSTS_URL]->(url:URL)
+    MATCH (sock:ListeningSocket)-[r:LISTENING_SOCKET_HOSTS_URL]->(url:URL)
     WHERE sock.unique_id = $socket_id
     RETURN COUNT(DISTINCT r)
     """

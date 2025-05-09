@@ -6,6 +6,6 @@
 | ------------- | ---- | -------- |
 | protocol | Enum | True |
 | port_number | int | True |
-| merged | datetime | False |
-| created | Optional[datetime] | False |
+| ontolocy_merged | datetime | False |
+| ontolocy_created | Optional[datetime] | False |
 | unique_id | Optional[str] | False |

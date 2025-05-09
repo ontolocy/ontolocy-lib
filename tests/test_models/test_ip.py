@@ -1,16 +1,17 @@
 from ipaddress import IPv4Address
+
 import pandas as pd
 import pytest
 
 from ontolocy import (
-    IPAddressNode,
+    ASN,
     Country,
     DataOrigin,
-    ListeningSocket,
-    IPAddressHasOpenPort,
     IPAddressBelongsToASN,
+    IPAddressHasOpenPort,
     IPAddressLocatedInCountry,
-    ASN,
+    IPAddressNode,
+    ListeningSocket,
 )
 
 

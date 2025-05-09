@@ -1,7 +1,7 @@
-from ontolocy.models.country import Country
-
-from pydantic import ValidationError
 import pytest
+from pydantic import ValidationError
+
+from ontolocy.models.country import Country
 
 
 def test_define_country():

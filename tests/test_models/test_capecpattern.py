@@ -2,8 +2,8 @@ import pandas as pd
 
 from ontolocy import (
     CAPECPattern,
-    MitreAttackTechnique,
     CAPECPatternMapsToAttackTechnique,
+    MitreAttackTechnique,
 )
 
 stix_dict = {

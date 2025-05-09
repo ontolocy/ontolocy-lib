@@ -1,25 +1,27 @@
-import time
 from abc import ABC, abstractmethod
 from collections import defaultdict
-from typing import Dict, List, Optional
+from hashlib import sha256
+from pathlib import Path
+from typing import Dict, Optional
 
 import pandas as pd
+import requests
 
 from ..dataorigin import DataOrigin
 from ..node import OntolocyNode
 from ..relationship import OntolocyRelationship
 
 
-class IngesterBase(ABC):
-    node_types: List[OntolocyNode] = []
-    rel_types: List[OntolocyRelationship] = []
+class OntolocyParser(ABC):
+    node_types: list[type[OntolocyNode]] = []
+    rel_types: list[type[OntolocyRelationship]] = []
     relationship_kwargs: dict = {}
 
     def __init__(
         self,
         data_origin: Optional[DataOrigin] = None,
         private_namespace: Optional[str] = None,
-        auto_namespace: Optional[bool] = True,
+        auto_namespace: Optional[bool] = False,
         assign_data_origin: Optional[bool] = False,
     ) -> None:
         super().__init__()
@@ -94,9 +96,9 @@ class IngesterBase(ABC):
 
     def _merge_nodes(self) -> None:
         for node_type in self.node_types:
-            print(f"Merging: {node_type.__primarylabel__}")
-
             df = self.node_oriented_dfs[node_type.__primarylabel__]
+
+            print(f"Merging {len(df.index)} Nodes: {node_type.__primarylabel__}")
 
             if "ontolocy_parser_node_pp" in df.columns:
                 nodes = node_type.ingest_df(
@@ -105,10 +107,7 @@ class IngesterBase(ABC):
                 )
 
             else:
-                nodes = node_type.ingest_df(
-                    df,
-                    self.data_origin,
-                )
+                nodes = node_type.ingest_df(df, self.data_origin)
 
             df["ontolocy_parser_node_pp"] = [x.get_pp() for x in nodes]
 
@@ -195,30 +194,87 @@ class IngesterBase(ABC):
 
             df = self.rel_oriented_dfs[rel_type]
 
+            print(f"Merging {len(df.index)} Relationships: {rel_type}")
+
             kwargs = self.relationship_kwargs.get(rel_type, {})
-            tr1 = time.perf_counter()
+
             rel_type_class.ingest_df(df, self.data_origin, **kwargs)
-            tr2 = time.perf_counter()
-            print(
-                f"Merge {len(df.index)}x Rels {rel_type} Real Time: {tr2 - tr1:.2f} seconds"
-            )
 
     def populate(
         self,
     ) -> None:
-        print("POPULATING")
-        t1 = time.perf_counter()
         self._merge_nodes()
-        t2 = time.perf_counter()
-        print(f"Merge Nodes Real Time: {t2 - t1:.2f} seconds")
 
         self._generate_relationships()
-        t3 = time.perf_counter()
-        print(f"Generate Rels Real Time: {t3 - t2:.2f} seconds")
 
         self._merge_relationships()
-        t4 = time.perf_counter()
-        print(f"Merge Rels Real Time: {t4 - t3:.2f} seconds")
+
+    def detect(self, input_data) -> bool:
+        return self._detect(input_data)
+
+    def parse_data(self, input_data, populate=True):
+        if self.detect(input_data) is False:
+            raise ValueError(
+                "Detection suggests input data is not valid for this parser"
+            )
+
+        if self.private_namespace is None and self.auto_namespace is True:
+            private_namespace = sha256(input_data.encode("utf-8")).hexdigest()
+
+        else:
+            private_namespace = self.private_namespace
+
+        self._process_data(input_data, private_namespace)
+
+        if populate is True:
+            self.populate()
+
+    def _load_data(self, raw_data):
+        return raw_data
+
+    def _load_file(self, file_path):
+        with open(file_path, "r") as f:  # type: ignore [arg-type]
+            data = f.read()
+
+        return data
+
+    def _load_url(self, url):
+        response = requests.get(url)
+
+        return response.text
+
+    def parse_file(self, file_path, populate=True):
+        data = self._load_file(file_path)
+
+        input_data = self._load_data(data)
+
+        self.parse_data(input_data, populate=populate)
+
+    def parse_directory(
+        self, dir_path, populate: bool = True, path_pattern: str = "**/*"
+    ):
+        path = Path(dir_path)
+        for file_path in path.glob(path_pattern):
+            # if we're parsing a directory, don't populate until we've parsed all files
+            self.parse_file(file_path, populate=False)
+
+        if populate is True:
+            self.populate()
+
+    def parse_url(self, url, populate=True):
+        data = self._load_url(url)
+
+        input_data = self._load_data(data)
+
+        self.parse_data(input_data, populate=populate)
+
+    @abstractmethod
+    def _detect(self, input_data) -> bool:
+        """Implement code which returns True if it's valid for this parser
+        and returns False otherwise.
+        """
+
+        raise NotImplementedError
 
     @abstractmethod
     def _parse(self, input_data, private_namespace=None) -> tuple:

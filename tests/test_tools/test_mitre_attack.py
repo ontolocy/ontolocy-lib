@@ -1,20 +1,20 @@
-from ontolocy.tools import MitreAttackParser
-
 import pytest
 import requests
+
+from ontolocy.tools import MitreAttackParser
 
 test_cases = [
     {
         "version": "14.1",
         "url": "https://github.com/mitre-attack/attack-stix-data/raw/master/enterprise-attack/enterprise-attack-14.1.json",
         "campaign_count": 23,
-        "software_count": 653,
+        "software_count": 649,
         "tactic_count": 14,
-        "technique_count": 768,
-        "data_source_count": 38,
-        "data_component_count": 109,
-        "mitigation_count": 284,
-        "group_count": 158,
+        "technique_count": 625,
+        "data_source_count": 37,
+        "data_component_count": 106,
+        "mitigation_count": 43,
+        "group_count": 142,
         "campaign_count_valid": 23,
         "software_count_valid": 649,
         "tactic_count_valid": 14,

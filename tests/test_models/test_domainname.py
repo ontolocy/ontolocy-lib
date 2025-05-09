@@ -1,7 +1,7 @@
-from ontolocy.models.domainname import DomainName
-
-from pydantic import ValidationError
 import pytest
+from pydantic import ValidationError
+
+from ontolocy.models.domainname import DomainName
 
 
 def test_domainname():

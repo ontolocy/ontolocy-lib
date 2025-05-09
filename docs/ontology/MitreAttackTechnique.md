@@ -14,8 +14,8 @@
 | stix_created | datetime | True |
 | stix_type | str | True |
 | stix_id | str | True |
-| merged | datetime | False |
-| created | Optional[datetime] | False |
+| ontolocy_merged | datetime | False |
+| ontolocy_created | Optional[datetime] | False |
 | stix_spec_version | str | False |
 | stix_revoked | Optional[bool] | False |
 | attack_subtechnique | Optional[bool] | False |
@@ -29,6 +29,8 @@ Target Label(s): MitreAttackTechnique
 
 | Property Name | Type | Required |
 | ------------- | ---- | -------- |
+| ontolocy_merged | datetime | False |
+| ontolocy_created | Optional[datetime] | False |
 | data_origin_name | Optional[str] | False |
 | data_origin_reference | Optional[str] | False |
 | data_origin_license | Optional[str] | False |

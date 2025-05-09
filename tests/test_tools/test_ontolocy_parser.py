@@ -3,9 +3,9 @@ from collections import defaultdict
 
 import pandas as pd
 import pytest
-from ontolocy import IPAddressHasOpenPort, IPAddressNode, ListeningSocket
 
-from ontolocy.tools.parsers.ontolocy_parser import OntolocyParser
+from ontolocy import IPAddressHasOpenPort, IPAddressNode, ListeningSocket
+from ontolocy.tools.ontolocy_parser import OntolocyParser
 
 practice_data = json.dumps(
     {
@@ -190,7 +190,7 @@ def test_merge_nodes(use_graph):
 
 
 def test_merge_nodes_twice(use_graph):
-    parser = PracticeIPParser()
+    parser = PracticeIPParser(auto_namespace=True)
     parser.parse_data(practice_data, populate=False)
 
     parser._merge_nodes()

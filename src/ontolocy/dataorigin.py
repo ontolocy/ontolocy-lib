@@ -4,10 +4,11 @@ from uuid import UUID
 from neontology import BaseNode, BaseRelationship
 from pydantic import ValidationInfo, field_serializer, field_validator
 
+from .mixin import OntolocyMixin
 from .utils import generate_deterministic_uuid
 
 
-class DataOrigin(BaseNode, validate_default=True):
+class DataOrigin(BaseNode, OntolocyMixin, validate_default=True):
     __primaryproperty__: ClassVar[str] = "unique_id"
     __primarylabel__: ClassVar[Optional[str]] = "DataOrigin"
 
@@ -38,7 +39,7 @@ class DataOrigin(BaseNode, validate_default=True):
         return str(unique_id)
 
 
-class OriginGenerated(BaseRelationship):
+class OriginGenerated(BaseRelationship, OntolocyMixin):
     __relationshiptype__: ClassVar[Optional[str]] = "ORIGIN_GENERATED"
 
     source: DataOrigin

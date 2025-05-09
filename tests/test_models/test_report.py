@@ -1,7 +1,7 @@
+from pydantic import HttpUrl
+
 from ontolocy import Report, ReportMentionsCVE
 from ontolocy.models.cve import CVE
-
-from pydantic import HttpUrl
 
 report = Report(
     title="My First Report",

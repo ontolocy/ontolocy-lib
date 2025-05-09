@@ -1,7 +1,7 @@
-from ontolocy.models.mitreattacktechnique import MitreAttackTechnique
-
-from pydantic import ValidationError
 import pytest
+from pydantic import ValidationError
+
+from ontolocy.models.mitreattacktechnique import MitreAttackTechnique
 
 stix_dict = {
     "x_mitre_platforms": ["PRE"],
