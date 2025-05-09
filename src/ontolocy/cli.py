@@ -96,6 +96,7 @@ def cli():
 @click.option("--url", "-u", required=False)
 @click.option("--force", "-f", type=bool, default=False, required=False)
 def parse(parser_, filepath, url, force):
+    """Parse data from supported cyber security datasets."""
     init_neontology()
 
     click.echo(f"parsing {parser_}...")
@@ -236,6 +237,7 @@ def shodan(query):
     "source", type=click.Choice(["all", "countries", "sectors", "actor-types"]), nargs=1
 )
 def populate(source):
+    """Populate the graph with included static data."""
     init_neontology()
 
     click.echo(f"Populating {source}...")
@@ -263,7 +265,7 @@ def populate(source):
     type=click.Choice(["md", "yml", "json"], case_sensitive=False),
 )
 def ingest(dir_path: str, file_type: str) -> None:
-    """Import static data from the given directory"""
+    """Import static data from a given directory."""
 
     init_neontology()
 
