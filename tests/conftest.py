@@ -3,8 +3,8 @@
 import logging
 import os
 
-from click.testing import CliRunner
 import pytest
+from click.testing import CliRunner
 from dotenv import load_dotenv
 from neontology import GraphConnection, init_neontology
 from neontology.graphengines import Neo4jConfig
@@ -41,7 +41,6 @@ def get_graph_config(request, tmp_path_factory) -> tuple:
 
     # build config using environment variables
     for key, value in graph_config_vars.items():
-
         graph_config[key] = os.getenv(value)
         assert (
             graph_config[key] is not None
@@ -106,7 +105,6 @@ def use_graph(request, graph_db):
 
 @pytest.fixture
 def cli_runner(get_graph_config):
-
     graph_engine_vars = {
         "Neo4jConfig": "NEO4J",
         "MemgraphConfig": "MEMGRAPH",

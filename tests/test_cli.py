@@ -1,16 +1,15 @@
 import pytest
 
+from ontolocy import MitreAttackTechnique
 from ontolocy.cli import cli
 from ontolocy.models.actortype import actor_type_taxonomy
 from ontolocy.models.country import country_codes
 from ontolocy.models.sector import sectors
-from ontolocy import MitreAttackTechnique
 
 
 @pytest.mark.parametrize("prompt_input", ["\n", "no\n"])
 @pytest.mark.webtest
 def test_mitre_attack_no_populate(prompt_input, use_graph, cli_runner):
-
     result = cli_runner.invoke(
         cli,
         [
@@ -36,7 +35,6 @@ def test_mitre_attack_no_populate(prompt_input, use_graph, cli_runner):
 
 @pytest.mark.webtest
 def test_mitre_attack_bad_prompt(cli_runner):
-
     result = cli_runner.invoke(cli, ["parse", "mitre-attack"], input="bad command\n")
 
     assert "Error: invalid input" in result.output
@@ -45,7 +43,6 @@ def test_mitre_attack_bad_prompt(cli_runner):
 @pytest.mark.slow
 @pytest.mark.webtest
 def test_mitre_attack_populate_url(use_graph, cli_runner):
-
     result = cli_runner.invoke(
         cli,
         [
@@ -64,7 +61,6 @@ def test_mitre_attack_populate_url(use_graph, cli_runner):
 
 
 def test_populate_all(use_graph, cli_runner):
-
     result = cli_runner.invoke(cli, ["populate", "all"])
 
     assert result.exit_code == 0

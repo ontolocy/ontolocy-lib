@@ -19,7 +19,6 @@ class NistSP80053v4Parser(OntolocyParser):
     rel_types = [ControlHasParentControl]
 
     def _detect(self, input_data) -> bool:
-
         columns = [
             "FAMILY",
             "NAME",

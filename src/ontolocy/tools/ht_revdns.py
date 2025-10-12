@@ -1,23 +1,24 @@
-import requests
-import pandas as pd
 import re
+
+import pandas as pd
+import requests
 
 from ontolocy import (
     DNSRecord,
-    DomainName,
-    IPAddressNode,
     DNSRecordPointsToDomainName,
     DNSRecordPointsToIPAddress,
+    DomainName,
     DomainNameHasDNSRecord,
+    IPAddressNode,
 )
 
-from .ontolocy_parser import OntolocyParser
 from .ontolocy_enricher import (
+    SEED_MAPPINGS,
     OntolocyClient,
     OntolocyEnricher,
     SeedTypeEnum,
-    SEED_MAPPINGS,
 )
+from .ontolocy_parser import OntolocyParser
 
 
 class HackerTargetReverseDNSParser(OntolocyParser):
@@ -37,7 +38,6 @@ class HackerTargetReverseDNSParser(OntolocyParser):
     ]
 
     def _detect(self, input_data: str) -> bool:
-
         print(input_data)
 
         # expects  new line separated entries of "IP DOMAIN"

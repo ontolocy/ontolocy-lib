@@ -2,7 +2,7 @@ import re
 from datetime import datetime
 from typing import ClassVar, Optional
 
-from pydantic import field_validator, Field
+from pydantic import Field, field_validator
 
 from ..node import OntolocyNode
 from ..relationship import OntolocyRelationship

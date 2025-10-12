@@ -1,9 +1,8 @@
 from ontolocy import DomainName, IPAddressNode
-
 from ontolocy.tools.ht_ptrip import (
-    HackerTargetPtrIPParser,
     HackerTargetPtrIPClient,
     HackerTargetPtrIPEnricher,
+    HackerTargetPtrIPParser,
 )
 
 test_data = "1.1.1.1 one.one.one.one"
@@ -24,7 +23,6 @@ def test_detect_ht_ptrip_bad():
 
 
 def test_node_parse_ht_ptrip():
-
     parser = HackerTargetPtrIPParser()
 
     parser.parse_data(test_data, populate=False)
