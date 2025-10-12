@@ -1,7 +1,7 @@
 from ontolocy.tools.ht_subdomain import (
-    HackerTargetSubdomainParser,
     HackerTargetSubdomainClient,
     HackerTargetSubdomainEnricher,
+    HackerTargetSubdomainParser,
 )
 
 # Example output from the API (comma separated domain,ip pairs)

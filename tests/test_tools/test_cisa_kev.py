@@ -1,7 +1,7 @@
 import pytest
 
-from ontolocy.tools import CisaKevParser
 from ontolocy import CVE
+from ontolocy.tools import CisaKevParser
 
 test_data = """cveID,vendorProject,product,vulnerabilityName,dateAdded,shortDescription,requiredAction,dueDate,knownRansomwareCampaignUse,notes,cwes
 CVE-2025-23006,SonicWall,"SMA1000 Appliances","SonicWall SMA1000 Appliances Deserialization Vulnerability",2025-01-24,"SonicWall SMA1000 Appliance Management Console (AMC) and Central Management Console (CMC) contain a deserialization of untrusted data vulnerability, which can enable a remote, unauthenticated attacker to execute arbitrary OS commands.","Apply mitigations per vendor instructions or discontinue use of the product if mitigations are unavailable.",2025-02-14,Unknown,"https://psirt.global.sonicwall.com/vuln-detail/SNWLID-2025-0002 ; https://nvd.nist.gov/vuln/detail/CVE-2025-23006",CWE-502

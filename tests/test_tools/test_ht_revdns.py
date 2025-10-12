@@ -1,7 +1,7 @@
 from ontolocy.tools.ht_revdns import (
-    HackerTargetReverseDNSParser,
     HackerTargetReverseDNSClient,
     HackerTargetReverseDNSEnricher,
+    HackerTargetReverseDNSParser,
 )
 
 # Example reverse DNS data returned by the API for a domain lookup

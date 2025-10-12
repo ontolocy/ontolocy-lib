@@ -1,18 +1,19 @@
 import json
-import requests
+
 import pandas as pd
+import requests
 
 from ontolocy import (
     DNSRecord,
-    DomainName,
-    IPAddressNode,
     DNSRecordPointsToDomainName,
     DNSRecordPointsToIPAddress,
+    DomainName,
     DomainNameHasDNSRecord,
+    IPAddressNode,
 )
 
-from .ontolocy_parser import OntolocyParser
 from .ontolocy_enricher import OntolocyClient, OntolocyEnricher, SeedTypeEnum
+from .ontolocy_parser import OntolocyParser
 
 
 class HackerTargetDNSParser(OntolocyParser):
@@ -30,7 +31,6 @@ class HackerTargetDNSParser(OntolocyParser):
     ]
 
     def _detect(self, input_data) -> bool:
-
         if not isinstance(input_data, dict):
             return False
 

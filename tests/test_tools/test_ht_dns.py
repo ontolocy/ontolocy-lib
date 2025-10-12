@@ -1,11 +1,10 @@
 import json
 
 from ontolocy.tools.ht_dns import (
-    HackerTargetDNSParser,
-    HackerTargetDNSEnricher,
     HackerTargetDNSClient,
+    HackerTargetDNSEnricher,
+    HackerTargetDNSParser,
 )
-
 
 test_data = """{
   "A": [

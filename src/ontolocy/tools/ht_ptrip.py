@@ -1,24 +1,24 @@
-import requests
 import re
 
 import pandas as pd
+import requests
 
 from ontolocy import (
     DNSRecord,
-    DomainName,
-    IPAddressNode,
     DNSRecordPointsToDomainName,
     DNSRecordPointsToIPAddress,
+    DomainName,
     DomainNameHasDNSRecord,
+    IPAddressNode,
 )
 
-from .ontolocy_parser import OntolocyParser
 from .ontolocy_enricher import (
+    SEED_MAPPINGS,
     OntolocyClient,
     OntolocyEnricher,
     SeedTypeEnum,
-    SEED_MAPPINGS,
 )
+from .ontolocy_parser import OntolocyParser
 
 
 class HackerTargetPtrIPParser(OntolocyParser):
@@ -38,7 +38,6 @@ class HackerTargetPtrIPParser(OntolocyParser):
     ]
 
     def _detect(self, input_data: str) -> bool:
-
         # expects  new line separated entries of "IP DOMAIN"
         for line in input_data.splitlines():
             parts = line.split()
