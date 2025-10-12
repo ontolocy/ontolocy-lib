@@ -4,6 +4,7 @@ from ontolocy.cli import cli
 from ontolocy.models.actortype import actor_type_taxonomy
 from ontolocy.models.country import country_codes
 from ontolocy.models.sector import sectors
+from ontolocy import MitreAttackTechnique
 
 
 @pytest.mark.parametrize("prompt_input", ["\n", "no\n"])
@@ -30,12 +31,7 @@ def test_mitre_attack_no_populate(prompt_input, use_graph, cli_runner):
 
     assert "Goodbye" in result.output
 
-    cypher = """
-    MATCH (n)
-    RETURN COUNT(DISTINCT n)
-    """
-
-    assert use_graph.evaluate_query_single(cypher) == 0
+    assert MitreAttackTechnique.get_count() == 0
 
 
 @pytest.mark.webtest
@@ -64,14 +60,7 @@ def test_mitre_attack_populate_url(use_graph, cli_runner):
     assert "populating the graph..." in result.output
     assert "ingest complete" in result.output
 
-    technique_cypher = """
-    MATCH (n:MitreAttackTechnique)
-        WHERE  (n.stix_revoked = false OR n.stix_revoked is NULL)
-        AND (n.attack_deprecated = false or n.attack_deprecated is NULL)
-    RETURN COUNT(DISTINCT n)
-    """
-
-    assert use_graph.evaluate_query_single(technique_cypher) == 625
+    assert MitreAttackTechnique.get_count() == 625
 
 
 def test_populate_all(use_graph, cli_runner):

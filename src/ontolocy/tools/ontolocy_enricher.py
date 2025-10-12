@@ -78,10 +78,10 @@ class OntolocyClient:
                     print(f"Failed after {self.retries} retries.")
                     raise
 
-        self.parser.parse_data(result, populate=populate)
+        self.parser.parse_data(result, populate=populate, ctx={"query": query})
 
     @abstractmethod
-    def _query(self, query):
+    def _query(self, query) -> tuple:
         raise NotImplementedError("Query not implemented")
 
 

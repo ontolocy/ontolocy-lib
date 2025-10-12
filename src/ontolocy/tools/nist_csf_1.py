@@ -68,7 +68,9 @@ class NistCSF1Parser(OntolocyParser):
 
         return response.content
 
-    def _parse(self, input_data: pd.DataFrame, private_namespace=None) -> tuple:
+    def _parse(
+        self, input_data: pd.DataFrame, private_namespace=None, ctx=None
+    ) -> tuple:
         FRAMEWORK = "NIST CSF"
         FRAMEWORK_VERSION = "1.1"
         FRAMEWORK_URL = "https://doi.org/10.6028/NIST.CSWP.04162018"

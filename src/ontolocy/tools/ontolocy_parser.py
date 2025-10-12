@@ -60,7 +60,7 @@ class OntolocyParser(ABC):
         else:
             self.data_origin = None
 
-    def _process_data(self, input_data, private_namespace=None):
+    def _process_data(self, input_data, private_namespace=None, ctx=None):
         """
         Takes input data in the form of a tuple of dicts:
             Nodes: indexed by node label - with corresponding df for all nodes to merge
@@ -73,7 +73,9 @@ class OntolocyParser(ABC):
 
         self.data_inputs.append(input_data)
 
-        node_oriented_dfs, rel_input_dfs = self._parse(input_data, private_namespace)
+        node_oriented_dfs, rel_input_dfs = self._parse(
+            input_data, private_namespace, ctx
+        )
 
         # update node entries
         for label, df in node_oriented_dfs.items():
@@ -212,7 +214,7 @@ class OntolocyParser(ABC):
     def detect(self, input_data) -> bool:
         return self._detect(input_data)
 
-    def parse_data(self, input_data, populate=True):
+    def parse_data(self, input_data, populate=True, ctx=None):
         if self.detect(input_data) is False:
             raise ValueError(
                 "Detection suggests input data is not valid for this parser"
@@ -224,7 +226,7 @@ class OntolocyParser(ABC):
         else:
             private_namespace = self.private_namespace
 
-        self._process_data(input_data, private_namespace)
+        self._process_data(input_data, private_namespace, ctx)
 
         if populate is True:
             self.populate()
@@ -277,7 +279,7 @@ class OntolocyParser(ABC):
         raise NotImplementedError
 
     @abstractmethod
-    def _parse(self, input_data, private_namespace=None) -> tuple:
+    def _parse(self, input_data, private_namespace=None, ctx=None) -> tuple:
         """Returns a tuple where the first entry is a dictionary of node dataframes indexed by label
         The second entry is a dictionary of relationship dataframes indexed by relationship type
             Each relationship entry includes the following:

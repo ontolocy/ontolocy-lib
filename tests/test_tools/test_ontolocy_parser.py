@@ -42,7 +42,7 @@ class PracticeIPParser(OntolocyParser):
 
         return True
 
-    def _parse(self, input_data, private_namespace=None) -> tuple:
+    def _parse(self, input_data, private_namespace=None, ctx=None) -> tuple:
         data = json.loads(input_data)
 
         input_df = pd.DataFrame.from_records(data["SOCKETS"]).rename(

@@ -19,7 +19,6 @@ class NistSP80053v4Parser(OntolocyParser):
     rel_types = [ControlHasParentControl]
 
     def _detect(self, input_data) -> bool:
-        print(input_data)
 
         columns = [
             "FAMILY",
@@ -45,7 +44,7 @@ class NistSP80053v4Parser(OntolocyParser):
     def _load_data(self, raw_data) -> pd.DataFrame:
         return pd.read_csv(StringIO(raw_data))
 
-    def _parse(self, input_data, private_namespace=None) -> tuple:
+    def _parse(self, input_data, private_namespace=None, ctx=None) -> tuple:
         FRAMEWORK = "NIST SP 800-53"
         FRAMEWORK_VERSION = "Rev. 4"
         FRAMEWORK_URL = "https://doi.org/10.6028/NIST.SP.800-53r4"

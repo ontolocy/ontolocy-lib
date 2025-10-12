@@ -1,8 +1,7 @@
 from datetime import datetime
 from typing import ClassVar, Optional
-from uuid import UUID
 
-from pydantic import ValidationInfo, field_validator
+from pydantic import ValidationInfo, field_validator, Field
 
 from ..node import OntolocyNode
 from ..relationship import OntolocyRelationship
@@ -16,11 +15,14 @@ class DNSRecord(OntolocyNode):
     type: str
     name: str
     content: str
+    record_class: str = "IN"
 
-    unique_id: Optional[UUID] = None
+    ttl: Optional[int] = None
+
+    unique_id: Optional[str] = None
 
     @field_validator("unique_id")
-    def generate_dnsrecord_uuid(cls, v: Optional[UUID], info: ValidationInfo) -> UUID:
+    def generate_dnsrecord_uuid(cls, v: Optional[str], info: ValidationInfo) -> str:
         values = info.data
 
         if v is None:
@@ -32,7 +34,7 @@ class DNSRecord(OntolocyNode):
 
             v = generate_deterministic_uuid(key_values)
 
-        return v
+        return str(v)
 
 
 class DNSRecordPointsToIPAddress(OntolocyRelationship):
@@ -41,7 +43,7 @@ class DNSRecordPointsToIPAddress(OntolocyRelationship):
     source: DNSRecord
     target: "IPAddressNode"
 
-    observation_date: datetime
+    observation_date: datetime = Field(default_factory=datetime.now)
 
 
 class DNSRecordPointsToDomainName(OntolocyRelationship):
@@ -50,22 +52,13 @@ class DNSRecordPointsToDomainName(OntolocyRelationship):
     source: DNSRecord
     target: "DomainName"
 
-    observation_date: datetime
-
-
-class DNSRecordForDomain(OntolocyRelationship):
-    __relationshiptype__: ClassVar[str] = "DNS_RECORD_FOR_DOMAIN"
-
-    source: DNSRecord
-    target: "DomainName"
-
-    observation_date: datetime
+    observation_date: datetime = Field(default_factory=datetime.now)
 
 
 from .domainname import DomainName  # noqa: E402
 
 DNSRecordPointsToDomainName.model_rebuild()
-DNSRecordForDomain.model_rebuild()
+
 
 from .ip import IPAddressNode  # noqa: E402
 
