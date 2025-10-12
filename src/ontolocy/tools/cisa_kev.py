@@ -52,7 +52,7 @@ class CisaKevParser(OntolocyParser):
     def _load_data(self, raw_data):
         return pd.read_csv(StringIO(raw_data))
 
-    def _parse(self, input_data, private_namespace=None) -> tuple:
+    def _parse(self, input_data, private_namespace=None, ctx=None) -> tuple:
         node_dfs = {}
         rel_dfs = {}
 

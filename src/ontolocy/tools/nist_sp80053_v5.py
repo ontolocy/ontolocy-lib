@@ -53,7 +53,9 @@ class NistSP80053v5Parser(OntolocyParser):
 
         return response.content
 
-    def _parse(self, input_data: pd.DataFrame, private_namespace=None) -> tuple:
+    def _parse(
+        self, input_data: pd.DataFrame, private_namespace=None, ctx=None
+    ) -> tuple:
         FRAMEWORK = "NIST SP 800-53"
         FRAMEWORK_VERSION = "Rev. 5"
         FRAMEWORK_URL = "https://doi.org/10.6028/NIST.SP.800-53r5"

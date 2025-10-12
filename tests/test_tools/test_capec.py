@@ -10,7 +10,7 @@ test_cases = [
 
 @pytest.mark.webtest
 @pytest.mark.parametrize("test_data", test_cases)
-def test_detect(test_data):
+def test_detect_capec(test_data):
     parser = CapecParser()
 
     response = requests.get(test_data["url"])
@@ -19,7 +19,7 @@ def test_detect(test_data):
     assert parser.detect(input_data) is True
 
 
-def test_detect_bad():
+def test_detect_bad_capec():
     parser = CapecParser()
 
     assert parser.detect("just some text") is False
@@ -27,7 +27,7 @@ def test_detect_bad():
 
 @pytest.mark.webtest
 @pytest.mark.parametrize("test_data", test_cases)
-def test_node_parse(test_data):
+def test_node_parse_capec(test_data):
     parser = CapecParser()
 
     parser.parse_url(test_data["url"], populate=False)
@@ -43,7 +43,7 @@ def test_node_parse(test_data):
 @pytest.mark.slow
 @pytest.mark.webtest
 @pytest.mark.parametrize("test_data", test_cases)
-def test_populate(use_graph, test_data):
+def test_populate_capec(use_graph, test_data):
     parser = CapecParser()
 
     parser.parse_url(test_data["url"], populate=True)

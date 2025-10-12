@@ -162,7 +162,7 @@ class MitreAttackParser(OntolocyParser):
 
         return rel_df
 
-    def _parse(self, input_data, private_namespace=None) -> tuple:
+    def _parse(self, input_data, private_namespace=None, ctx=None) -> tuple:
         stix_json = json.loads(input_data)
 
         #

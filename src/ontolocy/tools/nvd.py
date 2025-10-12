@@ -47,7 +47,7 @@ class NVDCVEParser(OntolocyParser):
         else:
             return False
 
-    def _parse(self, input_data, private_namespace=None) -> tuple:
+    def _parse(self, input_data, private_namespace=None, ctx=None) -> tuple:
         node_dfs = {}
         rel_dfs = {}
 

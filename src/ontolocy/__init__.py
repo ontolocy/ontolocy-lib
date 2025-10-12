@@ -40,7 +40,6 @@ from ontolocy.models.cyberharm import CyberHarm
 from ontolocy.models.detection import Detection, DetectionForAttackTechnique
 from ontolocy.models.dnsrecord import (
     DNSRecord,
-    DNSRecordForDomain,
     DNSRecordPointsToDomainName,
     DNSRecordPointsToIPAddress,
 )
@@ -208,7 +207,6 @@ __all__ = [
     "Detection",
     "DetectionForAttackTechnique",
     "DNSRecord",
-    "DNSRecordForDomain",
     "DNSRecordPointsToDomainName",
     "DNSRecordPointsToIPAddress",
     "DomainName",

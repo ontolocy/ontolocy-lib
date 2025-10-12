@@ -2,7 +2,7 @@ import re
 from datetime import datetime
 from typing import ClassVar, Optional
 
-from pydantic import field_validator
+from pydantic import field_validator, Field
 
 from ..node import OntolocyNode
 from ..relationship import OntolocyRelationship
@@ -32,7 +32,7 @@ class DomainNameHasDNSRecord(OntolocyRelationship):
     source: DomainName
     target: "DNSRecord"
 
-    observation_date: datetime
+    observation_date: datetime = Field(default_factory=datetime.now)
 
 
 from .dnsrecord import DNSRecord  # noqa: E402

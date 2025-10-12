@@ -162,7 +162,7 @@ class ShodanParser(OntolocyParser):
 
         return pd.DataFrame.from_records(all_results)
 
-    def _parse(self, input_data, private_namespace=None) -> tuple:
+    def _parse(self, input_data, private_namespace, ctx) -> tuple:
         node_dfs = {}
         rel_dfs = {}
 
