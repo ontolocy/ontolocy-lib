@@ -59,6 +59,7 @@ def test_node_parse_latest():
     assert len(technique_df.index) >= 100  # Arbitrary number to ensure data is present.
 
 
+@pytest.mark.slow
 @pytest.mark.webtest
 def test_node_populate_latest(use_graph):
     """Check that the latest att&ck version can be populated."""
