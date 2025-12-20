@@ -1,6 +1,8 @@
 from datetime import datetime
 from typing import ClassVar, Optional
 
+from pydantic import HttpUrl, field_serializer
+
 from ..node import OntolocyNode
 from ..relationship import OntolocyRelationship
 from .mitreattacktechnique import MitreAttackTechnique
@@ -23,6 +25,16 @@ class MitreAttackDataComponent(OntolocyNode):
 
     name: str
     description: str
+
+    attack_id: Optional[str] = None
+    ref_url: Optional[HttpUrl] = None
+
+    @field_serializer("ref_url")
+    def serialize_ref_url(self, ref_url: Optional[HttpUrl], _info):
+        if ref_url is None:
+            return None
+        else:
+            return str(ref_url)
 
 
 #
