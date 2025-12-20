@@ -45,6 +45,45 @@ def test_detect_bad():
 
 
 @pytest.mark.webtest
+def test_node_parse_latest():
+    """Check that the latest att&ck version can be parsed."""
+
+    parser = MitreAttackParser()
+
+    latest_url = "https://github.com/mitre-attack/attack-stix-data/raw/refs/heads/master/enterprise-attack/enterprise-attack.json"
+
+    parser.parse_url(latest_url, populate=False)
+
+    technique_df = parser.node_oriented_dfs["MitreAttackTechnique"]
+
+    assert len(technique_df.index) >= 100  # Arbitrary number to ensure data is present.
+
+
+@pytest.mark.slow
+@pytest.mark.webtest
+def test_node_populate_latest(use_graph):
+    """Check that the latest att&ck version can be populated."""
+
+    parser = MitreAttackParser()
+
+    latest_url = "https://github.com/mitre-attack/attack-stix-data/raw/refs/heads/master/enterprise-attack/enterprise-attack.json"
+
+    parser.parse_url(latest_url, populate=True)
+
+    technique_cypher = """
+    MATCH (n:MitreAttackTechnique)
+        WHERE  (n.stix_revoked = false OR n.stix_revoked is NULL)
+        AND (n.attack_deprecated = false or n.attack_deprecated is NULL)
+    RETURN COUNT(DISTINCT n)
+    """
+
+    assert (
+        use_graph.evaluate_query_single(technique_cypher)
+        >= 100  # Arbitrary number to ensure data is present.
+    )
+
+
+@pytest.mark.webtest
 @pytest.mark.parametrize("test_data", test_cases)
 def test_node_parse(test_data):
     parser = MitreAttackParser()
