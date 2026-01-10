@@ -160,26 +160,33 @@ class NVDCVEParser(OntolocyParser):
 
         cve_to_cpe_df = pd.DataFrame(cve_to_cpe)
 
-        rel_dfs[CVERelatesToCPE.__relationshiptype__] = {
-            "src_df": cve_to_cpe_df[["source"]].copy(),
-            "tgt_df": cve_to_cpe_df[["target"]].copy(),
-            "props_df": cve_to_cpe_df.drop(columns=["source", "target"]).copy(),
-        }
+        if not cve_to_cpe_df.empty:
 
-        rel_dfs[CVERelatesToCWE.__relationshiptype__] = {
-            "src_df": pd.DataFrame(cve_to_cwe)[["source"]],
-            "tgt_df": pd.DataFrame(cve_to_cwe)[["target"]],
-        }
+            rel_dfs[CVERelatesToCPE.__relationshiptype__] = {
+                "src_df": cve_to_cpe_df[["source"]].copy(),
+                "tgt_df": cve_to_cpe_df[["target"]].copy(),
+                "props_df": cve_to_cpe_df.drop(columns=["source", "target"]).copy(),
+            }
+
+        cve_to_cwe_df = pd.DataFrame(cve_to_cwe)
+
+        if not cve_to_cwe_df.empty:
+            rel_dfs[CVERelatesToCWE.__relationshiptype__] = {
+                "src_df": cve_to_cwe_df[["source"]],
+                "tgt_df": cve_to_cwe_df[["target"]],
+            }
 
         cvss_df = pd.DataFrame(cvss_rels)
 
-        rel_dfs[OrganisationAssignedCVSSToCVE.__relationshiptype__] = {
-            "src_df": cvss_df[["source"]].copy(),
-            "tgt_df": cvss_df[["target"]].copy(),
-            "props_df": cvss_df.drop(columns=["source", "target"]).copy(),
-        }
+        if not cvss_df.empty:
 
-        return node_dfs, rel_dfs
+            rel_dfs[OrganisationAssignedCVSSToCVE.__relationshiptype__] = {
+                "src_df": cvss_df[["source"]].copy(),
+                "tgt_df": cvss_df[["target"]].copy(),
+                "props_df": cvss_df.drop(columns=["source", "target"]).copy(),
+            }
+
+            return node_dfs, rel_dfs
 
 
 class NVDCVEOntolocyClient(OntolocyClient):
